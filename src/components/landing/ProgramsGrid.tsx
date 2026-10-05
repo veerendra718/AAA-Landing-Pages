@@ -31,8 +31,12 @@ type Format = (typeof formats)[number]["id"];
  */
 export function ProgramsGrid({
   subtitle = "Classroom batches at the Vijayanagar centre, with the AAA Lakshya app included for practice at home.",
+  showOnline = true,
 }: {
   subtitle?: string;
+  /** False shows the classroom courses alone, with no format tabs — for pages
+   *  that present the app as part of classroom coaching, not a course of its own. */
+  showOnline?: boolean;
 }) {
   const [format, setFormat] = useState<Format>("classroom");
 
@@ -41,6 +45,10 @@ export function ProgramsGrid({
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <SectionHeading eyebrow="Programmes" title="Find the right programme" subtitle={subtitle} />
 
+        {!showOnline ? (
+          <ClassroomPrograms />
+        ) : (
+        <>
         <div className="mt-10 flex justify-center">
           <div
             role="tablist"
@@ -76,6 +84,8 @@ export function ProgramsGrid({
         <div id="programs-panel" role="tabpanel" aria-labelledby={`programs-tab-${format}`}>
           {format === "classroom" ? <ClassroomPrograms /> : <OnlinePrograms />}
         </div>
+        </>
+        )}
       </div>
     </section>
   );

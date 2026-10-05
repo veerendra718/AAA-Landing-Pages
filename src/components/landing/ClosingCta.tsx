@@ -20,10 +20,13 @@ const visitIncludes = [
 export function ClosingCta({
   visitHref,
   subtitle,
+  secondary,
 }: {
   /** Where "Book a visit" goes — `#visit` on the landing page itself. */
   visitHref: string;
   subtitle: string;
+  /** Replaces the default "Start free online" button. */
+  secondary?: React.ReactNode;
 }) {
   return (
     <section className="px-4 py-20 md:px-6">
@@ -47,11 +50,13 @@ export function ClosingCta({
                 <CalendarCheck /> Book a visit
               </Link>
             </Button>
-            <Button asChild size="lg" variant="inverse-outline">
-              <Link href={registerUrl}>
-                Start free online <ArrowRight />
-              </Link>
-            </Button>
+            {secondary ?? (
+              <Button asChild size="lg" variant="inverse-outline">
+                <Link href={registerUrl}>
+                  Start free online <ArrowRight />
+                </Link>
+              </Button>
+            )}
           </div>
 
           <a

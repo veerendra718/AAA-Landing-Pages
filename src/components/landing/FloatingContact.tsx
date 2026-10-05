@@ -1,12 +1,13 @@
 import { Phone } from "lucide-react";
 
+import { cn } from "@/lib/utils";
 import { academy, whatsappUrl } from "./data";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 /** The floating pair of contact buttons, on every page. */
-export function FloatingContact() {
+export function FloatingContact({ className }: { className?: string }) {
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+    <div className={cn("fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3", className)}>
       <a
         href={`tel:+91${academy.phones[0]}`}
         aria-label="Call the academy"

@@ -101,8 +101,9 @@ export function App() {
         <Route path="/landing/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* Matches the repo's root layout: 3s default, dismissible by hand. */}
-      <Toaster closeButton duration={3000} />
+      {/* Matches the repo's root layout: 3s default, dismissible by hand. Lifted
+          on phones so toasts clear the V2 bottom action bar. */}
+      <Toaster closeButton duration={3000} mobileOffset={{ bottom: 80 }} />
     </>
   );
 }
