@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { connectOptions, programs } from "./data";
+import { WhatsAppIcon } from "./WhatsAppIcon";
+import { branches, connectOptions, programs, whatsappWith } from "./data";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter the student's name"),
@@ -19,6 +20,7 @@ const schema = z.object({
     .trim()
     .regex(/^[6-9]\d{9}$/, "Enter a 10-digit mobile number"),
   program: z.string().min(1, "Pick a programme"),
+  branch: z.string(),
   connect: z.string().min(1),
 });
 
@@ -30,16 +32,35 @@ const selectClass =
 export function VisitForm({ className }: { className?: string }) {
   const form = useForm<Values>({
     resolver: zodResolver(schema),
-    defaultValues: { name: "", phone: "", program: "", connect: "centre" },
+    defaultValues: { name: "", phone: "", program: "", branch: "", connect: "centre" },
     mode: "onBlur",
   });
   const { errors, isSubmitting } = form.formState;
   const connect = useWatch({ control: form.control, name: "connect" });
 
-  // Demo only: nothing is sent anywhere.
-  const onSubmit = async (values: Values) => {
-    await new Promise((r) => setTimeout(r, 500));
-    toast.success(`Thanks, ${values.name.split(" ")[0]}! A mentor will call you shortly.`);
+  // No backend yet: the enquiry is handed to WhatsApp as a ready-typed message
+  // to the academy's number, so it reaches a mentor instead of vanishing.
+  const onSubmit = (values: Values) => {
+    const programme =
+      values.program === "vrddhi"
+        ? "Vrddhi scholarship test"
+        : programs.find((p) => p.id === values.program)?.title ?? values.program;
+    const how = connectOptions.find((o) => o.id === values.connect)?.label ?? values.connect;
+    const where = branches.find((b) => b.id === values.branch)?.name ?? "Not sure — please suggest";
+    const message = [
+      "Hi, I'd like to book a free counselling session.",
+      `Student: ${values.name}`,
+      `Mobile: ${values.phone}`,
+      `Interested in: ${programme}`,
+      `Branch: ${where}`,
+      `Preferred: ${how}`,
+    ].join("\n");
+    // A blocked pop-up falls back to opening WhatsApp in this tab.
+    const url = whatsappWith(message);
+    const tab = window.open(url, "_blank");
+    if (tab) tab.opener = null;
+    else window.location.href = url;
+    toast.success(`Thanks, ${values.name.split(" ")[0]}! Send the WhatsApp message and a mentor will reply.`);
     form.reset();
   };
 
@@ -59,7 +80,7 @@ export function VisitForm({ className }: { className?: string }) {
         <div>
           <p className="font-semibold text-brand-text-primary">Talk to a mentor — free</p>
           <p className="text-xs text-brand-text-muted">
-            Counselling + a demo class at the Vijayanagar centre
+            Counselling + a demo class at your nearest branch
           </p>
         </div>
       </div>
@@ -117,11 +138,22 @@ export function VisitForm({ className }: { className?: string }) {
             <p className="text-xs text-destructive">{errors.program.message}</p>
           )}
         </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="visit-branch">Nearest branch</Label>
+          <select id="visit-branch" className={selectClass} {...form.register("branch")}>
+            <option value="">Not sure — suggest one</option>
+            {branches.map((b) => (
+              <option key={b.id} value={b.id}>
+                {b.name} ({b.label})
+              </option>
+            ))}
+          </select>
+        </div>
         <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? "Booking…" : "Book my free session"}
+          <WhatsAppIcon className="size-4" /> Book my free session
         </Button>
         <p className="text-center text-[11px] text-brand-text-muted">
-          We&apos;ll call within one working day. No spam, ever.
+          Opens WhatsApp with your details filled in — just press send. No spam, ever.
         </p>
       </div>
     </form>
