@@ -10,9 +10,24 @@ export const academy = {
   founded: 2012,
   phones: ["7676642258", "8197554516"],
   email: "info@aaaedu.in",
-  // DUMMY — bare 10 digits like `phones`; whatsappUrl adds the 91 country code.
-  whatsapp: "9876543210",
+  // aaaedu.in's own WhatsApp link (api.whatsapp.com/send?phone=7676642258).
+  // Bare 10 digits like `phones`; whatsappUrl adds the 91 country code.
+  whatsapp: "7676642258",
 };
+
+// The academy's social profiles, as linked from aaaedu.in's footer.
+export const socials = [
+  { id: "instagram", label: "Instagram", href: "https://www.instagram.com/arjunaa_academy_for_achievers/" },
+  { id: "youtube", label: "YouTube", href: "https://www.youtube.com/channel/UCcPOkcZ_YGpTMcVnLJQYLPA" },
+  { id: "facebook", label: "Facebook", href: "https://www.facebook.com/www.aaaedu.in/" },
+  { id: "linkedin", label: "LinkedIn", href: "https://in.linkedin.com/company/arjunaa-academy-for-achievers" },
+  { id: "x", label: "X (Twitter)", href: "https://twitter.com/academy_arjunaa" },
+] as const;
+
+/** A WhatsApp chat with the academy, opened with `text` already typed. */
+export function whatsappWith(text: string) {
+  return `https://wa.me/91${academy.whatsapp}?text=${encodeURIComponent(text)}`;
+}
 
 // Where every "Login" / "Student login" link on the site goes: the student
 // dashboard's sign-in, which returns to the dashboard afterwards.
@@ -45,8 +60,58 @@ export const branch = {
     "Srinagar",
     "Hanumanthanagar",
   ],
+  // AI-generated placeholder — its sign reads "Arjuna Academy", so it must not
+  // be shown until a real photo of the centre replaces it (docs/assets-needed.md).
   image: "/images/landing/b-band-3.jpg",
 };
+
+/**
+ * The centres aaaedu.in names on its home page ("Benefits of Nearest Coaching
+ * Centres…"), each with the areas it says to enrol from, verbatim. The site
+ * gives a full address only for Vijayanagar; the academy has 10+ branches in
+ * Bengaluru & Mysuru in all.
+ */
+export const branchCount = "10+";
+
+export const branches = [
+  {
+    id: "vijayanagar",
+    name: "Vijayanagar",
+    label: "Head centre",
+    note: "PU & CBSE · Day scholar & residential",
+    address: branch.address,
+    mapsUrl: branch.mapsUrl,
+    areas: [
+      "Rajajinagar", "Magadi Road", "Nagarbhavi", "Basaveshwaranagar", "Chandra Layout",
+      "Attiguppe", "Moodalapalya", "Nayandahalli", "Hosakerehalli", "Srinagar",
+      "Hanumanthanagar", "Girinagar", "Vidyapeeta",
+    ],
+  },
+  {
+    id: "vss",
+    name: "VSS International Public School",
+    label: "Ullal",
+    note: "CBSE · Integrated programme",
+    address: "Ullal, Bengaluru",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=VSS+International+Public+School+Ullal+Bengaluru",
+    areas: [
+      "Ullal", "Nagadevanahalli", "Bangalore University", "Mallathahalli",
+      "Mariyappanapalya", "Jnanabharathi", "Ullal Upanagara", "RR Nagar", "Kengeri",
+    ],
+  },
+  {
+    id: "vedantha",
+    name: "Vedantha PU College",
+    label: "Vasanthapura",
+    note: "PU · Integrated programme",
+    address: "Vasanthapura, Bengaluru",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Vedantha+PU+College+Vasanthapura+Bengaluru",
+    areas: [
+      "Padmanabhanagar", "Chikkalasandra", "Kumaraswamy Layout", "ISRO Layout", "Vasanthapura",
+      "Kanakapura Road", "Konanakunte Cross", "JP Nagar", "Bannerghatta Road", "Gottigere",
+    ],
+  },
+] as const;
 
 export const stats = [
   { value: 3000, suffix: "+", label: "Students trained" },
@@ -295,10 +360,14 @@ export const faqs: {
     link: { href: branch.mapsUrl, label: "Get directions", external: true },
   },
   {
-    q: "Is there a free trial?",
-    a: "You can sign up for AAA Lakshya for free and try the tests and study material. For classroom programmes, book a free counselling visit and a demo class.",
+    q: "Can my child attend a class before we decide?",
+    a: "Yes. Book a free counselling visit and your child can sit in on a live demo class, meet the faculty and see the classrooms. A visit takes about an hour.",
     topic: "visits",
-    link: { href: registerUrl, label: "Try AAA Lakshya free" },
+  },
+  {
+    q: "Which branch should we join?",
+    a: "We have 10+ branches across Bengaluru and Mysuru. Vijayanagar is the head centre; the integrated programme also runs at VSS International Public School, Ullal, and Vedantha PU College, Vasanthapura. Tell us where you live and we'll suggest the nearest one.",
+    topic: "visits",
   },
   {
     q: "Which exams do you prepare for?",
@@ -323,15 +392,15 @@ export const faqs: {
     topic: "fees",
   },
   {
-    q: "Can I study only online?",
-    a: "Yes. AAA Lakshya has live and recorded classes, tests and doubt support. Classroom students get the app included.",
-    topic: "app",
-  },
-  {
     q: "Do classroom students get the AAA Lakshya app?",
-    a: "Yes — every classroom student gets the app included. Tests, class notes, recorded lectures and doubt support all live there, and parents can follow progress too.",
+    a: "Yes — every enrolled student gets AAA Lakshya on the web and on the mobile app. It doesn't replace the classroom; it carries it home: class recordings and notes, fortnightly tests, topic-wise analysis and a mistake book to revise from.",
     topic: "app",
     link: { href: loginUrl, label: "Student login" },
+  },
+  {
+    q: "Can parents follow progress?",
+    a: "Yes. Parents are registered as guardians when the student signs up, every test report is in the app, and a mentor walks you through it at the monthly parent–teacher meeting.",
+    topic: "app",
   },
 ];
 
