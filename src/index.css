@@ -127,6 +127,14 @@
   }
 }
 
+/* The results strip under the V2 hero: two identical lists side by side,
+   shifted by exactly one list's width (half the track, plus half the gap). */
+@keyframes ticker {
+  to {
+    transform: translateX(calc(-50% - 0.375rem));
+  }
+}
+
 @keyframes sheet-slide-right {
   from {
     transform: translateX(100%);
