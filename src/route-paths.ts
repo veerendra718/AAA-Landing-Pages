@@ -1,0 +1,29 @@
+/** The SPA routes this site actually serves. Kept separate from the router
+ *  table so src/shims/link.tsx can test membership without importing the
+ *  pages (which import the shim back). */
+export const ROUTE_PATHS = [
+  "/landing",
+  "/landing/v1",
+  "/landing/v2",
+  "/landing/v3",
+  "/landing/about",
+  "/landing/about/mission-vision",
+  "/landing/about/leadership",
+  "/landing/about/testimonials",
+  "/landing/about/careers",
+  "/landing/achievers",
+  "/landing/achievers/jee-mains",
+  "/landing/achievers/jee-advanced",
+  "/landing/achievers/neet",
+  "/landing/achievers/k-cet",
+  "/landing/achievers/nstse",
+  "/landing/courses",
+  "/landing/courses/jee",
+  "/landing/courses/neet",
+  "/landing/courses/kcet-boards",
+  "/landing/courses/foundation",
+  "/landing/courses/residential",
+  "/landing/courses/admissions",
+  "/landing/courses/online",
+  "/landing/contact",
+] as const;

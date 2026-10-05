@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* Brand tokens copied verbatim from aaa_frontend src/app/globals.css so the
+   standalone site cannot drift from the AAA Lakshya app palette. */
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-display: "Crimson Text", Georgia, serif;
+
+  --color-brand-primary: #0a7c85;
+  --color-brand-primary-dark: #075e66;
+  --color-brand-primary-hover: #0d8f99;
+  --color-brand-hero-teal: #1a9ea8;
+  --color-brand-secondary: #a8dce0;
+  --color-brand-subtle-bg: #e0f5f6;
+  --color-brand-page-bg: #f5f9f9;
+  --color-brand-success: #2ba080;
+  --color-brand-success-bg: #d6f0e8;
+  --color-brand-warning: #f4735a;
+  --color-brand-warning-bg: #fdeae6;
+  --color-brand-info: #3b8fd4;
+  --color-brand-info-bg: #e0eefa;
+  --color-brand-text-primary: #111827;
+  --color-brand-text-secondary: #374151;
+  --color-brand-text-muted: #6b7280;
+  --color-brand-border: #d1d5db;
+  --color-brand-border-teal: #a8dce0;
+  --color-brand-gray-100: #f3f4f6;
+
+  --color-brand-easy-bg: #d6f0e8;
+  --color-brand-easy-text: #1d7055;
+  --color-brand-medium-bg: #fff3cd;
+  --color-brand-medium-text: #856404;
+  --color-brand-hard-bg: #fdeae6;
+  --color-brand-hard-text: #c0472f;
+
+  --color-brand-primary-darker: #00535b;
+  --color-brand-primary-accent: #006d77;
+  --color-brand-secondary-light: #b7ecf0;
+  --color-brand-surface: #f0fafa;
+  --color-brand-text-heading: #2d3748;
+  --color-brand-text-body: #4a5568;
+  --color-brand-text-placeholder: #546787;
+  --color-brand-text-faint: #a0aec0;
+  --color-brand-border-light: #e6e8e9;
+  --color-brand-border-muted: #cbd5e0;
+
+  /* shadcn primitive names the ported UI reads — mapped onto brand values so
+     nothing renders as shadcn's default near-black. */
+  --color-background: #ffffff;
+  --color-foreground: #111827;
+  --color-card: #ffffff;
+  --color-card-foreground: #111827;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #111827;
+  --color-primary: #0a7c85;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f5f9f9;
+  --color-secondary-foreground: #111827;
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #f5f9f9;
+  --color-accent-foreground: #111827;
+  --color-destructive: #dc2626;
+  --color-border: #e6e8e9;
+  --color-input: #e6e8e9;
+  --color-ring: #0a7c85;
+}
+
+/* Brand primary button — flat teal, never a gradient (see globals.css note). */
+@utility btn-brand {
+  background-color: #0a7c85;
+  background-image: none;
+  box-shadow: 0 2px 12px rgba(10, 124, 133, 0.3);
+  color: #fff;
+  &:hover {
+    background-color: #075e66;
+  }
+}
+
+@keyframes announce-dot-travel {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@utility announcement-border {
+  position: relative;
+  @supports (offset-path: border-box) {
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      height: 8px;
+      width: 8px;
+      border-radius: 9999px;
+      background: #0a7c85;
+      box-shadow:
+        0 0 0 3px rgba(10, 124, 133, 0.2),
+        0 0 12px 3px rgba(10, 124, 133, 0.55);
+      offset-path: border-box;
+      offset-distance: 0%;
+      offset-rotate: 0deg;
+      pointer-events: none;
+      animation: announce-dot-travel 12s linear infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      &::after {
+        animation: none;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-brand-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@keyframes sheet-slide-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Horizontal scrollers (carousels, galleries, tab rows) must scroll inside
+   their own row without a visible bar stealing layout height. */
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
