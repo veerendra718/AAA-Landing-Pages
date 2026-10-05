@@ -1,17 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUp, Mail, MapPin, Navigation, Phone } from "lucide-react";
+import { ArrowUp, Facebook, Instagram, Linkedin, Mail, MapPin, Navigation, Phone, Twitter, Youtube } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { academy, branch, exams, loginUrl, programs, registerUrl, whatsappUrl } from "./data";
+import { academy, branch, branchCount, exams, loginUrl, programs, socials, whatsappUrl } from "./data";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const coursesLinks = [
   ...programs.map((p) => ({ href: p.href, label: p.title })),
   { href: "/landing/courses/residential", label: "Day Scholar & Residential" },
   { href: "/landing/courses/admissions", label: "Admissions & Batches" },
-  { href: "/landing/courses/online", label: "Online courses" },
 ];
+
+const socialIcons = {
+  instagram: Instagram,
+  youtube: Youtube,
+  facebook: Facebook,
+  linkedin: Linkedin,
+  x: Twitter,
+} as const;
 
 const academyLinks = [
   { href: "/landing/about", label: "About Us" },
@@ -26,8 +33,8 @@ const academyLinks = [
 /**
  * Site footer. The top band is the brand and the three quickest ways to reach
  * the academy; below it, every page on the site grouped the way the header menu
- * groups them, and the full contact details. No social links: the academy
- * publishes none we can point at.
+ * groups them, and the full contact details. Social links are the ones in
+ * aaaedu.in's own footer.
  */
 export function LandingFooter() {
   return (
@@ -50,9 +57,9 @@ export function LandingFooter() {
               </div>
             </div>
             <p className="mt-5 max-w-md text-sm leading-relaxed">
-              &ldquo;{academy.tagline}.&rdquo; Small-batch classroom coaching at
-              our Vijayanagar centre, with the {academy.appName} app for practice
-              and revision at home.
+              &ldquo;{academy.tagline}.&rdquo; Small-batch classroom coaching at{" "}
+              {branchCount} branches across Bengaluru &amp; Mysuru, with the{" "}
+              {academy.appName} app for practice and revision at home.
             </p>
             <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Exams we prepare for">
               {exams.slice(0, 6).map((e) => (
@@ -63,6 +70,24 @@ export function LandingFooter() {
                   {e}
                 </li>
               ))}
+            </ul>
+            <ul className="mt-6 flex gap-2" aria-label="Follow us">
+              {socials.map((s) => {
+                const Icon = socialIcons[s.id];
+                return (
+                  <li key={s.id}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={s.label}
+                      className="flex size-9 items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-white/40 hover:bg-white/10 hover:text-white"
+                    >
+                      <Icon className="size-4" />
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -96,7 +121,7 @@ export function LandingFooter() {
 
           <div>
             <p className="mb-4 text-xs font-bold uppercase tracking-[2px] text-brand-secondary">
-              Visit us
+              Head centre
             </p>
             <ul className="space-y-3.5 text-sm">
               <li className="flex gap-3">
@@ -130,6 +155,9 @@ export function LandingFooter() {
                 </a>
               </li>
             </ul>
+            <p className="mt-4 text-xs text-white/60">
+              {branchCount} branches across Bengaluru &amp; Mysuru — ask us for the nearest one.
+            </p>
           </div>
         </div>
       </div>
@@ -143,9 +171,6 @@ export function LandingFooter() {
             <span className="text-white/50">{academy.appName}:</span>
             <Link href={loginUrl} className="hover:text-white">
               Student login
-            </Link>
-            <Link href={registerUrl} className="hover:text-white">
-              Create account
             </Link>
             <a href="#top" className="inline-flex items-center gap-1 hover:text-white">
               Back to top <ArrowUp className="size-3.5" />
