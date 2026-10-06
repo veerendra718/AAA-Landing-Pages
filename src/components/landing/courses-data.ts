@@ -20,7 +20,7 @@ export const admissionSteps = [
   },
   {
     step: "Ask how you want to talk",
-    body: "Call back, home visit, visit the centre in Vijayanagar, or a video call.",
+    body: "Call back, home visit, a visit to our centre, or connect online.",
   },
   {
     step: "Counselling & diagnostic test",
