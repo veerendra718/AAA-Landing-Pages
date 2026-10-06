@@ -120,9 +120,9 @@ export default function LandingV2() {
         subtitle={`Admissions for 2026–27 are open at our Vijayanagar centre. Book a visit, or message us on WhatsApp and a mentor will call you back.`}
         secondary={
           <Button asChild size="lg" variant="inverse-outline">
-            <a href={whatsappUrl} target="_blank" rel="noreferrer">
-              <WhatsAppIcon className="size-4" /> WhatsApp us
-            </a>
+            <Link href={registerUrl}>
+              <MonitorPlay className="size-4" /> Start online
+            </Link>
           </Button>
         }
       />
