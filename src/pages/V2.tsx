@@ -8,7 +8,7 @@ import { AppShowcase, HeroPhone } from "@/components/landing/AppShowcase";
 import { CentreSection } from "@/components/landing/CentreSection";
 import { ClosingCta } from "@/components/landing/ClosingCta";
 import { CountUp } from "@/components/landing/CountUp";
-import { onlineClasses, onlinePackages } from "@/components/landing/courses-data";
+import { onlinePackages } from "@/components/landing/courses-data";
 import { academy, registerUrl, whatsappUrl } from "@/components/landing/data";
 import { FacultyShowcase } from "@/components/landing/FacultyShowcase";
 import { FaqSection } from "@/components/landing/FaqSection";
@@ -191,26 +191,7 @@ function ClassroomHero() {
           ))}
         </ul>
 
-        {/* Proof: real achievers' faces and where they went */}
-        <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-brand-border-light pt-6">
-          <div className="flex -space-x-2.5">
-            {highlightResults.slice(0, 5).map((r) => (
-              <Image
-                key={r.name}
-                src={r.image}
-                alt=""
-                width={40}
-                height={40}
-                className="size-10 rounded-full object-cover object-top ring-2 ring-white"
-              />
-            ))}
-          </div>
-          <p className="text-sm leading-snug text-brand-text-muted">
-            <span className="font-semibold text-brand-text-primary">1,000+ alumni</span> at top STEM
-            universities
-            <span className="block text-xs">{alumniColleges.join(" · ")}</span>
-          </p>
-        </div>
+        <AlumniProof />
       </div>
 
       {/* Classroom photo with the app over it — the page's idea in one picture.
@@ -306,19 +287,7 @@ function OnlineHero() {
           ))}
         </ul>
 
-        {/* Where to go next: straight into a class's online courses. */}
-        <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-brand-border-light pt-6 text-sm">
-          <span className="text-brand-text-muted">Online courses for</span>
-          {onlineClasses.map((c) => (
-            <Link
-              key={c.id}
-              href={c.href}
-              className="inline-flex items-center gap-1 rounded-full border border-brand-border-teal bg-white px-3 py-1 font-semibold text-brand-primary transition-colors hover:bg-brand-subtle-bg"
-            >
-              {c.label} <ArrowRight className="size-3.5" />
-            </Link>
-          ))}
-        </div>
+        <AlumniProof />
       </div>
 
       {/* A live class on screen, with the recording and the app beside it. The
@@ -370,6 +339,31 @@ function OnlineHero() {
           </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+/** Proof under both hero slides: real achievers' faces and where they went. */
+function AlumniProof() {
+  return (
+    <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-brand-border-light pt-6">
+      <div className="flex -space-x-2.5">
+        {highlightResults.slice(0, 5).map((r) => (
+          <Image
+            key={r.name}
+            src={r.image}
+            alt=""
+            width={40}
+            height={40}
+            className="size-10 rounded-full object-cover object-top ring-2 ring-white"
+          />
+        ))}
+      </div>
+      <p className="text-sm leading-snug text-brand-text-muted">
+        <span className="font-semibold text-brand-text-primary">1,000+ alumni</span> at top STEM
+        universities
+        <span className="block text-xs">{alumniColleges.join(" · ")}</span>
+      </p>
     </div>
   );
 }
