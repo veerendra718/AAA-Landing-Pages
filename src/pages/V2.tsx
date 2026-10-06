@@ -189,8 +189,7 @@ export default function LandingV2() {
       </div>
 
       <ProgramsGrid
-        showOnline={false}
-        subtitle={`Classroom batches from Class 8 to droppers, as day scholar or residential — with ${academy.appName} included for every student.`}
+        subtitle={`Class 11 and Class 12 courses for KCET, NEET, JEE Main and JEE Advanced — in the classroom at Vijayanagar, with the ${academy.appName} app included, or online.`}
       />
 
       <AppShowcase />
