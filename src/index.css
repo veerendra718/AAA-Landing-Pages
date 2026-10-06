@@ -135,17 +135,6 @@
   }
 }
 
-/* The V2 hero carousel: the bar under the active slide's tab fills over the
-   7 seconds before the next slide (HeroCarousel's INTERVAL). */
-@keyframes hero-progress {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
 @keyframes sheet-slide-right {
   from {
     transform: translateX(100%);

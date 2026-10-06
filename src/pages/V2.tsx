@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, CalendarCheck, Check, MonitorPlay, Play, Users, Video } from "lucide-react";
+import { ArrowRight, CalendarCheck, Check, MonitorPlay, Play, Users, Video } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { AppShowcase, HeroPhone } from "@/components/landing/AppShowcase";
@@ -69,8 +69,8 @@ export default function LandingV2() {
         <div className="pointer-events-none absolute -right-40 -top-40 size-[520px] rounded-full bg-brand-secondary/40 blur-3xl" />
         <HeroCarousel
           slides={[
-            { id: "classroom", label: "In the classroom", icon: Building2, content: <ClassroomHero /> },
-            { id: "online", label: "Live online", icon: MonitorPlay, content: <OnlineHero /> },
+            { id: "classroom", label: "In the classroom", content: <ClassroomHero /> },
+            { id: "online", label: "Live online", content: <OnlineHero /> },
           ]}
         />
       </section>
