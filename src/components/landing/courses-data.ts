@@ -655,3 +655,61 @@ export const classroomClasses: OnlineClassInfo[] = [
     note: `One-year courses taught in the classroom at Vijayanagar for the final year before the exam — with the ${academy.appName} Advanced plan included free.`,
   },
 ];
+
+/**
+ * What each classroom package is about, shown on its card.
+ *
+ * DUMMY: the academy hasn't sent per-package details yet — the summaries,
+ * timings and test schedules below are placeholders written from what each
+ * package covers. Replace them with the real batch details when they arrive.
+ */
+export const classroomDetails: Record<string, { summary: string; subjects: string; schedule: string; tests: string }> = {
+  siddhartha: {
+    summary: "Complete KCET preparation, taught alongside the PU syllabus.",
+    subjects: "Physics · Chemistry · Maths",
+    schedule: "Mon – Sat · 3 hours a day",
+    tests: "Weekly KCET-pattern tests",
+  },
+  "siddhartha-fasttrack": {
+    summary: "A fast-paced run through the whole KCET syllabus in the final year.",
+    subjects: "Physics · Chemistry · Maths",
+    schedule: "Mon – Sat · 4 hours a day",
+    tests: "A full KCET mock every week",
+  },
+  shushrutha: {
+    summary: "NCERT-first NEET coaching, with concepts taught before memory.",
+    subjects: "Physics · Chemistry · Biology",
+    schedule: "Mon – Sat · 3 hours a day",
+    tests: "Weekly NEET-pattern tests",
+  },
+  saadhaka: {
+    summary: "JEE Main preparation for the NITs and top engineering colleges.",
+    subjects: "Physics · Chemistry · Maths",
+    schedule: "Mon – Sat · 3.5 hours a day",
+    tests: "Fortnightly JEE Main mocks",
+  },
+  shreshtra: {
+    summary: "Deep problem-solving for students aiming at the IITs.",
+    subjects: "Physics · Chemistry · Maths",
+    schedule: "Mon – Sat · 4 hours a day",
+    tests: "Fortnightly JEE Advanced papers",
+  },
+  sakala: {
+    summary: "KCET and NEET prepared together, for engineering and medical options.",
+    subjects: "Physics · Chemistry · Maths · Biology",
+    schedule: "Mon – Sat · 4 hours a day",
+    tests: "KCET and NEET tests on alternate weeks",
+  },
+  sarvam: {
+    summary: "KCET, NEET and JEE Main in one course — every door kept open.",
+    subjects: "Physics · Chemistry · Maths · Biology",
+    schedule: "Mon – Sat · 4.5 hours a day",
+    tests: "Weekly tests across all three exams",
+  },
+  sarvotthama: {
+    summary: "Every entrance exam, from KCET through to JEE Advanced.",
+    subjects: "Physics · Chemistry · Maths · Biology",
+    schedule: "Mon – Sat · 5 hours a day",
+    tests: "Weekly tests, plus JEE Advanced papers",
+  },
+};
