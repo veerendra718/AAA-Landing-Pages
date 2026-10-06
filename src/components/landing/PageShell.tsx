@@ -1,12 +1,10 @@
-import { CalendarCheck } from "lucide-react";
-
 import { ClosingCta } from "./ClosingCta";
 import { FloatingContact } from "./FloatingContact";
 import { LandingFooter } from "./LandingFooter";
 import { LandingNav } from "./LandingNav";
 
 const home = "/landing/v2";
-// Every inner page books through the Contact page's own form rather than
+// The closing banner books through the Contact page's own form rather than
 // sending people back to the home page. On Contact itself the same link just
 // scrolls down to that form.
 const visit = "/landing/contact#enquire";
@@ -39,7 +37,6 @@ export function PageShell({
     <div id="top">
       <LandingNav
         homeHref={home}
-        cta={{ href: visit, label: "Book a visit", icon: CalendarCheck }}
       />
 
       <section className="relative overflow-hidden bg-linear-to-b from-brand-subtle-bg/70 via-white to-white">

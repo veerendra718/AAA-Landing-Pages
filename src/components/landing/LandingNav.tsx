@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, type LucideIcon, Mail, Menu, Phone } from "lucide-react";
+import { ChevronDown, LogIn, type LucideIcon, Mail, Menu, Phone, UserPlus } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -21,14 +21,14 @@ import { type NavGroup, siteMenu } from "./site-menu";
 
 export type NavLink = { href: string; label: string };
 
-/** The header's call to action. With an `icon` it is a solid brand pill ("Book
- *  a visit"); without one it keeps the animated hover pill ("Start free"). */
+/** The header's call to action. With an `icon` it is a solid brand pill
+ *  ("Register"); without one, the animated hover pill. */
 export type NavCta = NavLink & { icon?: LucideIcon };
 
 export function LandingNav({
   links = [],
-  cta = { href: registerUrl, label: "Start free" },
-  announcement = "Admissions open for 2026–27 · JEE · NEET · KCET · Foundation",
+  cta = { href: registerUrl, label: "Register", icon: UserPlus },
+  announcement = "Admissions open for 2026–27 · KCET · NEET · JEE Main · JEE Advanced",
   homeHref = "#top",
 }: {
   /**

@@ -48,8 +48,7 @@ export default function LandingV2() {
     <div id="top" className="pb-16 md:pb-0">
       <LandingNav
         links={links}
-        cta={{ href: "#visit", label: "Book a free demo", icon: CalendarCheck }}
-        announcement={`Admissions open for 2026–27 · JEE · NEET · KCET · Foundation · ${branchCount} branches in Bengaluru & Mysuru`}
+        announcement={`Admissions open for 2026–27 · KCET · NEET · JEE Main · JEE Advanced · Vijayanagar, Bengaluru`}
       />
 
       {/* Hero — the classroom first, the app alongside it */}
