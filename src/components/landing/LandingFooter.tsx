@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUp, Facebook, Instagram, Linkedin, Mail, MapPin, Navigation, Phone, Twitter, Youtube } from "lucide-react";
+import { ArrowUp, Mail, MapPin, Navigation, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { academy, branch, branchCount, exams, loginUrl, programs, socials, whatsappUrl } from "./data";
+import { socialIcons } from "./social-icons";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const coursesLinks = [
@@ -11,14 +12,6 @@ const coursesLinks = [
   { href: "/landing/courses/residential", label: "Day Scholar & Residential" },
   { href: "/landing/courses/admissions", label: "Admissions & Batches" },
 ];
-
-const socialIcons = {
-  instagram: Instagram,
-  youtube: Youtube,
-  facebook: Facebook,
-  linkedin: Linkedin,
-  x: Twitter,
-} as const;
 
 const academyLinks = [
   { href: "/landing/about", label: "About Us" },
