@@ -255,11 +255,37 @@ function PlanComparison({ hasAdvanced }: { hasAdvanced: boolean }) {
   );
 }
 
-function PackagePlans({ pkg, cls }: { pkg: OnlinePackage; cls: PackageClass }) {
+/** The plan comparison with its hide / show button; open from the start. */
+function ComparisonBlock({ id, hasAdvanced }: { id: string; hasAdvanced: boolean }) {
+  const [open, setOpen] = useState(true);
+  return (
+    <>
+      <div className="mt-6 text-center">
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={id}
+          onClick={() => setOpen((v) => !v)}
+          className="inline-flex items-center gap-1.5 rounded-full border border-brand-border-teal bg-white px-5 py-2.5 text-sm font-semibold text-brand-primary transition-colors hover:bg-brand-subtle-bg"
+        >
+          {open ? "Hide plan comparison" : "Compare all plan features"}
+          <ChevronDown className={cn("size-4 transition-transform", open && "rotate-180")} />
+        </button>
+      </div>
+      <div id={id} hidden={!open} className="mt-6">
+        <PlanComparison hasAdvanced={hasAdvanced} />
+      </div>
+    </>
+  );
+}
+
+/**
+ * A course's heading and its plans side by side. `comparison` puts the plan
+ * comparison under the cards — used when the course is the only one shown;
+ * with several, the comparison is shown once after all of them instead.
+ */
+function PackagePlans({ pkg, cls, comparison }: { pkg: OnlinePackage; cls: PackageClass; comparison: boolean }) {
   const p = pkg.prices[cls]!;
-  // Shown from the start; the button below the cards hides it again.
-  const [compare, setCompare] = useState(true);
-  const compareId = `${pkg.slug}-${cls}-compare`;
   return (
     <article id={pkg.slug} className="scroll-mt-24">
       <div className="flex flex-wrap items-center gap-3">
@@ -280,21 +306,7 @@ function PackagePlans({ pkg, cls }: { pkg: OnlinePackage; cls: PackageClass }) {
         <PlanCard tier="standard" price={p.standard} featured={!p.advanced} />
         {p.advanced && <PlanCard tier="advanced" price={p.advanced} featured />}
       </div>
-      <div className="mt-6 text-center">
-        <button
-          type="button"
-          aria-expanded={compare}
-          aria-controls={compareId}
-          onClick={() => setCompare((v) => !v)}
-          className="inline-flex items-center gap-1.5 rounded-full border border-brand-border-teal bg-white px-5 py-2.5 text-sm font-semibold text-brand-primary transition-colors hover:bg-brand-subtle-bg"
-        >
-          {compare ? "Hide plan comparison" : "Compare all plan features"}
-          <ChevronDown className={cn("size-4 transition-transform", compare && "rotate-180")} />
-        </button>
-      </div>
-      <div id={compareId} hidden={!compare} className="mt-6">
-        <PlanComparison hasAdvanced={!!p.advanced} />
-      </div>
+      {comparison && <ComparisonBlock id={`${pkg.slug}-${cls}-compare`} hasAdvanced={!!p.advanced} />}
       <Link
         href={`${classroomClasses.find((c) => c.id === cls)!.href}#${packageFilterSlug(pkg)}`}
         className="group mt-6 flex flex-col gap-2 rounded-2xl border border-brand-border-light bg-brand-page-bg px-5 py-4 transition-colors hover:border-brand-border-teal hover:bg-white sm:flex-row sm:items-center sm:justify-between"
@@ -534,8 +546,30 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
         {mode === "online" ? (
           <div className="mt-8 space-y-16">
             {shown.map((pkg) => (
-              <PackagePlans key={pkg.slug} pkg={pkg} cls={cls} />
+              <PackagePlans key={pkg.slug} pkg={pkg} cls={cls} comparison={shown.length === 1} />
             ))}
+            {/* Several courses: one comparison after all of them — the limits are the same for every course. */}
+            {shown.length > 1 && (
+              <section aria-labelledby={`compare-${cls}-heading`}>
+                <h3
+                  id={`compare-${cls}-heading`}
+                  className="text-center font-(family-name:--font-display) text-3xl font-bold text-brand-primary-darker"
+                >
+                  Compare plans
+                </h3>
+                <p className="mt-2 text-center text-brand-text-muted">
+                  The same for every course above.
+                  {shown
+                    .filter((p) => !p.prices[cls]?.advanced)
+                    .map((p) => ` ${p.name} has no Advanced plan.`)}
+                </p>
+                <ComparisonBlock
+                  key={filter}
+                  id={`compare-${cls}`}
+                  hasAdvanced={shown.some((p) => p.prices[cls]?.advanced)}
+                />
+              </section>
+            )}
           </div>
         ) : (
           // Centred, so an exam with one or two packages doesn't sit off to the left.
