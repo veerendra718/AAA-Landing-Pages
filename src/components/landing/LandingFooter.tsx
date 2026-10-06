@@ -158,7 +158,7 @@ export function LandingFooter() {
             &copy; {new Date().getFullYear()} {academy.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <span className="text-white/50">{academy.appName}:</span>
+            <span className="text-white/50">{academy.appName} app:</span>
             <Link href={loginUrl} className="hover:text-white">
               Student login
             </Link>

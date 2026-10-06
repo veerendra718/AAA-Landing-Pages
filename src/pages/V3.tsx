@@ -31,7 +31,7 @@ import { ToppersSection } from "@/components/landing/ToppersSection";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "AAA Lakshya by Arjunaa Academy | Personalised JEE, NEET & KCET practice",
+  title: "AAA app by Arjunaa Academy | Personalised JEE, NEET & KCET practice",
   description:
     "Exam-pattern tests, topic-wise mastery and a mistake book that tells you exactly what to study next — backed by Arjunaa Academy's classrooms.",
 };
@@ -89,7 +89,7 @@ export default function LandingV3() {
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(10,124,133,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,124,133,0.06)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
         <div className="relative mx-auto max-w-5xl px-4 pb-10 pt-16 text-center md:px-6 md:pt-24">
           <p className="inline-flex items-center gap-2 rounded-full border border-brand-border-teal bg-white px-3 py-1 text-xs font-semibold text-brand-primary">
-            <Zap className="size-3.5" /> {academy.appName} · by {academy.name}
+            <Zap className="size-3.5" /> {academy.appName} app · by {academy.name}
           </p>
           <h1 className="mx-auto mt-6 max-w-4xl font-(family-name:--font-display) text-4xl font-bold leading-[1.05] tracking-tight text-brand-primary-darker text-balance sm:text-6xl lg:text-7xl">
             Crack JEE, NEET &amp; KCET with practice that{" "}
@@ -102,7 +102,7 @@ export default function LandingV3() {
             .
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-brand-text-muted">
-            Every test tells {academy.appName} which topics you&apos;ve mastered
+            Every test tells the {academy.appName} app which topics you&apos;ve mastered
             and which are costing you marks — then it tells you what to do next.
           </p>
           <div className="mt-10">
@@ -242,7 +242,7 @@ export default function LandingV3() {
                 Study together, save together
               </p>
               <p className="relative mt-3 text-white/80">
-                Invite a friend to {academy.appName}. When they subscribe, you both
+                Invite a friend to the {academy.appName} app. When they subscribe, you both
                 get a discount on your plan.
               </p>
               <Button asChild variant="inverse" className="relative mt-6">
@@ -261,7 +261,7 @@ export default function LandingV3() {
       <CentreSection
         eyebrow="Prefer a classroom?"
         title="Learn in person at Arjunaa Academy"
-        subtitle="Small batches of 30 at our Vijayanagar centre, taught by IIT, NIT and IISc alumni — with AAA Lakshya included."
+        subtitle="Small batches of 30 at our Vijayanagar centre, taught by IIT, NIT and IISc alumni — with the AAA app included."
       />
 
       <Testimonials />

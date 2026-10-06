@@ -58,7 +58,7 @@ export default function CoursesOnline() {
           <div>
             <SectionHeading
               align="left"
-              eyebrow={`Inside ${academy.appName}`}
+              eyebrow={`Inside the ${academy.appName} app`}
               title="Everything an online student gets"
               subtitle="The same app classroom students use — live classes, every kind of test, and a clear picture of what to fix next."
             />

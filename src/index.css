@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Brand tokens copied verbatim from aaa_frontend src/app/globals.css so the
-   standalone site cannot drift from the AAA Lakshya app palette. */
+   standalone site cannot drift from the AAA app palette. */
 @theme {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;

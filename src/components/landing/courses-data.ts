@@ -32,16 +32,16 @@ export const admissionSteps = [
   },
   {
     step: "Enrol",
-    body: "Complete the admission form, collect the material, and the AAA Lakshya app is included.",
+    body: "Complete the admission form, collect the material, and the AAA app is included.",
   },
 ];
 
 // ---------------------------------------------------------------------------
 // Online courses
 //
-// The same four courses, taught live online through AAA Lakshya. aaaedu.in has
+// The same four courses, taught live online through AAA app. aaaedu.in has
 // no separate online catalogue; everything below restates what the site already
-// says — the same faculty teach the live online classes, and AAA Lakshya carries
+// says — the same faculty teach the live online classes, and AAA app carries
 // live and recorded classes, tests, notes and doubt support. No fees, dates or
 // batch details are invented. Hrefs are written out in full so
 // scripts/check-links.mjs can read them.
@@ -97,7 +97,7 @@ export const onlineExams: OnlineExamInfo[] = [
 
 /**
  * What the app gives an online student, grouped the way a student uses it.
- * Names follow the AAA Lakshya app itself (its sidebar and plan pages): Live
+ * Names follow the AAA app itself (its sidebar and plan pages): Live
  * Classes, Practice Quizzes, Chapter Tests, Daily Practice Problems, Previous
  * Year Papers, Full Mock Tests, Custom Tests, My Mistakes, Analytics, Peer
  * Comparison, Badges, Leaderboard and Rewards.

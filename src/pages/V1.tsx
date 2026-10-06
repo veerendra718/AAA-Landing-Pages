@@ -241,9 +241,9 @@ export default function LandingV1() {
           <div>
             <SectionHeading
               align="left"
-              eyebrow={`Included: ${academy.appName}`}
+              eyebrow={`Included: ${academy.appName} app`}
               title="Your classroom, extended"
-              subtitle="Every Arjunaa student gets the AAA Lakshya app — so practice, revision and doubt-clearing don't stop when the class does."
+              subtitle="Every Arjunaa student gets the AAA app — so practice, revision and doubt-clearing don't stop when the class does."
             />
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {appFeatures.map((f) => (
@@ -263,7 +263,7 @@ export default function LandingV1() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] shadow-[0_40px_80px_-30px_rgba(0,83,91,0.5)]">
             <Image
               src="/images/landing/a-walkthrough.jpg"
-              alt="Student checking the AAA Lakshya dashboard on a tablet in class"
+              alt="Student checking the AAA app dashboard on a tablet in class"
               fill
               sizes="(min-width: 1024px) 600px, 100vw"
               className="object-cover"

@@ -21,7 +21,7 @@ import { academy, academyWeek, loginUrl } from "./data";
 import { SectionHeading } from "./SectionHeading";
 
 /**
- * Classroom + AAA Lakshya, for V2. The week loop shows where the app sits
+ * Classroom + AAA app, for V2. The week loop shows where the app sits
  * between classes; below it, the app's real features (named as the app names
  * them — My Tests, Detailed Analysis, Predictions, My Mistakes, Recommendations,
  * Recordings, Notes) each drive a phone mock-up drawn in code, so the page shows
@@ -71,9 +71,9 @@ export function AppShowcase({ id = "app" }: { id?: string }) {
     <section id={id} className="scroll-mt-20 bg-brand-page-bg py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <SectionHeading
-          eyebrow={`Classroom + ${academy.appName}`}
+          eyebrow={`Classroom + ${academy.appName} app`}
           title="What's taught in class keeps going at home"
-          subtitle={`${academy.appName} isn't a separate course. It comes with every classroom programme, so practice, tests and revision carry on between classes — and nothing your teacher explains is lost.`}
+          subtitle={`The ${academy.appName} app isn't a separate course. It comes with every classroom programme, so practice, tests and revision carry on between classes — and nothing your teacher explains is lost.`}
         />
 
         <WeekLoop />
@@ -85,7 +85,7 @@ export function AppShowcase({ id = "app" }: { id?: string }) {
               <Smartphone className="size-3.5" /> Included for every enrolled student · web & mobile
             </p>
             <h3 className="mt-4 font-(family-name:--font-display) text-2xl font-bold text-brand-primary-darker md:text-3xl">
-              Inside {academy.appName}
+              Inside the {academy.appName} app
             </h3>
 
             <div role="tablist" aria-label="App features" aria-orientation="vertical" className="mt-6 space-y-2">
@@ -156,7 +156,7 @@ export function AppShowcase({ id = "app" }: { id?: string }) {
         <p className="mt-6 text-center text-sm text-brand-text-muted">
           Already enrolled?{" "}
           <Link href={loginUrl} className="inline-flex items-center gap-1 font-semibold text-brand-primary hover:text-brand-primary-darker">
-            Log in to {academy.appName} <ArrowRight className="size-3.5" />
+            Log in to the {academy.appName} app <ArrowRight className="size-3.5" />
           </Link>
         </p>
       </div>
@@ -175,7 +175,7 @@ function WeekLoop() {
             <span className="size-3 rounded-full bg-brand-primary" /> In class
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="size-3 rounded-full border-2 border-brand-primary bg-white" /> In {academy.appName}
+            <span className="size-3 rounded-full border-2 border-brand-primary bg-white" /> In the {academy.appName} app
           </span>
         </div>
       </div>

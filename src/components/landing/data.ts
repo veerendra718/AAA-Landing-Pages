@@ -5,7 +5,7 @@
 export const academy = {
   name: "Arjunaa Academy for Achievers",
   shortName: "Arjunaa Academy",
-  appName: "AAA Lakshya",
+  appName: "AAA",
   tagline: "To be the best, Get trained by the best",
   founded: 2012,
   phones: ["7676642258", "8197554516"],
@@ -33,7 +33,7 @@ export function whatsappWith(text: string) {
 // dashboard's sign-in, which returns to the dashboard afterwards.
 export const loginUrl = "https://feature.samvitai.com/login?callbackUrl=%2Fdashboard";
 
-// Where every sign-up link goes ("Start free", "Try AAA Lakshya free",
+// Where every sign-up link goes ("Start free", "Try AAA app free",
 // "Create account", the V3 goal picker): the student app's registration.
 export const registerUrl = "https://feature.samvitai.com/register";
 
@@ -227,7 +227,7 @@ export const enquiryRequests = ["Call Back", "Home Visit", "Visit Our Center", "
 // A typical week for a classroom student — shows where the app fits.
 export const academyWeek = [
   { where: "centre", title: "Concept classes", body: "Small-batch lectures at Vijayanagar, taught by IIT/NIT/IISc faculty." },
-  { where: "app", title: "Practice & notes", body: "Class notes, recorded lectures and chapter practice in AAA Lakshya." },
+  { where: "app", title: "Practice & notes", body: "Class notes, recorded lectures and chapter practice in the AAA app." },
   { where: "centre", title: "Doubt desk", body: "Stay back after class and clear doubts face to face." },
   { where: "app", title: "Fortnightly test", body: "Exam-pattern test in the app; results and solutions instantly." },
   { where: "centre", title: "Mentor review", body: "Your mentor walks through the test report with you — and your parents." },
@@ -236,7 +236,7 @@ export const academyWeek = [
 export const journey = [
   { step: "Counselling visit", body: "Meet a mentor at the centre and pick the right programme." },
   { step: "Diagnostic test", body: "A short test tells us where you stand, topic by topic." },
-  { step: "Classes + app", body: "Learn in a small batch; practise and revise in AAA Lakshya." },
+  { step: "Classes + app", body: "Learn in a small batch; practise and revise in the AAA app." },
   { step: "Test & review", body: "Fortnightly tests, each followed by a one-on-one review." },
   { step: "Exam day", body: "Walk in having already sat the exam dozens of times." },
 ];
@@ -247,7 +247,7 @@ export const faqTopics: { id: FaqTopic; label: string }[] = [
   { id: "visits", label: "Visits & admission" },
   { id: "courses", label: "Courses & batches" },
   { id: "fees", label: "Fees & scholarships" },
-  { id: "app", label: "AAA Lakshya app" },
+  { id: "app", label: "AAA app" },
 ];
 
 /** `link` is the natural next step after reading the answer, when there is one.
@@ -294,8 +294,8 @@ export const faqs: {
     topic: "fees",
   },
   {
-    q: "Do classroom students get the AAA Lakshya app?",
-    a: "Yes — every enrolled student gets AAA Lakshya on the web and on the mobile app. It doesn't replace the classroom; it carries it home: class recordings and notes, fortnightly tests, topic-wise analysis and a mistake book to revise from.",
+    q: "Do classroom students get the AAA app?",
+    a: "Yes — every enrolled student gets the AAA app, on the web and on mobile. It doesn't replace the classroom; it carries it home: class recordings and notes, fortnightly tests, topic-wise analysis and a mistake book to revise from.",
     topic: "app",
     link: { href: loginUrl, label: "Student login" },
   },
