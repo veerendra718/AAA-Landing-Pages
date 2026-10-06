@@ -241,11 +241,12 @@ export const journey = [
   { step: "Exam day", body: "Walk in having already sat the exam dozens of times." },
 ];
 
-export type FaqTopic = "visits" | "courses" | "fees" | "app";
+export type FaqTopic = "visits" | "courses" | "online" | "fees" | "app";
 
 export const faqTopics: { id: FaqTopic; label: string }[] = [
   { id: "visits", label: "Visits & admission" },
   { id: "courses", label: "Courses & batches" },
+  { id: "online", label: "Online courses" },
   { id: "fees", label: "Fees & scholarships" },
   { id: "app", label: "AAA app" },
 ];
@@ -282,6 +283,29 @@ export const faqs: {
     a: "A maximum of 30 students per batch, so teachers can follow each student's progress.",
     topic: "courses",
     link: { href: "/landing/courses", label: "See classroom courses" },
+  },
+  {
+    q: "Can my child study online instead of coming to Vijayanagar?",
+    a: "Yes. The same courses are taught live online by the same faculty, for Class 11 and Class 12 — KCET, NEET, JEE Main and JEE Advanced, one exam or several together.",
+    topic: "online",
+    link: { href: "/landing/courses/online", label: "See online courses" },
+  },
+  {
+    q: "Is there a free plan?",
+    a: "Yes. Every online course has a free plan with limited content, basic chapter quizzes and community support. Standard and Advanced unlock the full course, and both come with a 7-day free trial.",
+    topic: "online",
+    link: { href: registerUrl, label: "Start free", external: true },
+  },
+  {
+    q: "What's the difference between Standard and Advanced?",
+    a: "Standard gives unlimited HD video lectures, 10,000+ practice questions, weekly chapter-wise tests and performance analytics. Advanced adds AI-powered mock exams and 1-on-1 doubt sessions.",
+    topic: "online",
+    link: { href: "/landing/courses/online/class-11", label: "Compare plans and prices" },
+  },
+  {
+    q: "What if my child misses a live class?",
+    a: "Every lecture is recorded, so it can be watched later in the AAA app, along with the notes and practice for that chapter.",
+    topic: "online",
   },
   {
     q: "How are the fees compared to other institutes?",
