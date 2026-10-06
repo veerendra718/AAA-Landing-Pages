@@ -64,8 +64,9 @@ const highlights = {
 
 /**
  * The strip under a courses page's title: what every course gives, and two
- * actions. On the online pages it is a dark, prominent band — the reasons to
- * study online are the page's pitch; the classroom pages keep a light strip.
+ * actions. On the online pages it is a row of cards in line with the title —
+ * three reasons to study online and a teal card to start; the classroom pages
+ * keep a single light strip.
  */
 export function OnlineHighlights({
   jumpHref,
@@ -77,33 +78,42 @@ export function OnlineHighlights({
   mode?: PackageMode;
 }) {
   if (mode === "online") {
+    // Same container and side padding as the page title above, so the cards'
+    // edges line up with the heading; light cards so the row reads as part of
+    // the page header rather than a separate block.
     return (
-      <div className="px-4 pt-2 md:px-6">
-        <div className="relative mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-[32px] bg-brand-primary-darker p-6 text-white shadow-xl shadow-brand-primary/15 md:p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-10 lg:p-10">
-          <div className="pointer-events-none absolute -right-20 -top-24 size-72 rounded-full bg-white/10 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-28 left-1/3 size-72 rounded-full bg-brand-hero-teal/40 blur-3xl" />
-          <ul className="relative grid gap-6 sm:grid-cols-3">
-            {highlights.online.map((h) => (
-              <li key={h.text}>
-                <span className="flex size-12 items-center justify-center rounded-2xl bg-white/10 text-brand-secondary ring-1 ring-white/15">
-                  <h.icon className="size-6" />
-                </span>
-                <p className="mt-4 font-semibold leading-snug">{h.text}</p>
-                <p className="mt-1 text-sm leading-relaxed text-white/70">{h.note}</p>
-              </li>
-            ))}
-          </ul>
-          <div className="relative flex flex-wrap gap-3 lg:flex-col">
-            <Button asChild size="lg" variant="inverse">
-              <Link href={registerUrl}>
-                Start free <ArrowRight />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="inverse-outline">
-              <a href={jumpHref}>{jumpLabel}</a>
-            </Button>
-          </div>
-        </div>
+      <div className="mx-auto max-w-7xl px-4 pt-2 md:px-6">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {highlights.online.map((h) => (
+            <li
+              key={h.text}
+              className="rounded-3xl border border-brand-border-light bg-white/90 p-5 shadow-[0_16px_40px_-28px_rgba(0,83,91,0.45)] backdrop-blur md:p-6"
+            >
+              <span className="flex size-11 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary">
+                <h.icon className="size-5" />
+              </span>
+              <p className="mt-4 font-semibold leading-snug text-brand-text-primary">{h.text}</p>
+              <p className="mt-1 text-sm leading-relaxed text-brand-text-muted">{h.note}</p>
+            </li>
+          ))}
+          <li className="relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl bg-brand-primary p-5 text-white shadow-[0_16px_40px_-24px_rgba(0,83,91,0.6)] md:p-6">
+            <div className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-white/10 blur-2xl" />
+            <div className="relative">
+              <p className="font-semibold leading-snug">Start learning today</p>
+              <p className="mt-1 text-sm leading-relaxed text-white/75">Sign up free — no payment needed.</p>
+            </div>
+            <div className="relative flex flex-col gap-2">
+              <Button asChild variant="inverse" className="w-full">
+                <Link href={registerUrl}>
+                  Start free <ArrowRight />
+                </Link>
+              </Button>
+              <Button asChild variant="inverse-outline" className="w-full">
+                <a href={jumpHref}>{jumpLabel}</a>
+              </Button>
+            </div>
+          </li>
+        </ul>
       </div>
     );
   }
