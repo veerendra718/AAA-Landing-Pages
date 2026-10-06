@@ -49,8 +49,8 @@ export function ToppersSection() {
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <SectionHeading
           eyebrow="Results"
-          title="Achievers from our classrooms"
-          subtitle="Ranks and colleges exactly as the academy publishes them — KCET, NEET, JEE Main and JEE Advanced."
+          title="Our achievers"
+          subtitle="Ranks and colleges our students earned in KCET, NEET, JEE Main and JEE Advanced — taught by the same faculty in the classroom and online."
         />
 
         <div className="mt-10 flex justify-center">
