@@ -376,7 +376,7 @@ export const classroomClasses: OnlineClassInfo[] = [
     label: "Class 11",
     course: "2-year course",
     title: "Class 11 classroom courses",
-    note: `Two-year courses for KCET, NEET, JEE Main and JEE Advanced, taught in small batches at our Vijayanagar centre — from Class 11 through Class 12, with the ${academy.appName} Advanced plan free.`,
+    note: `Two-year courses for KCET, NEET, JEE Main and JEE Advanced, taught in small batches at our Vijayanagar centre — from Class 11 through Class 12, with the ${academy.appName} app Advanced plan access.`,
   },
   {
     id: "12",
@@ -384,7 +384,7 @@ export const classroomClasses: OnlineClassInfo[] = [
     label: "Class 12",
     course: "1-year course",
     title: "Class 12 classroom courses",
-    note: `One-year courses for KCET, NEET, JEE Main and JEE Advanced, taught in small batches at our Vijayanagar centre — focused on the final year, with the ${academy.appName} Advanced plan free.`,
+    note: `One-year courses for KCET, NEET, JEE Main and JEE Advanced, taught in small batches at our Vijayanagar centre — focused on the final year, with the ${academy.appName} app Advanced plan access.`,
   },
 ];
 
