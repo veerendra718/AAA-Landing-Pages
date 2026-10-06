@@ -21,9 +21,7 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
 
   return (
     <PageShell title={info.title} subtitle={info.note}>
-      {/* The classroom pages go straight to the packages; their title already
-          says what every package includes. */}
-      {mode === "online" && <OnlineHighlights jumpHref="#prices" jumpLabel="See courses" mode={mode} />}
+      <OnlineHighlights jumpHref="#prices" jumpLabel="See courses" mode={mode} />
 
       <PackageFinder cls={cls} mode={mode} />
 
