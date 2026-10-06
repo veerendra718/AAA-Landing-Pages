@@ -16,11 +16,8 @@ import AchieversNeet from "@/pages/AchieversNeet";
 import AchieversNstse from "@/pages/AchieversNstse";
 import Contact from "@/pages/Contact";
 import Courses from "@/pages/Courses";
-import CoursesAdmissions from "@/pages/CoursesAdmissions";
-import CoursesFoundation from "@/pages/CoursesFoundation";
-import CoursesJee from "@/pages/CoursesJee";
-import CoursesKcetBoards from "@/pages/CoursesKcetBoards";
-import CoursesNeet from "@/pages/CoursesNeet";
+import CoursesClass11 from "@/pages/CoursesClass11";
+import CoursesClass12 from "@/pages/CoursesClass12";
 import CoursesOnline from "@/pages/CoursesOnline";
 import CoursesOnlineClass11 from "@/pages/CoursesOnlineClass11";
 import CoursesOnlineClass12 from "@/pages/CoursesOnlineClass12";
@@ -92,12 +89,8 @@ export function App() {
         <Route path="/landing/achievers/k-cet" element={<AchieversKCet />} />
         <Route path="/landing/achievers/nstse" element={<AchieversNstse />} />
         <Route path="/landing/courses" element={<Courses />} />
-        <Route path="/landing/courses/jee" element={<CoursesJee />} />
-        <Route path="/landing/courses/neet" element={<CoursesNeet />} />
-        <Route path="/landing/courses/kcet-boards" element={<CoursesKcetBoards />} />
-        <Route path="/landing/courses/foundation" element={<CoursesFoundation />} />
-        <Route path="/landing/courses/residential" element={<CoursesResidential />} />
-        <Route path="/landing/courses/admissions" element={<CoursesAdmissions />} />
+        <Route path="/landing/courses/class-11" element={<CoursesClass11 />} />
+        <Route path="/landing/courses/class-12" element={<CoursesClass12 />} />
         <Route path="/landing/courses/online" element={<CoursesOnline />} />
         <Route path="/landing/courses/online/class-11" element={<CoursesOnlineClass11 />} />
         <Route path="/landing/courses/online/class-12" element={<CoursesOnlineClass12 />} />

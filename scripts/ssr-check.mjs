@@ -6,12 +6,6 @@ import { createServer } from "vite";
 
 const routes = [
   ["/landing/courses", "/src/pages/Courses.tsx"],
-  ["/landing/courses/jee", "/src/pages/CoursesJee.tsx"],
-  ["/landing/courses/neet", "/src/pages/CoursesNeet.tsx"],
-  ["/landing/courses/kcet-boards", "/src/pages/CoursesKcetBoards.tsx"],
-  ["/landing/courses/foundation", "/src/pages/CoursesFoundation.tsx"],
-  ["/landing/courses/residential", "/src/pages/CoursesResidential.tsx"],
-  ["/landing/courses/admissions", "/src/pages/CoursesAdmissions.tsx"],
   ["/landing/achievers", "/src/pages/Achievers.tsx"],
   ["/landing/achievers/jee-mains", "/src/pages/AchieversJeeMains.tsx"],
   ["/landing/achievers/jee-advanced", "/src/pages/AchieversJeeAdvanced.tsx"],
