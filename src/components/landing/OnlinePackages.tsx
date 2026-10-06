@@ -190,7 +190,7 @@ const tierNames = { free: "Free", standard: "Standard", advanced: "Advanced" } a
 
 /** A package's heading, then its plans side by side: Free, Standard and (where offered) Advanced. */
 /** One cell of the comparison: a tick, a cross, or the plan's limit. */
-function PlanCellView({ value, featured }: { value: PlanCell; featured: boolean }) {
+function PlanCellView({ value }: { value: PlanCell }) {
   if (value === true)
     return (
       <span className="inline-flex size-5 items-center justify-center rounded-full bg-brand-primary text-white">
@@ -206,16 +206,13 @@ function PlanCellView({ value, featured }: { value: PlanCell; featured: boolean 
       </span>
     );
   return (
-    <span className={cn("text-sm", featured ? "font-semibold text-brand-primary-darker" : "text-brand-text-secondary")}>
-      {value}
-    </span>
+    <span className="text-sm text-brand-text-secondary">{value}</span>
   );
 }
 
 /**
  * Every plan's limits side by side, from the app's own "Compare Plans" table.
- * The Advanced column is tinted to match its "Most complete" card, and is left
- * out for a course sold without it. On a phone the table scrolls sideways with
+ * The Advanced column is left out for a course sold without it. On a phone the table scrolls sideways with
  * the feature names held in place.
  */
 function PlanComparison({ hasAdvanced }: { hasAdvanced: boolean }) {
@@ -232,41 +229,27 @@ function PlanComparison({ hasAdvanced }: { hasAdvanced: boolean }) {
               <th
                 key={t}
                 scope="col"
-                className={cn(
-                  "px-4 py-4 text-center text-sm font-bold",
-                  t === "advanced" ? "bg-brand-subtle-bg/60 text-brand-primary" : "text-brand-text-primary",
-                )}
+                className="px-4 py-4 text-center text-sm font-bold text-brand-text-primary"
               >
                 {tierNames[t]}
               </th>
             ))}
           </tr>
         </thead>
-        {planComparison.map((g) => (
-          <tbody key={g.group}>
-            <tr>
-              <th
-                scope="colgroup"
-                colSpan={tiers.length + 1}
-                className="bg-brand-page-bg px-5 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-primary"
-              >
-                {g.group}
+        <tbody>
+          {planComparison.map((r) => (
+            <tr key={r.feature} className="border-t border-brand-border-light first:border-t-0">
+              <th scope="row" className="sticky left-0 z-10 bg-white px-5 py-3 text-sm font-medium text-brand-text-primary">
+                {r.feature}
               </th>
+              {tiers.map((t) => (
+                <td key={t} className="px-4 py-3 text-center">
+                  <PlanCellView value={r[t]} />
+                </td>
+              ))}
             </tr>
-            {g.rows.map((r) => (
-              <tr key={r.feature} className="border-t border-brand-border-light first:border-t-0">
-                <th scope="row" className="sticky left-0 z-10 bg-white px-5 py-3 text-sm font-medium text-brand-text-primary">
-                  {r.feature}
-                </th>
-                {tiers.map((t) => (
-                  <td key={t} className={cn("px-4 py-3 text-center", t === "advanced" && "bg-brand-subtle-bg/40")}>
-                    <PlanCellView value={r[t]} featured={t === "advanced"} />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        ))}
+          ))}
+        </tbody>
       </table>
     </div>
   );
