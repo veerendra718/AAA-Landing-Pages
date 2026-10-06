@@ -35,6 +35,11 @@ function ScrollToTop() {
   useEffect(() => {
     const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
     if (target) {
+      // Start from the top first. The new page renders at the old page's
+      // scroll position, and a target inside a sticky bar (the exam filters on
+      // the class pages) already looks "in view" while stuck there — so
+      // scrollIntoView would leave the page wherever the last one was.
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
       target.scrollIntoView({ behavior: "instant" as ScrollBehavior });
     } else {
       window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
