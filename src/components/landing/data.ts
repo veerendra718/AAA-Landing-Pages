@@ -45,9 +45,8 @@ export const branch = {
   mapsUrl: "https://goo.gl/maps/pDUVxh6ZVWEanYsi6",
   mapEmbedUrl:
     "https://maps.google.com/maps?q=Arjunaa+Academy+for+Achievers,+CHBCS+1st+Layout,+Vijayanagar,+Bengaluru&z=15&output=embed",
-  // DUMMY — aaaedu.in doesn't publish visiting hours; these are placeholder
-  // hours shown without a sample-data badge. Confirm with the academy.
-  hours: "Mon – Sat, 9:00 AM – 7:00 PM · Visits by appointment",
+  // No visiting hours: aaaedu.in doesn't publish any, so none are shown until
+  // the academy confirms them.
   areasServed: [
     "Rajajinagar",
     "Magadi Road",

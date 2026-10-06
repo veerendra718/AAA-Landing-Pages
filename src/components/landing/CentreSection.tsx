@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, Mail, MapPin, Navigation, Phone, X } from "lucide-react";
+import { Mail, MapPin, Navigation, Phone, X } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -116,11 +116,7 @@ export function CentreSection({
             </div>
 
             <div className="rounded-2xl border border-brand-border-light bg-white p-5">
-              <p className="flex flex-wrap items-center gap-2 text-sm text-brand-text-secondary">
-                <Clock className="size-4 shrink-0 text-brand-primary" />
-                {branch.hours}
-              </p>
-              <p className="mt-4 mb-2 text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
                 Easy to reach from
               </p>
               <div className="flex flex-wrap gap-1.5">
