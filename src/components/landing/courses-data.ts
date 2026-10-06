@@ -546,7 +546,9 @@ export const formatComparison = [
   { label: "Teachers", classroom: "Academy faculty at Vijayanagar", online: "The same faculty, live online" },
   { label: "Classes", classroom: "In person, batches of up to 30", online: "Live online, plus video lectures" },
   { label: "Getting started", classroom: "Counselling visit, then enrol", online: "Sign up free, 7-day trial of paid plans" },
-  { label: "Tests", classroom: `Exam-pattern tests in ${academy.appName}`, online: `Exam-pattern tests in ${academy.appName}` },
+  { label: "Fees", classroom: "One price per course", online: "Free, Standard or Advanced plan" },
+  { label: "App access", classroom: `${academy.appName} Advanced plan, free`, online: `${academy.appName} app, on the plan you choose` },
+  { label: "Tests", classroom: `Exam-pattern tests in the ${academy.appName} app`, online: `Exam-pattern tests in the ${academy.appName} app` },
   { label: "Doubts", classroom: "Doubt desk after class, face to face", online: "Online, with weekly 1-on-1 sessions on Advanced" },
   { label: "Counselling", classroom: "At the centre, with a mentor", online: "Video counselling session" },
   { label: "Best for", classroom: "Students who can reach Vijayanagar", online: "Students further away" },
@@ -607,3 +609,49 @@ export function packageFilterSlug(pkg: OnlinePackage): string {
   return onlineExams.find((e) => e.exam === pkg.exams[0])!.slug;
 }
 
+// ---------------------------------------------------------------------------
+// Classroom packages
+//
+// The same packages are taught in the classroom at Vijayanagar, as one course
+// with no Free / Standard / Advanced tiers, and classroom students get the
+// AAA app Advanced plan free.
+//
+// DUMMY: the academy hasn't sent classroom prices yet. Until it does, each
+// classroom price is the package's online price doubled — the Advanced price,
+// or Standard where there is no Advanced — discount included. Replace
+// `classroomPrice` with the real list when it arrives.
+// ---------------------------------------------------------------------------
+
+export function classroomPrice(pkg: OnlinePackage, cls: PackageClass): PackagePrice {
+  const tiers = pkg.prices[cls]!;
+  const base = tiers.advanced ?? tiers.standard;
+  return { price: base.price * 2, off: base.off * 2, offLabel: base.offLabel };
+}
+
+/** What a classroom package includes, beyond the free app plan. */
+export const classroomIncludes = [
+  "Live classes with the academy's faculty at Vijayanagar",
+  "Batches of up to 30 students",
+  "Doubt desk after class, face to face",
+  "Counselling with a mentor at the centre",
+];
+
+/** Each class's classroom packages page, mirroring `onlineClasses`. */
+export const classroomClasses: OnlineClassInfo[] = [
+  {
+    id: "11",
+    href: "/landing/courses/class-11",
+    label: "Class 11",
+    course: "2-year course",
+    title: "Class 11 classroom courses",
+    note: `Two-year courses taught in the classroom at Vijayanagar, from Class 11 through Class 12 to the exam — with the ${academy.appName} Advanced plan included free.`,
+  },
+  {
+    id: "12",
+    href: "/landing/courses/class-12",
+    label: "Class 12",
+    course: "1-year course",
+    title: "Class 12 classroom courses",
+    note: `One-year courses taught in the classroom at Vijayanagar for the final year before the exam — with the ${academy.appName} Advanced plan included free.`,
+  },
+];
