@@ -8,11 +8,17 @@
 //
 // A group's top-level item links to its landing page, so that page is not
 // repeated as the group's first dropdown entry. A group with no children of its
-// own renders as a plain link rather than an empty dropdown — Online Courses
-// and Contact Us are in that state. Contact matches aaaedu.in, whose Contact Us
+// own renders as a plain link rather than an empty dropdown — Contact Us is
+// in that state. Contact matches aaaedu.in, whose Contact Us
 // is a single link with the address, phones, email and enquiry form on one page.
 //
-import { courses, coursesExtras } from "./courses-data";
+import {
+  classroomClasses,
+  classroomPrice,
+  onlineClasses,
+  packagesFor,
+  type PackageClass,
+} from "./courses-data";
 
 export type NavLeaf = {
   href: string;
@@ -90,29 +96,48 @@ const achieversGroup: NavGroup = {
 
 // Courses are split by format into two menus, the way allen.in's header
 // separates "Classroom Courses" from "Online Courses". Classroom is a dropdown
-// of its course pages; Online is a single page, so it is a plain link.
+// of its two class pages, and so is Online.
 // Hrefs are written out rather than built from `coursesBase` / `onlineBase` so
 // scripts/check-links.mjs can see every hub is linked.
+// The classroom packages by class — the same packages as online, priced per
+// class. The course pages by exam are reached from the /landing/courses hub.
+function classroomClassItem(cls: PackageClass): NavLeaf {
+  const info = classroomClasses.find((c) => c.id === cls)!;
+  const packages = packagesFor(cls);
+  const from = Math.min(...packages.map((p) => classroomPrice(p, cls).price));
+  return {
+    href: info.href,
+    label: `${info.label} courses`,
+    blurb: `${info.course} · from ₹${from.toLocaleString("en-IN")} · app Advanced free`,
+  };
+}
+
 const classroomGroup: NavGroup = {
   label: "Classroom Courses",
   href: "/landing/courses",
   items: [
-    ...courses.map((c) => ({
-      href: c.href,
-      label: c.label,
-      blurb: c.eyebrow,
-    })),
-    ...coursesExtras.map((x) => ({ href: x.href, label: x.label, blurb: x.blurb })),
+    classroomClassItem("11"),
+    classroomClassItem("12"),
   ],
 };
 
-// A plain link, no dropdown: the online courses have no pages of their own —
-// they are cards on the one Online Courses page — so listing them as menu
-// items would suggest pages that don't exist.
+// The online courses are split by class: Class 11 (2-year) and Class 12 each
+// have their own page listing only that class's packages.
+function onlineClassItem(cls: PackageClass): NavLeaf {
+  const info = onlineClasses.find((c) => c.id === cls)!;
+  const packages = packagesFor(cls);
+  const from = Math.min(...packages.map((p) => p.prices[cls]!.standard.price));
+  return {
+    href: info.href,
+    label: info.label,
+    blurb: `${info.course} · ${packages.length} courses · from ₹${from.toLocaleString("en-IN")}`,
+  };
+}
+
 const onlineGroup: NavGroup = {
   label: "Online Courses",
   href: "/landing/courses/online",
-  items: [],
+  items: [onlineClassItem("11"), onlineClassItem("12")],
 };
 
 // No children: the site describes the Vijayanagar campus, and its contact page
