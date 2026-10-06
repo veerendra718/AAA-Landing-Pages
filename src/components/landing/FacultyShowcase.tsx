@@ -23,7 +23,7 @@ export function FacultyShowcase({ id = "faculty" }: { id?: string }) {
             align="left"
             eyebrow="Faculty"
             title="Taught by people who've cracked these exams"
-            subtitle="Alumni of IITs, NITs, IISc and BITS, research scientists and NEET toppers — led by engineers who see education as a service."
+            subtitle="Alumni of IITs, NITs, IISc and BITS, research scientists and NEET toppers — led by engineers who see education as a service. The same faculty teach the Vijayanagar classroom batches and the live online classes."
           />
           <Button asChild variant="outline">
             <Link href="/landing/about/leadership">
