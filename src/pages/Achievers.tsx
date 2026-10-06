@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { achieverCount } from "@/components/landing/achievers-data";
+import { achieverCount } from "@/components/landing/achievers-display";
 import { achieverSections } from "@/components/landing/achievers-display";
 import { AchieverGrid } from "@/components/landing/AchieversShared";
 import { PageShell } from "@/components/landing/PageShell";

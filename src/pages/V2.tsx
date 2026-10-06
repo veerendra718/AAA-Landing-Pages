@@ -26,7 +26,7 @@ import { WhyChoose } from "@/components/landing/WhyChoose";
 export const metadata: Metadata = {
   title: "Arjunaa Academy for Achievers | JEE, NEET & KCET classroom coaching in Bengaluru",
   description:
-    "Small-batch IIT-JEE, NEET, KCET and Foundation coaching at 10+ branches across Bengaluru since 2012 — with the AAA Lakshya app included for tests, recordings and revision at home.",
+    "Small-batch KCET, NEET and JEE coaching for Class 11 and 12 at our Vijayanagar centre in Bengaluru since 2012 — with the AAA app included for tests, recordings and revision at home.",
 };
 
 // Section order follows what a parent checks first: who teaches and what

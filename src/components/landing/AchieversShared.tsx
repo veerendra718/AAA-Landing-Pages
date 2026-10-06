@@ -5,7 +5,8 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, GraduationCap, Search, Trophy } from "lucide-react";
 import { useState } from "react";
 
-import { type Achiever, achieverCount } from "./achievers-data";
+import { type Achiever } from "./achievers-data";
+import { achieverCount } from "./achievers-display";
 import { achieverSections, formatRank, sectionBySlug } from "./achievers-display";
 import { PageShell } from "./PageShell";
 

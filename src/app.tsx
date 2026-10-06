@@ -13,7 +13,6 @@ import AchieversJeeAdvanced from "@/pages/AchieversJeeAdvanced";
 import AchieversJeeMains from "@/pages/AchieversJeeMains";
 import AchieversKCet from "@/pages/AchieversKCet";
 import AchieversNeet from "@/pages/AchieversNeet";
-import AchieversNstse from "@/pages/AchieversNstse";
 import Contact from "@/pages/Contact";
 import Courses from "@/pages/Courses";
 import CoursesClass11 from "@/pages/CoursesClass11";
@@ -87,7 +86,6 @@ export function App() {
         <Route path="/landing/achievers/jee-advanced" element={<AchieversJeeAdvanced />} />
         <Route path="/landing/achievers/neet" element={<AchieversNeet />} />
         <Route path="/landing/achievers/k-cet" element={<AchieversKCet />} />
-        <Route path="/landing/achievers/nstse" element={<AchieversNstse />} />
         <Route path="/landing/courses" element={<Courses />} />
         <Route path="/landing/courses/class-11" element={<CoursesClass11 />} />
         <Route path="/landing/courses/class-12" element={<CoursesClass12 />} />

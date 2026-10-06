@@ -102,9 +102,9 @@ export const classroomHighlights = [
 ];
 
 export const about = {
-  title: "Best coaching centre for NEET, IIT JEE, NTSE, KCET & Olympiads",
+  title: "Best coaching centre for KCET, NEET, JEE Main & JEE Advanced",
   paragraphs: [
-    "Arjunaa Academy for Achievers (AAA) is a premier coaching institute for JEE (Main + Advanced), NEET-UG, KVPY, KCET, Pre-Nurture & Career Foundation (Class VIII to X, NTSE & Olympiads) and the CBSE, ICSE & State boards in Bangalore. Since 2012 we've focused on building a strong foundation of knowledge and concepts, and a real appetite for research.",
+    "Arjunaa Academy for Achievers (AAA) is a premier coaching institute in Bangalore for KCET, NEET-UG and JEE (Main + Advanced), for Class 11 and 12. Since 2012 we've focused on building a strong foundation of knowledge and concepts, and a real appetite for research.",
     "Every student gets personalised training, with 24/7 support online and offline. We treat students like professionals and care for them like parents — keeping education exciting, relevant and stress-free.",
     "We provide value-based education, stressing character and values alongside core competency, so our students grow into responsible, character-driven citizens.",
   ],
@@ -115,13 +115,10 @@ export const about = {
   // paragraphs are condensed into `highlights`.
   lead: "Since 2012 we've built a strong foundation of knowledge and concepts — and a real appetite for research — in students across Bengaluru.",
   programmes: [
-    "JEE Main + Advanced",
-    "NEET-UG",
     "KCET",
-    "KVPY",
-    "NTSE & Olympiads",
-    "Foundation · Class VIII–X",
-    "CBSE · ICSE · State boards",
+    "NEET-UG",
+    "JEE Main",
+    "JEE Advanced",
   ],
   highlights: [
     {
@@ -153,52 +150,8 @@ export const values = [
 // `href` points at the /landing/courses page for the same programme, so the
 // footer and the programme cards can send visitors to the detail page instead
 // of dumping every one of them on the same on-page anchor.
-export const programs = [
-  {
-    id: "jee",
-    href: "/landing/courses/jee",
-    title: "IIT-JEE Main & Advanced",
-    classes: "Class 11, 12 & Droppers",
-    body: "Two-year integrated programme with PUC, plus JEE-pattern tests every fortnight.",
-    image: "/images/landing/a-track-0.jpg",
-  },
-  {
-    id: "neet",
-    href: "/landing/courses/neet",
-    title: "NEET",
-    classes: "Class 11, 12 & Droppers",
-    body: "NCERT-first biology, lab-backed concepts and full-length NEET mocks.",
-    image: "/images/landing/a-track-1.jpg",
-  },
-  {
-    id: "kcet",
-    href: "/landing/courses/kcet-boards",
-    title: "KCET & Board Excellence",
-    classes: "1st & 2nd PUC · CBSE · ICSE",
-    body: "Board-first teaching that also covers every KCET chapter and pattern.",
-    image: "/images/landing/a-track-2.jpg",
-  },
-  {
-    id: "foundation",
-    href: "/landing/courses/foundation",
-    title: "IIT & NEET Foundation",
-    classes: "Class 8, 9 & 10",
-    body: "Build the base early — Olympiad, NTSE and NSTSE preparation included.",
-    image: "/images/landing/a-track-3.jpg",
-  },
-];
-
-export const exams = [
-  "JEE Main",
-  "JEE Advanced",
-  "NEET",
-  "KCET",
-  "KVPY",
-  "NTSE",
-  "NSTSE",
-  "Olympiads",
-  "CBSE / ICSE / State Boards",
-];
+/** The exams the packages prepare for — the only ones the site lists. */
+export const exams = ["KCET", "NEET", "JEE Main", "JEE Advanced"];
 
 export const appFeatures = [
   {
@@ -240,7 +193,7 @@ export const whyChoose = [
   { title: "Quality education", body: "1,700+ hours of training and high-quality, updated study material." },
   { title: "Small batches of 30", body: "Personal attention guaranteed — every teacher knows every student." },
   { title: "Faculty from IITs, NITs & IISc", body: "Passionate teachers, including IISc research scientists." },
-  { title: "Best results", body: "Ranks in JEE, NEET, KCET and NSTSE every year — from our own classrooms." },
+  { title: "Best results", body: "Ranks in JEE, NEET and KCET every year — from our own classrooms." },
   { title: "17+ tests a year", body: "JEE and NEET pattern tests with detailed solutions." },
   { title: "24/7 doubt support", body: "Doubts cleared both online and offline, whenever you're stuck." },
   { title: "Individual mentorship", body: "A mentor for every student, with value education built in." },
@@ -320,7 +273,7 @@ export const faqs: {
   },
   {
     q: "Which exams do you prepare for?",
-    a: "JEE Main & Advanced, NEET, KCET, KVPY, NTSE, NSTSE, Olympiads and CBSE / ICSE / State board exams, with Foundation courses from Class 8.",
+    a: "KCET, NEET, JEE Main and JEE Advanced, for Class 11 and Class 12 — one exam at a time, or several together in the Sakala, Sarvam and Sarvotthama courses. Each runs in the classroom at Vijayanagar and online.",
     topic: "courses",
     link: { href: "/landing/courses", label: "See all courses" },
   },
@@ -328,7 +281,7 @@ export const faqs: {
     q: "What is the batch size?",
     a: "A maximum of 30 students per batch, so teachers can follow each student's progress.",
     topic: "courses",
-    link: { href: "/landing/courses/admissions", label: "See batches & timings" },
+    link: { href: "/landing/courses", label: "See classroom courses" },
   },
   {
     q: "How are the fees compared to other institutes?",

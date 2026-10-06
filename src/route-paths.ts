@@ -16,7 +16,6 @@ export const ROUTE_PATHS = [
   "/landing/achievers/jee-advanced",
   "/landing/achievers/neet",
   "/landing/achievers/k-cet",
-  "/landing/achievers/nstse",
   "/landing/courses",
   "/landing/courses/class-11",
   "/landing/courses/class-12",

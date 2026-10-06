@@ -20,7 +20,6 @@ export const highlightResults: HighlightResult[] = [
   { name: "Praharaj Ipsita", result: "JEE Advanced AIR 7160", college: "IIT Kharagpur", image: "/images/landing/achievers/dcl2sK4aVXMEtqX6C8R397fptEESeZhtGLGzatAz.jpg" },
   { name: "Sreesha Rao", result: "JEE Main 98.87%ile", college: "BITS Goa", image: "/images/landing/achievers/2JeXT04V3qM9fCEdk8P2il52OrJhtX7BMGwNlpru.jpg" },
   { name: "Nandish Pai", result: "JEE Advanced AIR 8689", college: "IIT Bhubaneswar", image: "/images/landing/achievers/yPvmLvPm9wy3Z46yjuBSHgZMVMPnh5p4NeV0PiVQ.png" },
-  { name: "Namratha S", result: "NSTSE State Rank 1", image: "/images/landing/achievers/SKMl0IdfYkFvAfq9yxjoKmkLpRbhKgPw41WIGMM7.png" },
 ];
 
 /** Colleges our alumni went on to, from the same list — for the hero's proof line. */

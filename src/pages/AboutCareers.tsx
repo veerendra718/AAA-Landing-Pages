@@ -145,7 +145,7 @@ export default function CareersPage() {
               align="left"
               eyebrow="Who we look for"
               title="Subjects we teach"
-              subtitle="Our faculty teach JEE, NEET, KCET and Foundation batches across four subjects."
+              subtitle="Our faculty teach KCET, NEET and JEE batches across four subjects."
             />
             <Button asChild variant="outline">
               <Link href="/landing/about/leadership#faculty">

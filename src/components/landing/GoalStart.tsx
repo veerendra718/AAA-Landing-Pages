@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { registerUrl } from "./data";
 
-const goals = ["JEE", "NEET", "KCET", "Foundation (8–10)", "Boards"];
+const goals = ["KCET", "NEET", "JEE Main", "JEE Advanced"];
 
 export function GoalStart() {
   const router = useRouter();

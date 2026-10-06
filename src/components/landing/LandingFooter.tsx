@@ -3,14 +3,14 @@ import Link from "next/link";
 import { ArrowUp, Mail, MapPin, Navigation, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { academy, branch, branchCount, exams, loginUrl, programs, socials, whatsappUrl } from "./data";
+import { classroomClasses, onlineClasses } from "./courses-data";
+import { academy, branch, exams, loginUrl, socials, whatsappUrl } from "./data";
 import { socialIcons } from "./social-icons";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const coursesLinks = [
-  ...programs.map((p) => ({ href: p.href, label: p.title })),
-  { href: "/landing/courses/residential", label: "Day Scholar & Residential" },
-  { href: "/landing/courses/admissions", label: "Admissions & Batches" },
+  ...classroomClasses.map((c) => ({ href: c.href, label: `${c.label} classroom` })),
+  ...onlineClasses.map((c) => ({ href: c.href, label: `${c.label} online` })),
 ];
 
 const academyLinks = [
@@ -55,7 +55,7 @@ export function LandingFooter() {
               {academy.appName} app for practice and revision at home.
             </p>
             <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Exams we prepare for">
-              {exams.slice(0, 6).map((e) => (
+              {exams.map((e) => (
                 <li
                   key={e}
                   className="rounded-full border border-white/15 px-2.5 py-1 text-[11px] font-medium text-white/80"

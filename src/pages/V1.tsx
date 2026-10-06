@@ -75,7 +75,7 @@ export default function LandingV1() {
         <div className="absolute inset-0 -z-10 bg-linear-to-r from-brand-primary-darker via-brand-primary-darker/85 to-brand-primary-darker/20" />
         <div className="mx-auto flex max-w-7xl flex-col justify-center px-4 py-24 md:px-6 md:py-32">
           <p className="text-xs font-bold uppercase tracking-[3px] text-brand-secondary">
-            Est. {academy.founded} · IIT · NEET · KCET · Foundation
+            Est. {academy.founded} · KCET · NEET · JEE
           </p>
           <h1 className="mt-5 max-w-2xl font-(family-name:--font-display) text-5xl font-bold leading-[1.02] text-white text-balance md:text-7xl">
             To be the best, get trained by the best.

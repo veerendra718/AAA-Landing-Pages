@@ -50,7 +50,7 @@ export function ToppersSection() {
         <SectionHeading
           eyebrow="Results"
           title="Achievers from our classrooms"
-          subtitle="Ranks and colleges exactly as the academy publishes them — from NSTSE and CET to JEE and NEET."
+          subtitle="Ranks and colleges exactly as the academy publishes them — KCET, NEET, JEE Main and JEE Advanced."
         />
 
         <div className="mt-10 flex justify-center">

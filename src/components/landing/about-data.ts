@@ -33,7 +33,7 @@ export const leaders = [
     image: "/images/landing/about/leader-sreekanth-p-k.jpg",
     imagePosition: "50% 20%",
     note: [
-      "Plenty of institutes in Bangalore train students for IIT, NEET and KVPY. After extensive research, we observed that most impart theoretical knowledge but give students very little exposure to problem solving. At Arjunaa Academy for Achievers, we impart a deep understanding of concepts and solve problems of every level and type, so students have met every kind of problem that appears in the competitive exams.",
+      "Plenty of institutes in Bangalore train students for IIT and NEET. After extensive research, we observed that most impart theoretical knowledge but give students very little exposure to problem solving. At Arjunaa Academy for Achievers, we impart a deep understanding of concepts and solve problems of every level and type, so students have met every kind of problem that appears in the competitive exams.",
       "Another unique feature of AAA is that we provide video solutions to every question in our modules. Many institutes hand out tablets loaded with printed solutions, but written solutions don’t show every student how the teacher arrived at a particular step.",
       "Video solutions show students where they usually go wrong, and walk through the same problem in different ways for different perspectives. We also provide video solutions for every test, where other institutes give only answer keys. In short, at AAA we keep innovating and improving to better our students’ performance.",
     ],
@@ -54,7 +54,7 @@ export const facultyMembers = [
     role: "Senior Faculty, Biology",
     qualification: "M.Sc. Zoology, University of Mysore",
     image: "/images/landing/about/faculty-uthpala-m.jpg",
-    bio: "Teaches NEET and NTSE biology, with two years of post-graduate teaching in the Department of Applied Zoology, Kuvempu University. Alumna of the University of Mysore and the Regional Institute of Education, Mysuru (B.Sc.Ed, CBZ). Qualified CTET and KSET (Life Science).",
+    bio: "Teaches NEET biology, with two years of post-graduate teaching in the Department of Applied Zoology, Kuvempu University. Alumna of the University of Mysore and the Regional Institute of Education, Mysuru (B.Sc.Ed, CBZ). Qualified CTET and KSET (Life Science).",
   },
   {
     name: "Dr. Hemalatha S Korannavar",
@@ -82,7 +82,7 @@ export const facultyMembers = [
     role: "Senior Faculty, Physics",
     qualification: "M.Tech, IIT Kharagpur",
     image: "/images/landing/about/faculty-ranjith-rajeev.jpg",
-    bio: "Teaches physics for JEE Main, NEET, CET and foundation courses, and sets out to make physics interesting and engaging. Completed his M.Tech at IIT Kharagpur, and cleared the five-day SSB interview for Executive Officer in the Indian Navy on his first attempt.",
+    bio: "Teaches physics for JEE Main, NEET and CET, and sets out to make physics interesting and engaging. Completed his M.Tech at IIT Kharagpur, and cleared the five-day SSB interview for Executive Officer in the Indian Navy on his first attempt.",
   },
   {
     name: "Hariom Kumar",

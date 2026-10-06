@@ -11,7 +11,6 @@ const routes = [
   ["/landing/achievers/jee-advanced", "/src/pages/AchieversJeeAdvanced.tsx"],
   ["/landing/achievers/neet", "/src/pages/AchieversNeet.tsx"],
   ["/landing/achievers/k-cet", "/src/pages/AchieversKCet.tsx"],
-  ["/landing/achievers/nstse", "/src/pages/AchieversNstse.tsx"],
   ["/landing/contact", "/src/pages/Contact.tsx"],
 ];
 

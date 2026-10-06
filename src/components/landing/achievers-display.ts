@@ -11,14 +11,18 @@ const display: Record<string, { name: string; heading: string }> = {
   "jee-mains": { name: "JEE Mains", heading: "JEE Mains Toppers" },
   neet: { name: "NEET", heading: "NEET Top Achievers" },
   "k-cet": { name: "K-CET", heading: "K-CET Toppers" },
-  nstse: { name: "NSTSE & NTSE", heading: "NSTSE & NTSE Top Achievers" },
 };
+
+// Results in exams the packages don't prepare for are left out — the site
+// lists only KCET, NEET, JEE Main and JEE Advanced.
+const hidden = new Set(["nstse"]);
 
 const order = Object.keys(display);
 
 /** The categories in display order, with display names. A category the
  *  generator adds later still shows, at the end, under its source name. */
-export const achieverSections: AchieverGroup[] = [...achieverGroups]
+export const achieverSections: AchieverGroup[] = achieverGroups
+  .filter((g) => !hidden.has(g.slug))
   .sort((a, b) => {
     const ia = order.indexOf(a.slug);
     const ib = order.indexOf(b.slug);
@@ -45,3 +49,6 @@ export function formatRank(rank: string) {
   if (/^\d+$/.test(r)) return `Rank ${r}`;
   return r.replace(/\s*-\s*(?=\d)/g, " ").replace(/\s+/g, " ");
 }
+
+/** Every achiever listed on the site, across the categories shown. */
+export const achieverCount = achieverSections.reduce((n, g) => n + g.students.length, 0);

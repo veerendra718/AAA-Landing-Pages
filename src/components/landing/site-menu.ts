@@ -89,11 +89,6 @@ const achieversGroup: NavGroup = {
       label: "K-CET",
       blurb: "24 ranks, into NITK, IIT Bombay, BITS Goa",
     },
-    {
-      href: "/landing/achievers/nstse",
-      label: "NSTSE & NTSE",
-      blurb: "16 foundation-level state and national ranks",
-    },
   ],
 };
 
