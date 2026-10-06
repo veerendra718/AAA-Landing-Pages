@@ -151,9 +151,9 @@ const contactGroup: NavGroup = {
 };
 
 export const siteMenu: NavGroup[] = [
-  aboutGroup,
   classroomGroup,
   onlineGroup,
   achieversGroup,
+  aboutGroup,
   contactGroup,
 ];
