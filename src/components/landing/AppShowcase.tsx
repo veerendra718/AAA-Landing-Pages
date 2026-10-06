@@ -71,18 +71,16 @@ export function AppShowcase({ id = "app" }: { id?: string }) {
     <section id={id} className="scroll-mt-20 bg-brand-page-bg py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <SectionHeading
-          eyebrow={`Classroom + ${academy.appName} app`}
-          title="What's taught in class keeps going at home"
-          subtitle={`The ${academy.appName} app isn't a separate course. It comes with every classroom programme, so practice, tests and revision carry on between classes — and nothing your teacher explains is lost.`}
+          eyebrow={`The ${academy.appName} app`}
+          title="One app for every student — in class or online"
+          subtitle={`Classroom students get the ${academy.appName} app free with their course; online students learn in it. Either way, live classes, recordings, every kind of test and a clear picture of what to fix next are in one place.`}
         />
-
-        <WeekLoop />
 
         {/* Feature list driving the phone */}
         <div className="mt-16 grid items-center gap-10 rounded-[32px] border border-brand-border-light bg-white p-5 sm:p-8 lg:grid-cols-[1.1fr_auto] lg:gap-16 lg:p-12">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full bg-brand-subtle-bg px-3 py-1 text-xs font-semibold text-brand-primary">
-              <Smartphone className="size-3.5" /> Included for every enrolled student · web & mobile
+              <Smartphone className="size-3.5" /> For classroom and online students · web & mobile
             </p>
             <h3 className="mt-4 font-(family-name:--font-display) text-2xl font-bold text-brand-primary-darker md:text-3xl">
               Inside the {academy.appName} app
@@ -164,8 +162,9 @@ export function AppShowcase({ id = "app" }: { id?: string }) {
   );
 }
 
-/** One typical week, alternating between the centre and the app. */
-function WeekLoop() {
+/** One typical week, alternating between the centre and the app — shown on the
+ *  classroom course pages. It sits on the tinted page background. */
+export function WeekLoop() {
   return (
     <div className="mt-14">
       <div className="flex flex-wrap items-center justify-between gap-4">

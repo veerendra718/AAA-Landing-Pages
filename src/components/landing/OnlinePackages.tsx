@@ -36,6 +36,7 @@ import {
   type PackageClass,
   type PackagePrice,
 } from "./courses-data";
+import { WeekLoop } from "./AppShowcase";
 import { CourseEnquiryForm, type EnquiryIntent } from "./CourseEnquiryForm";
 import { academy, registerUrl } from "./data";
 import { SectionHeading } from "./SectionHeading";
@@ -351,6 +352,10 @@ export function ClassroomIncludes() {
           {list("In the classroom", Building2, classroomIncludes)}
           {list(`${academy.appName} Advanced plan — free`, Smartphone, appFeatures)}
         </div>
+      </div>
+      {/* How the classroom and the app fit together over a week. */}
+      <div className="mx-auto max-w-7xl">
+        <WeekLoop />
       </div>
     </section>
   );
