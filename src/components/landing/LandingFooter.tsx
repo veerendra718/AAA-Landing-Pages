@@ -57,8 +57,8 @@ export function LandingFooter() {
               </div>
             </div>
             <p className="mt-5 max-w-md text-sm leading-relaxed">
-              &ldquo;{academy.tagline}.&rdquo; Small-batch classroom coaching at{" "}
-              {branchCount} branches across Bengaluru &amp; Mysuru, with the{" "}
+              &ldquo;{academy.tagline}.&rdquo; Small-batch classroom coaching at our{" "}
+              Vijayanagar centre in Bengaluru, with the{" "}
               {academy.appName} app for practice and revision at home.
             </p>
             <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Exams we prepare for">
@@ -121,7 +121,7 @@ export function LandingFooter() {
 
           <div>
             <p className="mb-4 text-xs font-bold uppercase tracking-[2px] text-brand-secondary">
-              Head centre
+              Our centre
             </p>
             <ul className="space-y-3.5 text-sm">
               <li className="flex gap-3">
@@ -155,9 +155,6 @@ export function LandingFooter() {
                 </a>
               </li>
             </ul>
-            <p className="mt-4 text-xs text-white/60">
-              {branchCount} branches across Bengaluru &amp; Mysuru — ask us for the nearest one.
-            </p>
           </div>
         </div>
       </div>

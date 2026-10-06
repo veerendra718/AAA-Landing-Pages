@@ -39,7 +39,7 @@ export const registerUrl = "https://feature.samvitai.com/register";
 
 export const branch = {
   name: "Vijayanagar",
-  label: "Head Centre",
+  label: "Our centre",
   address:
     "3rd Floor, No. 02, CHBCS 1st Layout, 5th Main, Vijayanagar, Bengaluru, Karnataka",
   mapsUrl: "https://goo.gl/maps/pDUVxh6ZVWEanYsi6",
@@ -64,54 +64,6 @@ export const branch = {
   // be shown until a real photo of the centre replaces it (docs/assets-needed.md).
   image: "/images/landing/b-band-3.jpg",
 };
-
-/**
- * The centres aaaedu.in names on its home page ("Benefits of Nearest Coaching
- * Centres…"), each with the areas it says to enrol from, verbatim. The site
- * gives a full address only for Vijayanagar; the academy has 10+ branches in
- * Bengaluru & Mysuru in all.
- */
-export const branchCount = "10+";
-
-export const branches = [
-  {
-    id: "vijayanagar",
-    name: "Vijayanagar",
-    label: "Head centre",
-    note: "PU & CBSE · Day scholar & residential",
-    address: branch.address,
-    mapsUrl: branch.mapsUrl,
-    areas: [
-      "Rajajinagar", "Magadi Road", "Nagarbhavi", "Basaveshwaranagar", "Chandra Layout",
-      "Attiguppe", "Moodalapalya", "Nayandahalli", "Hosakerehalli", "Srinagar",
-      "Hanumanthanagar", "Girinagar", "Vidyapeeta",
-    ],
-  },
-  {
-    id: "vss",
-    name: "VSS International Public School",
-    label: "Ullal",
-    note: "CBSE · Integrated programme",
-    address: "Ullal, Bengaluru",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=VSS+International+Public+School+Ullal+Bengaluru",
-    areas: [
-      "Ullal", "Nagadevanahalli", "Bangalore University", "Mallathahalli",
-      "Mariyappanapalya", "Jnanabharathi", "Ullal Upanagara", "RR Nagar", "Kengeri",
-    ],
-  },
-  {
-    id: "vedantha",
-    name: "Vedantha PU College",
-    label: "Vasanthapura",
-    note: "PU · Integrated programme",
-    address: "Vasanthapura, Bengaluru",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Vedantha+PU+College+Vasanthapura+Bengaluru",
-    areas: [
-      "Padmanabhanagar", "Chikkalasandra", "Kumaraswamy Layout", "ISRO Layout", "Vasanthapura",
-      "Kanakapura Road", "Konanakunte Cross", "JP Nagar", "Bannerghatta Road", "Gottigere",
-    ],
-  },
-] as const;
 
 export const stats = [
   { value: 3000, suffix: "+", label: "Students trained" },
@@ -354,18 +306,14 @@ export const faqs: {
 }[] = [
   {
     q: "Where is the centre?",
-    a: "Our head centre is in Vijayanagar, Bengaluru — 3rd Floor, CHBCS 1st Layout, 5th Main. Book a visit or call 76766 42258 so a mentor is free to meet you. We can also come to you — ask for a home visit.",
+    a: "Our centre is in Vijayanagar, Bengaluru — 3rd Floor, CHBCS 1st Layout, 5th Main. Book a visit or call 76766 42258 so a mentor is free to meet you. We can also come to you — ask for a home visit.",
     topic: "visits",
     link: { href: branch.mapsUrl, label: "Get directions", external: true },
   },
+
   {
-    q: "Can my child attend a class before we decide?",
-    a: "Yes. Book a free counselling visit and your child can sit in on a live demo class, meet the faculty and see the classrooms. A visit takes about an hour.",
-    topic: "visits",
-  },
-  {
-    q: "Which branch should we join?",
-    a: "We have 10+ branches across Bengaluru and Mysuru. Vijayanagar is the head centre; the integrated programme also runs at VSS International Public School, Ullal, and Vedantha PU College, Vasanthapura. Tell us where you live and we'll suggest the nearest one.",
+    q: "Where are the classes held?",
+    a: `At our Vijayanagar centre in Bengaluru — ${branch.address}. Students who live further away can join the same faculty's live online classes.`,
     topic: "visits",
   },
   {

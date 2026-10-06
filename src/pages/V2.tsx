@@ -4,7 +4,7 @@ import { CalendarCheck, Check, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { AppShowcase, HeroPhone } from "@/components/landing/AppShowcase";
-import { BranchesSection } from "@/components/landing/BranchesSection";
+import { CentreSection } from "@/components/landing/CentreSection";
 import { ClosingCta } from "@/components/landing/ClosingCta";
 import { CountUp } from "@/components/landing/CountUp";
 import { academy, branchCount, whatsappUrl } from "@/components/landing/data";
@@ -38,7 +38,7 @@ const links = [
   { href: "#app", label: "Classroom + App" },
   { href: "#faculty", label: "Faculty" },
   { href: "#vrddhi", label: "Scholarship test" },
-  { href: "#branches", label: "Branches" },
+  { href: "#centre", label: "Centre" },
 ];
 
 const heroPoints = ["Batches of 30, max", "Day scholar & residential", "Foundation from Class 8", `${academy.appName} app included`];
@@ -205,11 +205,11 @@ export default function LandingV2() {
 
       <FaqSection />
 
-      <BranchesSection />
+      <CentreSection />
 
       <ClosingCta
         visitHref="#visit"
-        subtitle={`Admissions for 2026–27 are open at all ${branchCount} branches. Book a free demo class, or message us on WhatsApp and a mentor will call you back.`}
+        subtitle={`Admissions for 2026–27 are open at our Vijayanagar centre. Book a visit, or message us on WhatsApp and a mentor will call you back.`}
         secondary={
           <Button asChild size="lg" variant="inverse-outline">
             <a href={whatsappUrl} target="_blank" rel="noreferrer">
