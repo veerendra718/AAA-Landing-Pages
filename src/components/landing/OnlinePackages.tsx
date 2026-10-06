@@ -87,17 +87,17 @@ export function OnlineHighlights({
           {highlights.online.map((h) => (
             <li
               key={h.text}
-              className="rounded-3xl border border-brand-border-light bg-white/90 p-5 shadow-[0_16px_40px_-28px_rgba(0,83,91,0.45)] backdrop-blur md:p-6"
+              className="group rounded-3xl border border-brand-border-light bg-white/90 p-5 shadow-[0_16px_40px_-28px_rgba(0,83,91,0.45)] backdrop-blur transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand-border-teal hover:shadow-[0_28px_50px_-24px_rgba(0,83,91,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:p-6"
             >
-              <span className="flex size-11 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary">
-                <h.icon className="size-5" />
+              <span className="flex size-11 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
+                <h.icon className="size-5 transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100" />
               </span>
               <p className="mt-4 font-semibold leading-snug text-brand-text-primary">{h.text}</p>
               <p className="mt-1 text-sm leading-relaxed text-brand-text-muted">{h.note}</p>
             </li>
           ))}
-          <li className="relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl bg-brand-primary p-5 text-white shadow-[0_16px_40px_-24px_rgba(0,83,91,0.6)] md:p-6">
-            <div className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-white/10 blur-2xl" />
+          <li className="group relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl bg-brand-primary p-5 text-white shadow-[0_16px_40px_-24px_rgba(0,83,91,0.6)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_50px_-20px_rgba(0,83,91,0.7)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:p-6">
+            <div className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-white/10 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:bg-white/20 motion-reduce:transition-none" />
             <div className="relative">
               <p className="font-semibold leading-snug">Start learning today</p>
               <p className="mt-1 text-sm leading-relaxed text-white/75">Sign up free — no payment needed.</p>
