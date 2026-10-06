@@ -51,9 +51,9 @@ export const formatPrice = (rupees: number) => `₹${rupees.toLocaleString("en-I
 
 const highlights = {
   online: [
-    { icon: UserCheck, text: "Same faculty as the classroom" },
-    { icon: MonitorPlay, text: "Live classes + video lectures" },
-    { icon: Gift, text: "Free plan · 7-day trial of paid plans" },
+    { icon: UserCheck, text: "Same faculty as the classroom", note: "Taught live by the teachers of our Vijayanagar batches." },
+    { icon: MonitorPlay, text: "Live classes + video lectures", note: "Join live, or watch any lecture again later." },
+    { icon: Gift, text: "Free plan · 7-day trial of paid plans", note: "Start free; try Standard or Advanced free for 7 days." },
   ],
   classroom: [
     { icon: Building2, text: "Taught at the Vijayanagar centre" },
@@ -62,7 +62,11 @@ const highlights = {
   ],
 };
 
-/** The strip under a packages page's title: what every package gives, and two actions. */
+/**
+ * The strip under a courses page's title: what every course gives, and two
+ * actions. On the online pages it is a dark, prominent band — the reasons to
+ * study online are the page's pitch; the classroom pages keep a light strip.
+ */
 export function OnlineHighlights({
   jumpHref,
   jumpLabel,
@@ -72,6 +76,38 @@ export function OnlineHighlights({
   jumpLabel: string;
   mode?: PackageMode;
 }) {
+  if (mode === "online") {
+    return (
+      <div className="px-4 pt-2 md:px-6">
+        <div className="relative mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-[32px] bg-brand-primary-darker p-6 text-white shadow-xl shadow-brand-primary/15 md:p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-10 lg:p-10">
+          <div className="pointer-events-none absolute -right-20 -top-24 size-72 rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-28 left-1/3 size-72 rounded-full bg-brand-hero-teal/40 blur-3xl" />
+          <ul className="relative grid gap-6 sm:grid-cols-3">
+            {highlights.online.map((h) => (
+              <li key={h.text}>
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-white/10 text-brand-secondary ring-1 ring-white/15">
+                  <h.icon className="size-6" />
+                </span>
+                <p className="mt-4 font-semibold leading-snug">{h.text}</p>
+                <p className="mt-1 text-sm leading-relaxed text-white/70">{h.note}</p>
+              </li>
+            ))}
+          </ul>
+          <div className="relative flex flex-wrap gap-3 lg:flex-col">
+            <Button asChild size="lg" variant="inverse">
+              <Link href={registerUrl}>
+                Start free <ArrowRight />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="inverse-outline">
+              <a href={jumpHref}>{jumpLabel}</a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="px-4 pt-2 md:px-6">
       <div className="mx-auto flex max-w-7xl flex-col gap-5 rounded-3xl border border-brand-border-light bg-white p-5 md:flex-row md:items-center md:justify-between md:p-6">
@@ -90,15 +126,9 @@ export function OnlineHighlights({
             <a href={jumpHref}>{jumpLabel}</a>
           </Button>
           <Button asChild size="lg">
-            {mode === "online" ? (
-              <Link href={registerUrl}>
-                Start free <ArrowRight />
-              </Link>
-            ) : (
-              <Link href="/landing/contact#enquire">
-                <CalendarCheck /> Book a visit
-              </Link>
-            )}
+            <Link href="/landing/contact#enquire">
+              <CalendarCheck /> Book a visit
+            </Link>
           </Button>
         </div>
       </div>
