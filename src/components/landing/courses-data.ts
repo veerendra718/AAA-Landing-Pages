@@ -320,7 +320,7 @@ export const onlineClasses: OnlineClassInfo[] = [
     label: "Class 11",
     course: "2-year course",
     title: "Class 11 online courses",
-    note: `Two-year courses that take a Class 11 student through Class 12 to the exam — live classes with the academy's faculty, and every test, note and recorded lecture in the ${academy.appName} app.`,
+    note: `Two-year courses for KCET, NEET, JEE Main and JEE Advanced, taught live online by our classroom faculty — from Class 11 through Class 12 to the exam.`,
   },
   {
     id: "12",
@@ -328,7 +328,7 @@ export const onlineClasses: OnlineClassInfo[] = [
     label: "Class 12",
     course: "1-year course",
     title: "Class 12 online courses",
-    note: `One-year courses for the final year before the exam — live classes with the academy's faculty, and every test, note and recorded lecture in the ${academy.appName} app.`,
+    note: `One-year courses for KCET, NEET, JEE Main and JEE Advanced, taught live online by our classroom faculty — focused on the final year before the exam.`,
   },
 ];
 
@@ -376,7 +376,7 @@ export const classroomClasses: OnlineClassInfo[] = [
     label: "Class 11",
     course: "2-year course",
     title: "Class 11 classroom courses",
-    note: `Two-year courses taught in the classroom at Vijayanagar, from Class 11 through Class 12 to the exam — with the ${academy.appName} Advanced plan included free.`,
+    note: `Two-year courses for KCET, NEET, JEE Main and JEE Advanced, taught in small batches at our Vijayanagar centre — from Class 11 through Class 12, with the ${academy.appName} Advanced plan free.`,
   },
   {
     id: "12",
@@ -384,7 +384,7 @@ export const classroomClasses: OnlineClassInfo[] = [
     label: "Class 12",
     course: "1-year course",
     title: "Class 12 classroom courses",
-    note: `One-year courses taught in the classroom at Vijayanagar for the final year before the exam — with the ${academy.appName} Advanced plan included free.`,
+    note: `One-year courses for KCET, NEET, JEE Main and JEE Advanced, taught in small batches at our Vijayanagar centre — focused on the final year, with the ${academy.appName} Advanced plan free.`,
   },
 ];
 
