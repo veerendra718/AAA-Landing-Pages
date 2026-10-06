@@ -22,7 +22,8 @@ import CoursesJee from "@/pages/CoursesJee";
 import CoursesKcetBoards from "@/pages/CoursesKcetBoards";
 import CoursesNeet from "@/pages/CoursesNeet";
 import CoursesOnline from "@/pages/CoursesOnline";
-import CoursesResidential from "@/pages/CoursesResidential";
+import CoursesOnlineClass11 from "@/pages/CoursesOnlineClass11";
+import CoursesOnlineClass12 from "@/pages/CoursesOnlineClass12";
 import LandingIndex from "@/pages/LandingIndex";
 import V1 from "@/pages/V1";
 import V2 from "@/pages/V2";
@@ -98,6 +99,8 @@ export function App() {
         <Route path="/landing/courses/residential" element={<CoursesResidential />} />
         <Route path="/landing/courses/admissions" element={<CoursesAdmissions />} />
         <Route path="/landing/courses/online" element={<CoursesOnline />} />
+        <Route path="/landing/courses/online/class-11" element={<CoursesOnlineClass11 />} />
+        <Route path="/landing/courses/online/class-12" element={<CoursesOnlineClass12 />} />
         <Route path="/landing/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

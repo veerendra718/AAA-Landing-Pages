@@ -25,5 +25,7 @@ export const ROUTE_PATHS = [
   "/landing/courses/residential",
   "/landing/courses/admissions",
   "/landing/courses/online",
+  "/landing/courses/online/class-11",
+  "/landing/courses/online/class-12",
   "/landing/contact",
 ] as const;
