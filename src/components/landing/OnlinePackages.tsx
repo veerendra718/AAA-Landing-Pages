@@ -257,7 +257,8 @@ function PlanComparison({ hasAdvanced }: { hasAdvanced: boolean }) {
 
 function PackagePlans({ pkg, cls }: { pkg: OnlinePackage; cls: PackageClass }) {
   const p = pkg.prices[cls]!;
-  const [compare, setCompare] = useState(false);
+  // Shown from the start; the button below the cards hides it again.
+  const [compare, setCompare] = useState(true);
   const compareId = `${pkg.slug}-${cls}-compare`;
   return (
     <article id={pkg.slug} className="scroll-mt-24">
