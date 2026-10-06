@@ -13,7 +13,7 @@ export type HeroSlide = {
 };
 
 /** How long each slide shows before the next, in ms. */
-const INTERVAL = 5000;
+const INTERVAL = 7000;
 
 /**
  * The home page hero as a looping carousel. Every slide sits in the same grid
@@ -21,26 +21,20 @@ const INTERVAL = 5000;
  * when it changes; the inactive slide fades out and is made `inert`, so it
  * can't be tabbed into or read twice.
  *
- * It advances every 5 seconds, pausing while the pointer or keyboard focus is
- * inside it and for anyone who prefers reduced motion. Previous / next arrows
+ * It advances every 7 seconds whatever the pointer or scroll position — the
+ * only pause is while someone is tabbing through it by keyboard, so a slide
+ * can't disappear from under them. With reduced motion it still advances,
+ * just without the fade. Previous / next arrows
  * sit at the sides on wide screens, where there's room beside the content,
  * and centred under the slides elsewhere so they never cover the text. Using
- * an arrow restarts the 5-second wait.
+ * an arrow restarts the 7-second wait.
  */
 export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
   const [index, setIndex] = useState(0);
-  const [hovered, setHovered] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  // Paused only while keyboard focus is inside (a click on an arrow doesn't count).
+  const [keyboardFocus, setKeyboardFocus] = useState(false);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const onChange = () => setReducedMotion(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-
-  const playing = !hovered && !reducedMotion;
+  const playing = !keyboardFocus;
   const go = (step: 1 | -1) => setIndex((i) => (i + step + slides.length) % slides.length);
 
   useEffect(() => {
@@ -58,11 +52,9 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
       aria-roledescription="carousel"
       aria-label="Ways to learn at Arjunaa Academy"
       className="relative"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
+      onFocus={(e) => setKeyboardFocus((e.target as HTMLElement).matches(":focus-visible"))}
       onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setHovered(false);
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setKeyboardFocus(false);
       }}
     >
       <div className="grid" aria-live={playing ? "off" : "polite"}>
