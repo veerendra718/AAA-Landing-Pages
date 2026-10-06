@@ -56,17 +56,32 @@ const highlights = {
     { icon: Gift, text: "Free plan · 7-day trial of paid plans", note: "Start free; try Standard or Advanced free for 7 days." },
   ],
   classroom: [
-    { icon: Building2, text: "Taught at the Vijayanagar centre" },
-    { icon: UserCheck, text: "Batches of up to 30" },
-    { icon: Smartphone, text: `${academy.appName} Advanced plan free` },
+    { icon: Building2, text: "Taught at the Vijayanagar centre", note: "Live, in-person classes with the academy's faculty." },
+    { icon: UserCheck, text: "Batches of up to 30", note: "Small enough that every teacher knows every student." },
+    { icon: Smartphone, text: `${academy.appName} Advanced plan free`, note: "Recordings, tests and analytics in the app at home." },
   ],
+};
+
+/** The teal card that closes the row: a nudge and the page's two actions. */
+const highlightAction = {
+  online: {
+    title: "Start learning today",
+    note: "Sign up free — no payment needed.",
+    href: registerUrl,
+    label: "Start free",
+  },
+  classroom: {
+    title: "Visit the centre",
+    note: "Meet the faculty and talk to a mentor.",
+    href: "/landing/contact#enquire",
+    label: "Book a visit",
+  },
 };
 
 /**
  * The strip under a courses page's title: what every course gives, and two
- * actions. On the online pages it is a row of cards in line with the title —
- * three reasons to study online and a teal card to start; the classroom pages
- * keep a single light strip.
+ * actions, as a row of cards in line with the title: three reasons to choose
+ * this way of learning and a teal card to act on it.
  */
 export function OnlineHighlights({
   jumpHref,
@@ -77,71 +92,49 @@ export function OnlineHighlights({
   jumpLabel: string;
   mode?: PackageMode;
 }) {
-  if (mode === "online") {
-    // Same container and side padding as the page title above, so the cards'
-    // edges line up with the heading; light cards so the row reads as part of
-    // the page header rather than a separate block.
-    return (
-      <div className="mx-auto max-w-7xl px-4 pt-2 md:px-6">
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {highlights.online.map((h) => (
-            <li
-              key={h.text}
-              className="group rounded-3xl border border-brand-border-light bg-white/90 p-5 shadow-[0_16px_40px_-28px_rgba(0,83,91,0.45)] backdrop-blur md:p-6 card-hover"
-            >
-              <span className="flex size-11 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
-                <h.icon className="size-5 transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100" />
-              </span>
-              <p className="mt-4 font-semibold leading-snug text-brand-text-primary">{h.text}</p>
-              <p className="mt-1 text-sm leading-relaxed text-brand-text-muted">{h.note}</p>
-            </li>
-          ))}
-          <li className="group relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl bg-brand-primary p-5 text-white shadow-[0_16px_40px_-24px_rgba(0,83,91,0.6)] md:p-6 card-hover-dark">
-            <div className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-white/10 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:bg-white/20 motion-reduce:transition-none" />
-            <div className="relative">
-              <p className="font-semibold leading-snug">Start learning today</p>
-              <p className="mt-1 text-sm leading-relaxed text-white/75">Sign up free — no payment needed.</p>
-            </div>
-            <div className="relative flex flex-col gap-2">
-              <Button asChild variant="inverse" className="w-full">
-                <Link href={registerUrl}>
-                  Start free <ArrowRight />
-                </Link>
-              </Button>
-              <Button asChild variant="inverse-outline" className="w-full">
-                <a href={jumpHref}>{jumpLabel}</a>
-              </Button>
-            </div>
-          </li>
-        </ul>
-      </div>
-    );
-  }
-
+  const action = highlightAction[mode];
+  // Same container and side padding as the page title above, so the cards'
+  // edges line up with the heading; light cards so the row reads as part of
+  // the page header rather than a separate block.
   return (
-    <div className="px-4 pt-2 md:px-6">
-      <div className="mx-auto flex max-w-7xl flex-col gap-5 rounded-3xl border border-brand-border-light bg-white p-5 md:flex-row md:items-center md:justify-between md:p-6">
-        <ul className="flex flex-wrap gap-x-6 gap-y-3">
-          {highlights[mode].map((h) => (
-            <li key={h.text} className="flex items-center gap-2 text-sm font-medium text-brand-text-secondary">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-brand-subtle-bg text-brand-primary">
-                <h.icon className="size-4" />
-              </span>
-              {h.text}
-            </li>
-          ))}
-        </ul>
-        <div className="flex shrink-0 flex-wrap gap-3">
-          <Button asChild size="lg" variant="outline">
-            <a href={jumpHref}>{jumpLabel}</a>
-          </Button>
-          <Button asChild size="lg">
-            <Link href="/landing/contact#enquire">
-              <CalendarCheck /> Book a visit
-            </Link>
-          </Button>
-        </div>
-      </div>
+    <div className="mx-auto max-w-7xl px-4 pt-2 md:px-6">
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {highlights[mode].map((h) => (
+          <li
+            key={h.text}
+            className="card-hover rounded-3xl border border-brand-border-light bg-white/90 p-5 shadow-[0_16px_40px_-28px_rgba(0,83,91,0.45)] backdrop-blur md:p-6"
+          >
+            <span className="card-icon flex size-11 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary">
+              <h.icon className="size-5" />
+            </span>
+            <p className="mt-4 font-semibold leading-snug text-brand-text-primary">{h.text}</p>
+            <p className="mt-1 text-sm leading-relaxed text-brand-text-muted">{h.note}</p>
+          </li>
+        ))}
+        <li className="group relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl bg-brand-primary p-5 text-white shadow-[0_16px_40px_-24px_rgba(0,83,91,0.6)] md:p-6 card-hover-dark">
+          <div className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-white/10 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:bg-white/20 motion-reduce:transition-none" />
+          <div className="relative">
+            <p className="font-semibold leading-snug">{action.title}</p>
+            <p className="mt-1 text-sm leading-relaxed text-white/75">{action.note}</p>
+          </div>
+          <div className="relative flex flex-col gap-2">
+            <Button asChild variant="inverse" className="w-full">
+              {mode === "classroom" ? (
+                <Link href={action.href}>
+                  <CalendarCheck /> {action.label}
+                </Link>
+              ) : (
+                <Link href={action.href}>
+                  {action.label} <ArrowRight />
+                </Link>
+              )}
+            </Button>
+            <Button asChild variant="inverse-outline" className="w-full">
+              <a href={jumpHref}>{jumpLabel}</a>
+            </Button>
+          </div>
+        </li>
+      </ul>
     </div>
   );
 }
