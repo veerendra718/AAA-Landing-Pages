@@ -140,9 +140,18 @@ export function LandingNav({
             className="hidden h-5 w-px bg-brand-border-light lg:block"
           />
 
-          <div className="hidden items-center gap-1.5 xl:flex">
-            <Button asChild variant="ghost" size="sm" className="text-brand-text-secondary hover:text-brand-primary">
-              <Link href={loginUrl}>Login</Link>
+          <div className="hidden items-center gap-1.5 lg:flex">
+            {/* Login and Register read as a pair: the same pill, outlined for
+                returning students and solid for new ones. */}
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="border-brand-border-teal px-4 text-brand-primary-darker hover:border-brand-primary hover:bg-brand-subtle-bg hover:text-brand-primary has-[>svg]:px-4"
+            >
+              <Link href={loginUrl}>
+                <LogIn /> Login
+              </Link>
             </Button>
             {cta.icon ? (
               /* A booking CTA is a plain solid pill with its icon — calm and
@@ -258,7 +267,9 @@ export function LandingNav({
                   </Link>
                 </Button>
                 <Button asChild variant="outline">
-                  <Link href={loginUrl}>Login</Link>
+                  <Link href={loginUrl}>
+                    <LogIn /> Login
+                  </Link>
                 </Button>
               </div>
             </SheetContent>
