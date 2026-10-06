@@ -298,7 +298,7 @@ export const faqs: {
   },
   {
     q: "What's the difference between Standard and Advanced?",
-    a: "Standard gives the full video library, 20 live classes a month, 20 a month of each kind of test (practice quizzes, chapter tests, previous year papers, full mock tests, daily practice problems and custom tests), basic analytics and adaptive learning. Advanced makes live classes and every test unlimited, adds early access to videos, detailed analytics with peer comparison and weekly 1-on-1 doubt sessions per subject, and earns badges and tokens 1.6× faster. Both come with a 7-day free trial.",
+    a: "Standard gives limited access — for example, 20 live classes and 20 of each kind of test a month. Advanced makes everything unlimited and adds advanced features like 1-on-1 doubt sessions and detailed analytics. See the comparison table for the full details.",
     topic: "online",
     link: { href: "/landing/courses/online/class-11", label: "Compare plans and prices" },
   },
