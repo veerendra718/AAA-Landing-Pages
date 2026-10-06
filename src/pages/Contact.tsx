@@ -46,7 +46,7 @@ const nextSteps = [
     href: c.href,
     icon: Building2,
     title: `${c.label} classroom courses`,
-    body: `${c.course} at ${branch.name}, with the ${academy.appName} Advanced plan free.`,
+    body: `${c.course} at ${branch.name}, with the ${academy.appName} app Advanced plan access.`,
   })),
   {
     href: "/landing/courses/online",

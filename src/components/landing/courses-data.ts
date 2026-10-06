@@ -9,7 +9,7 @@ export const coursesBase = "/landing/courses";
 export const coursesHead = {
   href: coursesBase,
   title: "Classroom courses",
-  note: `Class 11 and Class 12 courses for KCET, NEET, JEE Main and JEE Advanced, taught in the classroom at the academy's Vijayanagar centre — with the ${academy.appName} Advanced plan included free.`,
+  note: `Class 11 and Class 12 courses for KCET, NEET, JEE Main and JEE Advanced, taught in the classroom at the academy's Vijayanagar centre — with the ${academy.appName} app Advanced plan access.`,
 };
 
 /** The admission steps, mirroring the academy's counselling-first process. */
@@ -279,7 +279,7 @@ export const formatComparison = [
   { label: "Classes", classroom: "In person, batches of up to 30", online: "Live online, plus video lectures" },
   { label: "Getting started", classroom: "Counselling visit, then enrol", online: "Sign up free, 7-day trial of paid plans" },
   { label: "Fees", classroom: "One price per course", online: "Free, Standard or Advanced plan" },
-  { label: "App access", classroom: `${academy.appName} Advanced plan, free`, online: `${academy.appName} app, on the plan you choose` },
+  { label: "App access", classroom: `${academy.appName} app Advanced plan access`, online: `${academy.appName} app, on the plan you choose` },
   { label: "Tests", classroom: `Exam-pattern tests in the ${academy.appName} app`, online: `Exam-pattern tests in the ${academy.appName} app` },
   { label: "Doubts", classroom: "Doubt desk after class, face to face", online: "Online, with weekly 1-on-1 sessions on Advanced" },
   { label: "Counselling", classroom: "At the centre, with a mentor", online: "Video counselling session" },
@@ -346,7 +346,7 @@ export function packageFilterSlug(pkg: OnlinePackage): string {
 //
 // The same packages are taught in the classroom at Vijayanagar, as one course
 // with no Free / Standard / Advanced tiers, and classroom students get the
-// AAA app Advanced plan free.
+// AAA app Advanced plan access.
 //
 // DUMMY: the academy hasn't sent classroom prices yet. Until it does, each
 // classroom price is the package's online price doubled — the Advanced price,

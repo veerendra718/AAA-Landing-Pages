@@ -58,7 +58,7 @@ const highlights = {
   classroom: [
     { icon: Building2, text: "Taught at the Vijayanagar centre", note: "Live, in-person classes with the academy's faculty." },
     { icon: UserCheck, text: "Batches of up to 30", note: "Small enough that every teacher knows every student." },
-    { icon: Smartphone, text: `${academy.appName} Advanced plan free`, note: "Recordings, tests and analytics in the app at home." },
+    { icon: Smartphone, text: `${academy.appName} app Advanced plan access`, note: "Recordings, tests and analytics in the app at home." },
   ],
 };
 
@@ -348,7 +348,7 @@ function PackagePlans({ pkg, cls, comparison }: { pkg: OnlinePackage; cls: Packa
           <Building2 className="size-5 shrink-0 text-brand-primary" />
           <span>
             <span className="font-semibold text-brand-text-primary">Prefer the classroom?</span> {pkg.name} is also
-            taught at Vijayanagar — {formatPrice(classroomPrice(pkg, cls).price)}, with the Advanced plan free.
+            taught at Vijayanagar — {formatPrice(classroomPrice(pkg, cls).price)}, with the {academy.appName} app Advanced plan access.
           </span>
         </span>
         <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-brand-primary">
@@ -483,7 +483,7 @@ export function ClassroomIncludes() {
         <SectionHeading eyebrow="In every course" title="What every classroom course includes" />
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {list("In the classroom", Building2, classroomIncludes)}
-          {list(`${academy.appName} Advanced plan — free`, Smartphone, appFeatures)}
+          {list(`${academy.appName} app Advanced plan access`, Smartphone, appFeatures)}
         </div>
       </div>
       {/* How the classroom and the app fit together over a week. */}
@@ -711,7 +711,7 @@ export function ClassPicker({ mode }: { mode: PackageMode }) {
               <span className="flex items-center gap-1.5 text-sm text-brand-text-secondary">
                 {mode === "classroom" ? (
                   <>
-                    <Smartphone className="size-4 text-brand-primary" /> {academy.appName} Advanced free
+                    <Smartphone className="size-4 text-brand-primary" /> {academy.appName} app Advanced plan access
                   </>
                 ) : (
                   <>

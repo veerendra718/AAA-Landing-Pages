@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeftRight, ArrowRight, Building2, MonitorPlay } from "lucide-react";
 
 import { admissionSteps, classroomClasses, onlineClasses, type PackageClass } from "./courses-data";
+import { academy } from "./data";
 import { ClassroomIncludes, OnlineHighlights, PackageFinder, type PackageMode } from "./OnlinePackages";
 import { PageShell } from "./PageShell";
 import { SectionHeading } from "./SectionHeading";
@@ -74,7 +75,7 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
               </span>
               <span className="mt-1 block text-brand-text-secondary">
                 {mode === "online"
-                  ? `The same courses at Vijayanagar, with the Advanced plan free.`
+                  ? `The same courses at Vijayanagar, with the ${academy.appName} app Advanced plan access.`
                   : `The same courses online, with Free, Standard and Advanced plans.`}
               </span>
             </span>

@@ -19,7 +19,7 @@ export function CoursesOverview() {
           <SectionHeading
             eyebrow="Choose your class"
             title="Which class are you in?"
-            subtitle={`The same courses as online, taught in the classroom — one price per course, and the ${academy.appName} Advanced plan included free.`}
+            subtitle={`The same courses as online, taught in the classroom — one price per course, with the ${academy.appName} app Advanced plan access.`}
           />
           <div className="mt-10">
             <ClassPicker mode="classroom" />

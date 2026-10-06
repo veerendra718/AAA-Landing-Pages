@@ -19,6 +19,7 @@ import {
   packagesFor,
   type PackageClass,
 } from "./courses-data";
+import { academy } from "./data";
 
 export type NavLeaf = {
   href: string;
@@ -106,7 +107,7 @@ function classroomClassItem(cls: PackageClass): NavLeaf {
   return {
     href: info.href,
     label: `${info.label} courses`,
-    blurb: `${info.course} · from ₹${from.toLocaleString("en-IN")} · app Advanced free`,
+    blurb: `${info.course} · from ₹${from.toLocaleString("en-IN")} · ${academy.appName} app Advanced plan access`,
   };
 }
 
