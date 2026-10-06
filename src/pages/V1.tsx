@@ -88,7 +88,7 @@ export default function LandingV1() {
           <div className="mt-9 flex flex-wrap gap-3">
             <Button asChild size="lg" variant="inverse">
               <a href="#visit">
-                <CalendarCheck /> Book a free counselling visit
+                <CalendarCheck /> Book a visit
               </a>
             </Button>
             <Button asChild size="lg" variant="inverse-outline">

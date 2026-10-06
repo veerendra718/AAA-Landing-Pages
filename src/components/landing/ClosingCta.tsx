@@ -6,7 +6,6 @@ import { academy, registerUrl } from "./data";
 
 const visitIncludes = [
   "Meet the faculty who will teach you",
-  "Sit in on a live demo class",
   "Free one-to-one counselling session",
   "See the classrooms, labs and doubt desk",
 ];

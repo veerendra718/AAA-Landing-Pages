@@ -30,7 +30,7 @@ export function MobileActionBar({ visitHref = "#visit" }: { visitHref?: string }
         href={visitHref}
         className="flex h-11 items-center justify-center gap-1.5 rounded-xl bg-brand-primary text-sm font-semibold text-white"
       >
-        <CalendarCheck className="size-4" /> Free demo
+        <CalendarCheck className="size-4" /> Book a visit
       </a>
     </div>
   );

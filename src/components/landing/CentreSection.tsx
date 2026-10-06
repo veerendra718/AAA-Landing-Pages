@@ -23,7 +23,7 @@ import { WhatsAppIcon } from "./WhatsAppIcon";
 export function CentreSection({
   eyebrow = "Offline centre",
   title = "Visit us in Vijayanagar",
-  subtitle = "Sit in on a demo class, meet the faculty and see the classrooms before you decide.",
+  subtitle = "Meet the faculty, see the classrooms and talk to a mentor before you decide.",
 }: {
   eyebrow?: string;
   title?: string;
