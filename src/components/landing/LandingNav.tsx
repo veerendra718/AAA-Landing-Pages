@@ -116,10 +116,10 @@ export function LandingNav({
           {/* `ml-auto` takes the free space `justify-between` would otherwise
               hand out across this row, so the menu ends up hard against the
               actions on the right instead of stranded in the middle of the
-              header. Below `xl` the menu is `hidden` and its `ml-auto` goes
+              header. Below `lg` the menu is `hidden` and its `ml-auto` goes
               inert with it, leaving `justify-between` to hold the logo and the
               drawer button at the two ends. */}
-          <nav className="ml-auto hidden items-center gap-1 xl:flex" aria-label="Main">
+          <nav className="ml-auto hidden items-center gap-0.5 lg:flex xl:gap-1" aria-label="Main">
             {siteMenu.map((group) => (
               <DesktopGroup
                 key={group.label}
@@ -137,7 +137,7 @@ export function LandingNav({
               menu sits right against it. Hidden with the menu. */}
           <span
             aria-hidden="true"
-            className="hidden h-5 w-px bg-brand-border-light xl:block"
+            className="hidden h-5 w-px bg-brand-border-light lg:block"
           />
 
           <div className="hidden items-center gap-1.5 xl:flex">
@@ -176,7 +176,7 @@ export function LandingNav({
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open menu">
+              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
@@ -303,7 +303,7 @@ function DesktopGroup({
   // `relative`.
   const labelClass = (isCurrent: boolean) =>
     cn(
-      "rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors",
+      "rounded-md px-2.5 py-2 text-sm font-medium whitespace-nowrap transition-colors xl:px-3",
       isCurrent
         ? "bg-brand-subtle-bg text-brand-primary"
         : "text-brand-text-secondary hover:bg-brand-subtle-bg/50 hover:text-brand-primary",
@@ -312,7 +312,14 @@ function DesktopGroup({
   if (!isDropdown) {
     return (
       <Link href={group.href} className={labelClass(active)} aria-current={active ? "page" : undefined}>
-        {group.label}
+        {group.shortLabel ? (
+          <>
+            <span className="xl:hidden">{group.shortLabel}</span>
+            <span className="hidden xl:inline">{group.label}</span>
+          </>
+        ) : (
+          group.label
+        )}
       </Link>
     );
   }
@@ -343,7 +350,14 @@ function DesktopGroup({
         aria-expanded={open}
         aria-haspopup="true"
       >
-        {group.label}
+        {group.shortLabel ? (
+          <>
+            <span className="xl:hidden">{group.shortLabel}</span>
+            <span className="hidden xl:inline">{group.label}</span>
+          </>
+        ) : (
+          group.label
+        )}
         <ChevronDown
           className={cn("size-3.5 transition-transform", open && "rotate-180")}
         />

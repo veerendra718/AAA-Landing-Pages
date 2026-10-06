@@ -29,6 +29,9 @@ export type NavLeaf = {
 
 export type NavGroup = {
   label: string;
+  /** A shorter label for the desktop header on smaller laptops (1024–1279px),
+   *  where the full row is tight. The full label shows everywhere else. */
+  shortLabel?: string;
   /** Where the top-level item itself links. */
   href: string;
   /** Sub-pages shown under the top-level link. Empty renders a plain link. */
@@ -114,6 +117,7 @@ function classroomClassItem(cls: PackageClass): NavLeaf {
 
 const classroomGroup: NavGroup = {
   label: "Classroom Courses",
+  shortLabel: "Classroom",
   href: "/landing/courses",
   items: [
     classroomClassItem("11"),
@@ -136,6 +140,7 @@ function onlineClassItem(cls: PackageClass): NavLeaf {
 
 const onlineGroup: NavGroup = {
   label: "Online Courses",
+  shortLabel: "Online",
   href: "/landing/courses/online",
   items: [onlineClassItem("11"), onlineClassItem("12")],
 };
