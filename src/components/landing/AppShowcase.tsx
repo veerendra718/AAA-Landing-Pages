@@ -72,8 +72,8 @@ export function AppShowcase({ id = "app" }: { id?: string }) {
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <SectionHeading
           eyebrow={`The ${academy.appName} app`}
-          title="One app for every student — in class or online"
-          subtitle={`Classroom students get the ${academy.appName} app free with their course; online students learn in it. Either way, live classes, recordings, every kind of test and a clear picture of what to fix next are in one place.`}
+          title="Everything you study, in one app"
+          subtitle="Live classes, recorded lectures, every kind of test and a clear view of what to fix next. Free with every classroom course, and where every online course is taught."
         />
 
         {/* Feature list driving the phone */}
