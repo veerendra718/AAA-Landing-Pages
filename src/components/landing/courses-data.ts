@@ -445,3 +445,45 @@ export const classroomDetails: Record<string, { summary: string; subjects: strin
     tests: "Weekly tests, plus JEE Advanced papers",
   },
 };
+
+/**
+ * What each online plan includes, row by row — the app's own "Compare Plans"
+ * table (Oct 2026), without its price row (prices are per course, on the plan
+ * cards). The limits are the same for every course. `true` / `false` render
+ * as a tick / a cross. Grouped the way a student uses the app.
+ */
+export type PlanCell = string | boolean;
+
+export const planComparison: {
+  group: string;
+  rows: { feature: string; free: PlanCell; standard: PlanCell; advanced: PlanCell }[];
+}[] = [
+  {
+    group: "Learn",
+    rows: [
+      { feature: "Free trial", free: "—", standard: "7 days", advanced: "7 days" },
+      { feature: "Video lectures", free: "Sample only", standard: "Full library", advanced: "Full + early access" },
+      { feature: "Live classes", free: false, standard: "20 / month", advanced: "Unlimited" },
+      { feature: "1-on-1 doubt sessions", free: false, standard: false, advanced: "Weekly, per subject" },
+    ],
+  },
+  {
+    group: "Practise",
+    rows: [
+      { feature: "Practice quizzes", free: "1 / month", standard: "20 / month", advanced: "Unlimited" },
+      { feature: "Chapter tests", free: "1 / month", standard: "20 / month", advanced: "Unlimited" },
+      { feature: "Previous year papers", free: "1 / month", standard: "20 / month", advanced: "Unlimited" },
+      { feature: "Full mock tests", free: "1 / month", standard: "20 / month", advanced: "Unlimited" },
+      { feature: "Daily practice problems", free: "1 / month", standard: "20 / month", advanced: "Unlimited" },
+      { feature: "Custom tests", free: false, standard: "20 / month", advanced: "Unlimited" },
+    ],
+  },
+  {
+    group: "Track & improve",
+    rows: [
+      { feature: "Analytics", free: "Basic", standard: "Basic", advanced: "Detailed + peer comparison" },
+      { feature: "Adaptive learning", free: false, standard: true, advanced: true },
+      { feature: "Badges & tokens", free: false, standard: "1× earning", advanced: "1.6× earning" },
+    ],
+  },
+];

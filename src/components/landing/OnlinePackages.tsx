@@ -7,6 +7,7 @@ import {
   Building2,
   CalendarCheck,
   Check,
+  ChevronDown,
   ClipboardCheck,
   Clock,
   Gift,
@@ -16,6 +17,7 @@ import {
   Sparkles,
   Tag,
   UserCheck,
+  X,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -31,6 +33,8 @@ import {
   onlinePlans,
   packageFilterSlug,
   packagesFor,
+  planComparison,
+  type PlanCell,
   type OnlineExam,
   type OnlinePackage,
   type PackageClass,
@@ -185,8 +189,93 @@ function PlanCard({
 const tierNames = { free: "Free", standard: "Standard", advanced: "Advanced" } as const;
 
 /** A package's heading, then its plans side by side: Free, Standard and (where offered) Advanced. */
+/** One cell of the comparison: a tick, a cross, or the plan's limit. */
+function PlanCellView({ value, featured }: { value: PlanCell; featured: boolean }) {
+  if (value === true)
+    return (
+      <span className="inline-flex size-5 items-center justify-center rounded-full bg-brand-primary text-white">
+        <Check className="size-3" strokeWidth={3} />
+        <span className="sr-only">Included</span>
+      </span>
+    );
+  if (value === false)
+    return (
+      <span className="inline-flex size-5 items-center justify-center rounded-full bg-brand-page-bg text-brand-text-muted">
+        <X className="size-3" strokeWidth={3} />
+        <span className="sr-only">Not included</span>
+      </span>
+    );
+  return (
+    <span className={cn("text-sm", featured ? "font-semibold text-brand-primary-darker" : "text-brand-text-secondary")}>
+      {value}
+    </span>
+  );
+}
+
+/**
+ * Every plan's limits side by side, from the app's own "Compare Plans" table.
+ * The Advanced column is tinted to match its "Most complete" card, and is left
+ * out for a course sold without it. On a phone the table scrolls sideways with
+ * the feature names held in place.
+ */
+function PlanComparison({ hasAdvanced }: { hasAdvanced: boolean }) {
+  const tiers = (["free", "standard", "advanced"] as const).filter((t) => t !== "advanced" || hasAdvanced);
+  return (
+    <div className="overflow-x-auto rounded-3xl border border-brand-border-light bg-white">
+      <table className={cn("w-full text-left", hasAdvanced ? "min-w-[640px]" : "min-w-[480px]")}>
+        <thead>
+          <tr className="border-b border-brand-border-light">
+            <th scope="col" className="sticky left-0 z-10 bg-white px-5 py-4 text-xs font-bold uppercase tracking-wide text-brand-text-muted">
+              Feature
+            </th>
+            {tiers.map((t) => (
+              <th
+                key={t}
+                scope="col"
+                className={cn(
+                  "px-4 py-4 text-center text-sm font-bold",
+                  t === "advanced" ? "bg-brand-subtle-bg/60 text-brand-primary" : "text-brand-text-primary",
+                )}
+              >
+                {tierNames[t]}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        {planComparison.map((g) => (
+          <tbody key={g.group}>
+            <tr>
+              <th
+                scope="colgroup"
+                colSpan={tiers.length + 1}
+                className="bg-brand-page-bg px-5 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-primary"
+              >
+                {g.group}
+              </th>
+            </tr>
+            {g.rows.map((r) => (
+              <tr key={r.feature} className="border-t border-brand-border-light first:border-t-0">
+                <th scope="row" className="sticky left-0 z-10 bg-white px-5 py-3 text-sm font-medium text-brand-text-primary">
+                  {r.feature}
+                </th>
+                {tiers.map((t) => (
+                  <td key={t} className={cn("px-4 py-3 text-center", t === "advanced" && "bg-brand-subtle-bg/40")}>
+                    <PlanCellView value={r[t]} featured={t === "advanced"} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        ))}
+      </table>
+    </div>
+  );
+}
+
 function PackagePlans({ pkg, cls }: { pkg: OnlinePackage; cls: PackageClass }) {
   const p = pkg.prices[cls]!;
+  const [compare, setCompare] = useState(false);
+  const compareId = `${pkg.slug}-${cls}-compare`;
   return (
     <article id={pkg.slug} className="scroll-mt-24">
       <div className="flex flex-wrap items-center gap-3">
@@ -206,6 +295,21 @@ function PackagePlans({ pkg, cls }: { pkg: OnlinePackage; cls: PackageClass }) {
         <PlanCard tier="free" />
         <PlanCard tier="standard" price={p.standard} featured={!p.advanced} />
         {p.advanced && <PlanCard tier="advanced" price={p.advanced} featured />}
+      </div>
+      <div className="mt-6 text-center">
+        <button
+          type="button"
+          aria-expanded={compare}
+          aria-controls={compareId}
+          onClick={() => setCompare((v) => !v)}
+          className="inline-flex items-center gap-1.5 rounded-full border border-brand-border-teal bg-white px-5 py-2.5 text-sm font-semibold text-brand-primary transition-colors hover:bg-brand-subtle-bg"
+        >
+          {compare ? "Hide plan comparison" : "Compare all plan features"}
+          <ChevronDown className={cn("size-4 transition-transform", compare && "rotate-180")} />
+        </button>
+      </div>
+      <div id={compareId} hidden={!compare} className="mt-6">
+        <PlanComparison hasAdvanced={!!p.advanced} />
       </div>
       <Link
         href={`${classroomClasses.find((c) => c.id === cls)!.href}#${packageFilterSlug(pkg)}`}
