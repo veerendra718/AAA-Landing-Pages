@@ -61,7 +61,7 @@ export default function LandingV2() {
     <div id="top" className="pb-16 md:pb-0">
       <LandingNav
         links={links}
-        announcement={`Admissions open for 2026–27 · KCET · NEET · JEE Main · JEE Advanced · Vijayanagar, Bengaluru`}
+        announcement={`Admissions open for 2026–27 · KCET · NEET · JEE Main · JEE Advanced · Classroom at Vijayanagar · Live online anywhere`}
       />
 
       {/* Hero — a slow carousel: the classroom first, then the same courses online */}
