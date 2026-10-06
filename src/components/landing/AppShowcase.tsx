@@ -13,8 +13,6 @@ import {
   Smartphone,
   Sparkles,
   Trophy,
-  UserCheck,
-  Users,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -65,12 +63,6 @@ const features = [
 ] as const;
 
 type FeatureId = (typeof features)[number]["id"];
-
-const forParents = [
-  { icon: UserCheck, title: "Registered as guardians", body: "Parents are added at sign-up, so they're never out of the loop." },
-  { icon: LineChart, title: "Every report in one place", body: "Test scores, topic analysis and attendance — not just a rank on paper." },
-  { icon: Users, title: "Monthly parent–teacher meeting", body: "A mentor walks you through the reports and the plan for next month." },
-];
 
 export function AppShowcase({ id = "app" }: { id?: string }) {
   const [active, setActive] = useState<FeatureId>("tests");
@@ -159,25 +151,6 @@ export function AppShowcase({ id = "app" }: { id?: string }) {
             </PhoneFrame>
             <p className="mt-4 text-[11px] text-brand-text-muted">Illustrative screens with sample data</p>
           </div>
-        </div>
-
-        {/* For parents */}
-        <div className="mt-8 grid gap-6 rounded-[32px] bg-brand-primary-darker p-6 text-white sm:p-8 lg:grid-cols-[0.9fr_2fr] lg:items-center lg:p-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[2px] text-brand-secondary">For parents</p>
-            <p className="mt-2 font-(family-name:--font-display) text-2xl font-bold leading-snug md:text-3xl">
-              See the progress before the results do.
-            </p>
-          </div>
-          <ul className="grid gap-4 sm:grid-cols-3">
-            {forParents.map((p) => (
-              <li key={p.title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p.icon className="size-5 text-brand-secondary" />
-                <p className="mt-3 font-semibold">{p.title}</p>
-                <p className="mt-1 text-sm leading-relaxed text-white/70">{p.body}</p>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <p className="mt-6 text-center text-sm text-brand-text-muted">

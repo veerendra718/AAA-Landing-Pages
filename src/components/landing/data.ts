@@ -301,8 +301,8 @@ export const faqs: {
   },
   {
     q: "Can parents follow progress?",
-    a: "Yes. Parents are registered as guardians when the student signs up, every test report is in the app, and a mentor walks you through it at the monthly parent–teacher meeting.",
-    topic: "app",
+    a: "Yes — through the student's mentor at the centre. Progress is discussed with parents at the monthly parent–teacher meetings, and you can call the centre to talk to the mentor at any time.",
+    topic: "visits",
   },
 ];
 
