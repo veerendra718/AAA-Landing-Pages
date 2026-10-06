@@ -42,7 +42,10 @@ export const branch = {
   label: "Our centre",
   address:
     "3rd Floor, No. 02, CHBCS 1st Layout, 5th Main, Vijayanagar, Bengaluru, Karnataka",
-  mapsUrl: "https://goo.gl/maps/pDUVxh6ZVWEanYsi6",
+  // Google Maps directions to the academy's own listing. (aaaedu.in links a
+  // goo.gl short link, which no longer opens since Google retired goo.gl.)
+  mapsUrl:
+    "https://www.google.com/maps/dir/?api=1&destination=Arjunaa+Academy+for+Achievers%2C+Vijayanagar%2C+Bengaluru",
   mapEmbedUrl:
     "https://maps.google.com/maps?q=Arjunaa+Academy+for+Achievers,+CHBCS+1st+Layout,+Vijayanagar,+Bengaluru&z=15&output=embed",
   // No visiting hours: aaaedu.in doesn't publish any, so none are shown until
