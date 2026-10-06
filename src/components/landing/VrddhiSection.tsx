@@ -49,7 +49,7 @@ export function VrddhiSection({ id = "vrddhi" }: { id?: string }) {
 
           <dl className="mt-7 grid grid-cols-3 gap-3">
             {vrddhi.format.map((f) => (
-              <div key={f.label} className="rounded-2xl border border-brand-border-light bg-white px-3 py-4 text-center">
+              <div key={f.label} className="rounded-2xl border border-brand-border-light bg-white px-3 py-4 text-center card-hover">
                 <dt className="text-[11px] font-semibold uppercase tracking-wide text-brand-text-muted">{f.label}</dt>
                 <dd className="mt-1 font-(family-name:--font-display) text-2xl font-bold text-brand-primary-darker">
                   {f.value}

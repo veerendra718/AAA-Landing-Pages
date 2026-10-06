@@ -26,7 +26,7 @@ export default function Achievers() {
             <a
               key={g.slug}
               href={`#${g.slug}`}
-              className="group rounded-2xl border border-brand-border-light bg-white px-4 py-5 transition-colors hover:border-brand-border-teal"
+              className="group rounded-2xl border border-brand-border-light bg-white px-4 py-5 card-hover"
             >
               <span className="block font-(family-name:--font-display) text-3xl font-bold text-brand-primary">
                 {g.students.length}

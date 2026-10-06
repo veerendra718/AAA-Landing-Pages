@@ -19,7 +19,7 @@ const base = "/landing/achievers";
  */
 export function AchieverCard({ student }: { student: Achiever }) {
   return (
-    <figure className="group flex flex-col overflow-hidden rounded-xl border border-brand-border-light bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+    <figure className="group flex flex-col overflow-hidden rounded-xl border border-brand-border-light bg-white shadow-sm card-hover">
       <div className="relative aspect-4/5 overflow-hidden bg-brand-subtle-bg">
         <Image
           src={student.image}
@@ -57,7 +57,7 @@ export function AchieverCard({ student }: { student: Achiever }) {
  */
 export function AchieverRow({ student }: { student: Achiever }) {
   return (
-    <figure className="flex h-full items-center gap-3.5 rounded-2xl border border-brand-border-light bg-white p-3 transition-colors hover:border-brand-border-teal">
+    <figure className="flex h-full items-center gap-3.5 rounded-2xl border border-brand-border-light bg-white p-3 card-hover">
       <div className="relative size-16 shrink-0 overflow-hidden rounded-full bg-brand-subtle-bg ring-2 ring-brand-subtle-bg">
         <Image
           src={student.image}
@@ -107,7 +107,7 @@ export function AchieverCrossLinks({ except }: { except?: string }) {
         <Link
           key={g.slug}
           href={`${base}/${g.slug}`}
-          className="group flex items-center justify-between gap-3 rounded-2xl border border-brand-border-light bg-white p-4 transition-colors hover:border-brand-border-teal"
+          className="group flex items-center justify-between gap-3 rounded-2xl border border-brand-border-light bg-white p-4 card-hover"
         >
           <span>
             <span className="block font-semibold text-brand-text-primary">{g.name}</span>

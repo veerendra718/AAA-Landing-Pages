@@ -90,7 +90,7 @@ export default function CareersPage() {
               {facts.map((f) => (
                 <div
                   key={f.label}
-                  className="flex flex-col-reverse rounded-2xl border border-brand-border-light bg-white p-4"
+                  className="flex flex-col-reverse rounded-2xl border border-brand-border-light bg-white p-4 card-hover"
                 >
                   <dt className="mt-1 text-xs text-brand-text-muted">{f.label}</dt>
                   <dd className="flex items-center gap-2 font-(family-name:--font-display) text-2xl font-bold text-brand-primary-darker">
@@ -157,7 +157,7 @@ export default function CareersPage() {
             {subjects.map((s) => (
               <div
                 key={s.label}
-                className="flex items-center gap-3 rounded-2xl border border-brand-border-light bg-white p-5"
+                className="flex items-center gap-3 rounded-2xl border border-brand-border-light bg-white p-5 card-hover"
               >
                 <span className="flex size-11 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary">
                   <s.icon className="size-5" />

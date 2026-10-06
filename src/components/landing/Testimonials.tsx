@@ -45,7 +45,7 @@ export function Testimonials({
           <CarouselContent className="-ml-5">
             {testimonials.map((t) => (
               <CarouselItem key={t.name} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                <figure className="flex h-full flex-col rounded-2xl border border-brand-border-light bg-white p-6">
+                <figure className="flex h-full flex-col rounded-2xl border border-brand-border-light bg-white p-6 card-hover">
                   <Quote className="size-7 text-brand-secondary" />
                   <blockquote className="mt-3 flex-1 font-(family-name:--font-display) text-xl leading-snug text-brand-text-primary">
                     {t.quote}

@@ -118,7 +118,7 @@ export default function AboutPage() {
               <Link
                 key={e.href}
                 href={e.href}
-                className="group flex flex-col rounded-2xl border border-brand-border-light bg-white p-6 transition-shadow hover:shadow-xl"
+                className="group flex flex-col rounded-2xl border border-brand-border-light bg-white p-6 card-hover"
               >
                 <span className="flex size-11 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
                   <e.icon className="size-5" />

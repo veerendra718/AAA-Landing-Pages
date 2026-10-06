@@ -116,7 +116,7 @@ function ExamPrograms({ format }: { format: Format }) {
         {onlineExams.map((c) => (
           <article
             key={c.slug}
-            className="group flex flex-col overflow-hidden rounded-3xl border border-brand-border-light bg-white transition-all hover:-translate-y-1 hover:border-brand-border-teal hover:shadow-[0_24px_50px_-24px_rgba(0,83,91,0.4)]"
+            className="group flex flex-col overflow-hidden rounded-3xl border border-brand-border-light bg-white card-hover"
           >
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
@@ -171,7 +171,7 @@ function ExamPrograms({ format }: { format: Format }) {
       {format === "online" ? (
         <Link
           href="/landing/courses/online"
-          className="group mt-6 flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 transition-colors hover:border-brand-border-teal hover:bg-white"
+          className="group mt-6 flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 hover:bg-white card-hover"
         >
           <span>
             <span className="block text-[11px] font-bold uppercase tracking-wide text-brand-primary">
@@ -187,7 +187,7 @@ function ExamPrograms({ format }: { format: Format }) {
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <Link
             href={`${classroomClasses[0].href}#combined`}
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 transition-colors hover:border-brand-border-teal hover:bg-white"
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 hover:bg-white card-hover"
           >
             <span>
               <span className="block text-[11px] font-bold uppercase tracking-wide text-brand-primary">

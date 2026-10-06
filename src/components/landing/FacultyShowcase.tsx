@@ -37,7 +37,7 @@ export function FacultyShowcase({ id = "faculty" }: { id?: string }) {
           {leaders.map((l) => (
             <article
               key={l.name}
-              className="flex items-center gap-4 rounded-3xl border border-brand-border-light bg-brand-page-bg p-3 pr-5"
+              className="flex items-center gap-4 rounded-3xl border border-brand-border-light bg-brand-page-bg p-3 pr-5 card-hover"
             >
               <div className="relative size-20 shrink-0 overflow-hidden rounded-2xl sm:size-24">
                 <Image
@@ -64,7 +64,7 @@ export function FacultyShowcase({ id = "faculty" }: { id?: string }) {
         {shown.map((f) => (
           <li
             key={f.name}
-            className="group w-[62vw] shrink-0 snap-start overflow-hidden rounded-3xl border border-brand-border-light bg-white sm:w-[38vw] lg:w-auto"
+            className="group w-[62vw] shrink-0 snap-start overflow-hidden rounded-3xl border border-brand-border-light bg-white sm:w-[38vw] lg:w-auto card-hover"
           >
             <div className="relative aspect-[4/4.2] overflow-hidden bg-brand-subtle-bg">
               <Image

@@ -53,7 +53,7 @@ export default function MissionVisionPage() {
             {values.map((v, i) => {
               const Icon = valueIcons[i];
               return (
-                <div key={v.title} className="rounded-2xl bg-white p-6 md:p-8">
+                <div key={v.title} className="rounded-2xl bg-white p-6 md:p-8 card-hover">
                   <span className="flex size-11 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
                     <Icon className="size-5" />
                   </span>

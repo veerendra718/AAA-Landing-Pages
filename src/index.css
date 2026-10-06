@@ -200,3 +200,64 @@
     display: none;
   }
 }
+
+/* The hover lift every card on the site shares (V2 and its pages): the card
+   rises a little, its border turns teal and its shadow deepens; an icon tile
+   inside marked `card-icon` fills teal and its icon grows a touch. Unlayered
+   on purpose, so it wins over the cards' own border / shadow utilities. Use
+   `card-hover-dark` on cards with a dark background, where a teal border
+   wouldn't read. With reduced motion only the colours change. */
+.card-hover,
+.card-hover-dark {
+  transition:
+    translate 300ms ease-out,
+    box-shadow 300ms ease-out,
+    border-color 300ms ease-out,
+    background-color 300ms ease-out;
+}
+
+.card-hover:hover,
+.card-hover-dark:hover {
+  translate: 0 -4px;
+  box-shadow: 0 28px 50px -24px rgb(0 83 91 / 0.45);
+}
+
+.card-hover:hover {
+  border-color: var(--color-brand-border-teal);
+}
+
+.card-hover .card-icon {
+  transition:
+    background-color 300ms ease-out,
+    color 300ms ease-out;
+}
+
+.card-hover:hover .card-icon {
+  background-color: var(--color-brand-primary);
+  color: #fff;
+}
+
+.card-hover .card-icon svg {
+  transition: scale 300ms ease-out;
+}
+
+.card-hover:hover .card-icon svg {
+  scale: 1.1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover,
+  .card-hover-dark,
+  .card-hover .card-icon svg {
+    transition: none;
+  }
+
+  .card-hover:hover,
+  .card-hover-dark:hover {
+    translate: none;
+  }
+
+  .card-hover:hover .card-icon svg {
+    scale: none;
+  }
+}

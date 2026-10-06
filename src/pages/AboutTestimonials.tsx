@@ -100,7 +100,7 @@ export default function TestimonialsPage() {
               return (
                 <figure
                   key={t.name}
-                  className="mb-6 break-inside-avoid rounded-2xl border border-brand-border-light bg-white p-6 md:p-7"
+                  className="mb-6 break-inside-avoid rounded-2xl border border-brand-border-light bg-white p-6 md:p-7 card-hover"
                 >
                   <Quote className="size-7 text-brand-secondary" />
                   <blockquote className="mt-4">

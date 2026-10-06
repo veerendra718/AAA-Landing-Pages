@@ -66,7 +66,7 @@ export default function CoursesOnline() {
               {appFeatureGroups.map((g, i) => {
                 const Icon = groupIcons[i] ?? BookOpenText;
                 return (
-                  <div key={g.title} className="rounded-2xl border border-brand-border-light bg-white p-5">
+                  <div key={g.title} className="rounded-2xl border border-brand-border-light bg-white p-5 card-hover">
                     <div className="flex items-center gap-3">
                       <span className="flex size-10 items-center justify-center rounded-xl bg-brand-primary text-white">
                         <Icon className="size-5" />
@@ -101,7 +101,7 @@ export default function CoursesOnline() {
           <SectionHeading eyebrow="How to start" title="Up and running in three steps" />
           <ol className="mt-10 grid gap-4 md:grid-cols-3">
             {onlineSteps.map((s, i) => (
-              <li key={s.title} className="flex gap-4 rounded-2xl border border-brand-border-light bg-white p-5">
+              <li key={s.title} className="flex gap-4 rounded-2xl border border-brand-border-light bg-white p-5 card-hover">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-primary font-(family-name:--font-display) text-lg font-bold text-white">
                   {i + 1}
                 </span>

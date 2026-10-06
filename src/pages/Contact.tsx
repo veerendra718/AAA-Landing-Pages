@@ -78,7 +78,7 @@ export default function Contact() {
               <a
                 href={a.href}
                 {...(a.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                className="group flex h-full items-center gap-3 rounded-2xl border border-brand-border-light bg-white p-4 transition-all hover:-translate-y-0.5 hover:border-brand-border-teal hover:shadow-[0_16px_40px_-20px_rgba(0,83,91,0.4)] md:p-5"
+                className="group flex h-full items-center gap-3 rounded-2xl border border-brand-border-light bg-white p-4 md:p-5 card-hover"
               >
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-primary text-white">
                   <a.icon className="size-5" />
@@ -188,7 +188,7 @@ export default function Contact() {
               <Link
                 key={n.href}
                 href={n.href}
-                className="group flex items-start gap-4 rounded-2xl border border-brand-border-light bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-brand-border-teal"
+                className="group flex items-start gap-4 rounded-2xl border border-brand-border-light bg-white p-5 card-hover"
               >
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary">
                   <n.icon className="size-5" />

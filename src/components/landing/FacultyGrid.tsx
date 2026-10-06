@@ -62,7 +62,7 @@ export function FacultyGrid() {
           return (
             <article
               key={f.name}
-              className="flex flex-col overflow-hidden rounded-2xl border border-brand-border-light bg-white transition-shadow hover:shadow-lg"
+              className="flex flex-col overflow-hidden rounded-2xl border border-brand-border-light bg-white card-hover"
             >
               <div className="relative aspect-[4/5] bg-brand-subtle-bg">
                 <Image

@@ -32,9 +32,9 @@ export function CentreSection({
   const [addressOpen, setAddressOpen] = useState(true);
 
   const tile =
-    "flex items-start gap-3 rounded-2xl border border-brand-border-light bg-white p-4 transition-colors hover:border-brand-border-teal";
+    "card-hover flex items-start gap-3 rounded-2xl border border-brand-border-light bg-white p-4";
   const tileIcon =
-    "flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary";
+    "card-icon flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary";
 
   return (
     <section id="centre" className="scroll-mt-20 bg-brand-page-bg py-20 md:py-28">

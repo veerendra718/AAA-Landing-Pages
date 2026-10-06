@@ -34,7 +34,7 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
             <SectionHeading eyebrow="How to join" title="From first call to first class" />
             <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {admissionSteps.map((st, i) => (
-                <li key={st.step} className="rounded-2xl border border-brand-border-light bg-white p-5">
+                <li key={st.step} className="rounded-2xl border border-brand-border-light bg-white p-5 card-hover">
                   <span className="flex size-9 items-center justify-center rounded-full bg-brand-primary font-(family-name:--font-display) font-bold text-white">
                     {i + 1}
                   </span>
@@ -51,7 +51,7 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
         <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
           <Link
             href={other.href}
-            className="group flex items-center justify-between gap-4 rounded-3xl border border-brand-border-light bg-white p-6 transition-colors hover:border-brand-border-teal"
+            className="group flex items-center justify-between gap-4 rounded-3xl border border-brand-border-light bg-white p-6 card-hover"
           >
             <span>
               <span className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-brand-primary">
@@ -65,7 +65,7 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
           </Link>
           <Link
             href={otherFormat.href}
-            className="group flex items-center justify-between gap-4 rounded-3xl border border-brand-border-light bg-white p-6 transition-colors hover:border-brand-border-teal"
+            className="group flex items-center justify-between gap-4 rounded-3xl border border-brand-border-light bg-white p-6 card-hover"
           >
             <span>
               <span className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-brand-primary">

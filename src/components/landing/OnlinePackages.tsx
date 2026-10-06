@@ -87,7 +87,7 @@ export function OnlineHighlights({
           {highlights.online.map((h) => (
             <li
               key={h.text}
-              className="group rounded-3xl border border-brand-border-light bg-white/90 p-5 shadow-[0_16px_40px_-28px_rgba(0,83,91,0.45)] backdrop-blur transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand-border-teal hover:shadow-[0_28px_50px_-24px_rgba(0,83,91,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:p-6"
+              className="group rounded-3xl border border-brand-border-light bg-white/90 p-5 shadow-[0_16px_40px_-28px_rgba(0,83,91,0.45)] backdrop-blur md:p-6 card-hover"
             >
               <span className="flex size-11 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
                 <h.icon className="size-5 transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100" />
@@ -96,7 +96,7 @@ export function OnlineHighlights({
               <p className="mt-1 text-sm leading-relaxed text-brand-text-muted">{h.note}</p>
             </li>
           ))}
-          <li className="group relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl bg-brand-primary p-5 text-white shadow-[0_16px_40px_-24px_rgba(0,83,91,0.6)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_50px_-20px_rgba(0,83,91,0.7)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:p-6">
+          <li className="group relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl bg-brand-primary p-5 text-white shadow-[0_16px_40px_-24px_rgba(0,83,91,0.6)] md:p-6 card-hover-dark">
             <div className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-white/10 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:bg-white/20 motion-reduce:transition-none" />
             <div className="relative">
               <p className="font-semibold leading-snug">Start learning today</p>
@@ -166,7 +166,7 @@ function PlanCard({
   return (
     <div
       className={cn(
-        "relative flex h-full flex-col rounded-[2rem] bg-white p-6 md:p-7",
+        "card-hover relative flex h-full flex-col rounded-[2rem] bg-white p-6 md:p-7",
         featured
           ? "border-2 border-brand-primary shadow-[0_24px_50px_-24px_rgba(0,83,91,0.45)]"
           : "border border-brand-border-teal",
@@ -349,7 +349,7 @@ function PackagePlans({ pkg, cls, comparison }: { pkg: OnlinePackage; cls: Packa
       {comparison && <ComparisonBlock id={`${pkg.slug}-${cls}-compare`} hasAdvanced={!!p.advanced} />}
       <Link
         href={`${classroomClasses.find((c) => c.id === cls)!.href}#${packageFilterSlug(pkg)}`}
-        className="group mt-6 flex flex-col gap-2 rounded-2xl border border-brand-border-light bg-brand-page-bg px-5 py-4 transition-colors hover:border-brand-border-teal hover:bg-white sm:flex-row sm:items-center sm:justify-between"
+        className="group mt-6 flex flex-col gap-2 rounded-2xl border border-brand-border-light bg-brand-page-bg px-5 py-4 hover:bg-white sm:flex-row sm:items-center sm:justify-between card-hover"
       >
         <span className="flex items-center gap-3 text-sm text-brand-text-secondary">
           <Building2 className="size-5 shrink-0 text-brand-primary" />
@@ -391,7 +391,7 @@ function ClassroomCard({
   return (
     <article
       id={pkg.slug}
-      className="flex h-full scroll-mt-40 flex-col rounded-3xl border border-brand-border-light bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-brand-border-teal hover:shadow-[0_28px_60px_-28px_rgba(0,83,91,0.45)]"
+      className="flex h-full scroll-mt-40 flex-col rounded-3xl border border-brand-border-light bg-white p-6 card-hover"
     >
       <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-brand-primary">
         {info.label} · {info.course}
@@ -464,7 +464,7 @@ function ClassroomCard({
 export function ClassroomIncludes() {
   const appFeatures = [...planFeatures("standard").slice(0, 3), ...advancedFeatures];
   const list = (title: string, Icon: typeof Building2, items: string[]) => (
-    <div className="rounded-3xl border border-brand-border-light bg-white p-6 md:p-7">
+    <div className="rounded-3xl border border-brand-border-light bg-white p-6 md:p-7 card-hover">
       <p className="flex items-center gap-3 font-semibold text-brand-text-primary">
         <span className="flex size-10 items-center justify-center rounded-xl bg-brand-primary text-white">
           <Icon className="size-5" />
@@ -683,7 +683,7 @@ export function ClassPicker({ mode }: { mode: PackageMode }) {
           <Link
             key={c.id}
             href={c.href}
-            className="group flex flex-col rounded-3xl border border-brand-border-light bg-white p-6 transition-all hover:-translate-y-1 hover:border-brand-border-teal hover:shadow-[0_24px_50px_-24px_rgba(0,83,91,0.4)] md:p-7"
+            className="group flex flex-col rounded-3xl border border-brand-border-light bg-white p-6 md:p-7 card-hover"
           >
             <span className="flex items-start justify-between gap-4">
               <span className="flex items-center gap-4">

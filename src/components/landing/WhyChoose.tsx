@@ -56,7 +56,7 @@ export function WhyChoose({
             return (
               <div
                 key={w.title}
-                className="group flex gap-4 rounded-2xl border border-brand-border-light bg-white p-5 transition-colors hover:border-brand-border-teal"
+                className="group flex gap-4 rounded-2xl border border-brand-border-light bg-white p-5 card-hover"
               >
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-subtle-bg text-brand-primary transition-colors group-hover:bg-brand-primary group-hover:text-white">
                   <Icon className="size-5" />
