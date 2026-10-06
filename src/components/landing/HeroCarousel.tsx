@@ -12,34 +12,55 @@ export type HeroSlide = {
   content: React.ReactNode;
 };
 
+// Full class names (not built from parts) so Tailwind sees them. The
+// keyframes are in index.css.
+const slideIn = {
+  1: "animate-[hero-in-next_800ms_cubic-bezier(0.22,1,0.36,1)_both]",
+  [-1]: "animate-[hero-in-prev_800ms_cubic-bezier(0.22,1,0.36,1)_both]",
+} as const;
+const slideOut = {
+  1: "animate-[hero-out-next_800ms_cubic-bezier(0.22,1,0.36,1)_both]",
+  [-1]: "animate-[hero-out-prev_800ms_cubic-bezier(0.22,1,0.36,1)_both]",
+} as const;
+
 /** How long each slide shows before the next, in ms. */
 const INTERVAL = 7000;
 
 /**
  * The home page hero as a looping carousel. Every slide sits in the same grid
  * cell, so the hero is as tall as its tallest slide and nothing below jumps
- * when it changes; the inactive slide fades out and is made `inert`, so it
- * can't be tabbed into or read twice.
+ * when it changes. On a change the current slide slides out and the next one
+ * slides in — leftwards going forward, rightwards going back — and every
+ * slide but the current one is `inert`, so it can't be tabbed into or read
+ * twice. The page clips the slides at its edges (the hero section is
+ * overflow-hidden).
  *
  * It advances every 7 seconds whatever the pointer or scroll position — the
  * only pause is while someone is tabbing through it by keyboard, so a slide
  * can't disappear from under them. With reduced motion it still advances,
- * just without the fade. Previous / next arrows
+ * just without the slide. Previous / next arrows
  * sit at the sides on wide screens, where there's room beside the content,
  * and centred under the slides elsewhere so they never cover the text. Using
  * an arrow restarts the 7-second wait.
  */
 export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
-  const [index, setIndex] = useState(0);
+  // The slide showing, the one leaving (null before the first change, so the
+  // first slide appears without animating), and which way they move.
+  const [{ index, prev, dir }, setState] = useState<{ index: number; prev: number | null; dir: 1 | -1 }>({
+    index: 0,
+    prev: null,
+    dir: 1,
+  });
   // Paused only while keyboard focus is inside (a click on an arrow doesn't count).
   const [keyboardFocus, setKeyboardFocus] = useState(false);
 
   const playing = !keyboardFocus;
-  const go = (step: 1 | -1) => setIndex((i) => (i + step + slides.length) % slides.length);
+  const go = (step: 1 | -1) =>
+    setState((s) => ({ index: (s.index + step + slides.length) % slides.length, prev: s.index, dir: step }));
 
   useEffect(() => {
     if (!playing) return;
-    const t = window.setTimeout(() => setIndex((i) => (i + 1) % slides.length), INTERVAL);
+    const t = window.setTimeout(() => go(1), INTERVAL);
     return () => window.clearTimeout(t);
   }, [playing, index, slides.length]);
 
@@ -66,8 +87,12 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
             aria-label={`${i + 1} of ${slides.length}: ${s.label}`}
             inert={i !== index}
             className={cn(
-              "col-start-1 row-start-1 transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none",
-              i === index ? "opacity-100" : "pointer-events-none translate-x-4 opacity-0",
+              "col-start-1 row-start-1 motion-reduce:animate-none",
+              i === index
+                ? prev !== null && slideIn[dir]
+                : i === prev
+                  ? cn("pointer-events-none motion-reduce:invisible", slideOut[dir])
+                  : "pointer-events-none invisible",
             )}
           >
             {s.content}

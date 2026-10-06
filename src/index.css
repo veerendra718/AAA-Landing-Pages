@@ -135,6 +135,53 @@
   }
 }
 
+/* The V2 hero carousel (HeroCarousel): going forward, the current slide
+   leaves to the left as the next comes in from the right; going back, the
+   reverse. A little fade keeps the overlap soft. */
+@keyframes hero-in-next {
+  from {
+    transform: translateX(100%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-out-next {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-in-prev {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-out-prev {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 @keyframes sheet-slide-right {
   from {
     transform: translateX(100%);
