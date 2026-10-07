@@ -19,10 +19,9 @@ import CoursesClass12 from "@/pages/CoursesClass12";
 import CoursesClass910 from "@/pages/CoursesClass910";
 import CoursesOnlineClass11 from "@/pages/CoursesOnlineClass11";
 import CoursesOnlineClass12 from "@/pages/CoursesOnlineClass12";
-import LandingIndex from "@/pages/LandingIndex";
-import V1 from "@/pages/V1";
 import V2 from "@/pages/V2";
-import V3 from "@/pages/V3";
+
+const HOME = "/landing/v2";
 
 /** Next.js resets scroll on route change, and follows a `#hash` in the link
  *  (e.g. "Book a visit" → /landing/v2#visit); the SPA has to do both by hand. */
@@ -56,13 +55,13 @@ function NotFound() {
         This page has moved
       </h1>
       <p className="text-sm text-brand-text-secondary">
-        The landing pages live under <code>/landing</code> in this build.
+        The page you were looking for is not here.
       </p>
       <Link
-        to="/landing"
+        to={HOME}
         className="btn-brand mt-2 rounded-md px-6 py-2.5 text-sm font-semibold text-white"
       >
-        Go to the landing index
+        Go to the home page
       </Link>
     </main>
   );
@@ -75,11 +74,13 @@ export function App() {
     <>
       <ScrollToTop />
       <Routes>
-        <Route index element={<Navigate to="/landing" replace />} />
-        <Route path="/landing" element={<LandingIndex />} />
-        <Route path="/landing/v1" element={<V1 />} />
+        {/* Only V2 is published. The picker and the V1/V3 variations are not
+            routed, and their old URLs land on V2 rather than a 404. */}
+        <Route index element={<Navigate to={HOME} replace />} />
+        <Route path="/landing" element={<Navigate to={HOME} replace />} />
+        <Route path="/landing/v1" element={<Navigate to={HOME} replace />} />
+        <Route path="/landing/v3" element={<Navigate to={HOME} replace />} />
         <Route path="/landing/v2" element={<V2 />} />
-        <Route path="/landing/v3" element={<V3 />} />
         <Route path="/landing/about" element={<About />} />
         <Route path="/landing/about/mission-vision" element={<AboutMissionVision />} />
         <Route path="/landing/about/leadership" element={<AboutLeadership />} />

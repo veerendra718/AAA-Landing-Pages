@@ -2,10 +2,11 @@
  *  table so src/shims/link.tsx can test membership without importing the
  *  pages (which import the shim back). */
 export const ROUTE_PATHS = [
+  // Redirects to /landing/v2, the only published variation.
   "/landing",
   "/landing/v1",
-  "/landing/v2",
   "/landing/v3",
+  "/landing/v2",
   "/landing/about",
   "/landing/about/mission-vision",
   "/landing/about/leadership",
