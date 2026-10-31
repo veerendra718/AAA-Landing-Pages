@@ -479,13 +479,13 @@ export const classroomDetails: Record<string, { summary: string; subjects: strin
     summary: "JEE Main preparation for the NITs and top engineering colleges.",
     subjects: "Physics · Chemistry · Maths",
     schedule: "Mon – Sat · 6 hours a day",
-    tests: "Fortnightly JEE Main mocks",
+    tests: "Weekly JEE Main mocks",
   },
   shreshta: {
     summary: "Deep problem-solving for students aiming at the IITs.",
     subjects: "Physics · Chemistry · Maths",
     schedule: "Mon – Sat · 6 hours a day",
-    tests: "Fortnightly JEE Advanced papers",
+    tests: "Weekly JEE Advanced papers",
   },
 };
 
