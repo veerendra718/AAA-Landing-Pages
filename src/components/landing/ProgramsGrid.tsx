@@ -181,15 +181,15 @@ function ExamPrograms({ format }: { format: Format }) {
 
       {format === "online" ? (
         <Link
-          href="/landing/courses/online"
+          href="/landing/courses/online/class-11"
           className="group mt-6 flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 hover:bg-white card-hover"
         >
           <span>
             <span className="block text-[11px] font-bold uppercase tracking-wide text-brand-primary">
-              Classroom or online?
+              Online courses
             </span>
             <span className="mt-0.5 block font-semibold text-brand-text-primary">
-              See what every online course includes, and compare the two
+              See every online course, its plans and prices
             </span>
           </span>
           <ArrowRight className="size-5 shrink-0 text-brand-primary transition-transform group-hover:translate-x-1" />

@@ -49,7 +49,7 @@ const nextSteps = [
     body: `${c.course} at ${branch.name}, with the ${academy.appName} app Advanced plan access.`,
   })),
   {
-    href: "/landing/courses/online",
+    href: "/landing/courses/online/class-11",
     icon: MonitorPlay,
     title: "Online courses",
     body: "The same courses, taught live online — start on the free plan.",

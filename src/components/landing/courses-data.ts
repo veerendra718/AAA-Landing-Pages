@@ -39,13 +39,6 @@ export const admissionSteps = [
 // scripts/check-links.mjs can read them.
 // ---------------------------------------------------------------------------
 
-export const onlineBase = "/landing/courses/online";
-
-export const onlineHead = {
-  title: "Online courses",
-  note: `Eight courses for KCET, NEET, JEE Main and JEE Advanced — one exam, or several prepared together — taught live by the same faculty as the Vijayanagar classroom, with every test, note and recorded lecture in the ${academy.appName} app.`,
-};
-
 export type OnlineExam = "KCET" | "NEET" | "JEE Main" | "JEE Advanced";
 
 export type OnlineExamInfo = {
@@ -84,36 +77,6 @@ export const onlineExams: OnlineExamInfo[] = [
     exam: "NEET",
     eyebrow: "Medical",
     image: "/images/landing/a-track-1.jpg",
-  },
-];
-
-/**
- * What the app gives an online student, grouped the way a student uses it.
- * Names follow the AAA app itself (its sidebar and plan pages): Live
- * Classes, Practice Quizzes, Chapter Tests, Daily Practice Problems, Previous
- * Year Papers, Full Mock Tests, Custom Tests, My Mistakes, Analytics, Peer
- * Comparison, Badges, Leaderboard and Rewards.
- */
-export const appFeatureGroups = [
-  {
-    title: "Learn",
-    body: "Taught live by the academy's own faculty — the same teachers as the classroom.",
-    items: ["Live classes", "Video lectures by subject & topic", "Recordings of past classes", "My Notes"],
-  },
-  {
-    title: "Practise",
-    body: "Every kind of test, in the exact pattern of the exam you're preparing for.",
-    items: ["Practice quizzes", "Chapter tests", "Daily practice problems", "Previous year papers", "Full mock tests", "Custom tests"],
-  },
-  {
-    title: "Improve",
-    body: "Know exactly what to fix after every test, not just the score.",
-    items: ["My Mistakes", "Analytics & predicted score", "Peer comparison", "Recommended next steps"],
-  },
-  {
-    title: "Stay on track",
-    body: "Small wins that keep daily practice going through a two-year preparation.",
-    items: ["Badges", "Leaderboard", "Rewards"],
   },
 ];
 
@@ -256,26 +219,6 @@ export const onlinePackages: OnlinePackage[] = [
       "12": { standard: { price: 28999, off: 2900 }, advanced: { price: 144999, off: 14500 } },
     },
   },
-];
-
-/** Getting started, as the app's own sign-up works. */
-export const onlineSteps = [
-  { title: "Create a free account", body: "Sign up on the AAA app with your name, email and mobile number." },
-  { title: "Pick your class and course", body: "Open the Class 11 (2-year) or Class 12 page, then choose the course for the exams you are writing." },
-  { title: "Start learning", body: "Begin on the Free plan, or try Standard or Advanced free for 7 days." },
-];
-
-/** Classroom and online, side by side. */
-export const formatComparison = [
-  { label: "Teachers", classroom: "Academy faculty at Vijayanagar", online: "The same faculty, live online" },
-  { label: "Classes", classroom: "In person, batches of up to 30", online: "Live online, plus video lectures" },
-  { label: "Getting started", classroom: "Counselling visit, then enrol", online: "Sign up free, 7-day trial of paid plans" },
-  { label: "Fees", classroom: "One fee per course, per annum", online: "Free, Standard or Advanced plan" },
-  { label: "App access", classroom: `${academy.appName} app Advanced plan access`, online: `${academy.appName} app, on the plan you choose` },
-  { label: "Tests", classroom: `Exam-pattern tests in the ${academy.appName} app`, online: `Exam-pattern tests in the ${academy.appName} app` },
-  { label: "Doubts", classroom: "Doubt desk after class, face to face", online: "Online, with weekly 1-on-1 sessions on Advanced" },
-  { label: "Counselling", classroom: "At the centre, with a mentor", online: "Video counselling session" },
-  { label: "Best for", classroom: "Students who can reach Vijayanagar", online: "Students further away" },
 ];
 
 /** The packages for `exam` alone — not the combined packages that also cover it. */

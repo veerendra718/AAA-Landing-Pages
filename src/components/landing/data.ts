@@ -297,7 +297,7 @@ export const faqs: {
     q: "Can my child study online instead of coming to Vijayanagar?",
     a: "Yes. The same courses are taught live online by the same faculty, for Class 11 and Class 12 — KCET, NEET, JEE Main and JEE Advanced, one exam or several together.",
     topic: "online",
-    link: { href: "/landing/courses/online", label: "See online courses" },
+    link: { href: "/landing/courses/online/class-11", label: "See online courses" },
   },
   {
     q: "Is there a free plan?",

@@ -17,7 +17,6 @@ import Contact from "@/pages/Contact";
 import CoursesClass11 from "@/pages/CoursesClass11";
 import CoursesClass12 from "@/pages/CoursesClass12";
 import CoursesOther from "@/pages/CoursesOther";
-import CoursesOnline from "@/pages/CoursesOnline";
 import CoursesOnlineClass11 from "@/pages/CoursesOnlineClass11";
 import CoursesOnlineClass12 from "@/pages/CoursesOnlineClass12";
 import LandingIndex from "@/pages/LandingIndex";
@@ -96,7 +95,8 @@ export function App() {
         <Route path="/landing/courses/class-11" element={<CoursesClass11 />} />
         <Route path="/landing/courses/class-12" element={<CoursesClass12 />} />
         <Route path="/landing/courses/other" element={<CoursesOther />} />
-        <Route path="/landing/courses/online" element={<CoursesOnline />} />
+        {/* The online courses hub was removed; its URL opens the Class 11 online page. */}
+        <Route path="/landing/courses/online" element={<Navigate to="/landing/courses/online/class-11" replace />} />
         <Route path="/landing/courses/online/class-11" element={<CoursesOnlineClass11 />} />
         <Route path="/landing/courses/online/class-12" element={<CoursesOnlineClass12 />} />
         <Route path="/landing/contact" element={<Contact />} />

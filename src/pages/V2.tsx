@@ -320,7 +320,7 @@ function OnlineHero() {
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild size="lg" className="shadow-lg shadow-brand-primary/20">
-            <Link href="/landing/courses/online">
+            <Link href="/landing/courses/online/class-11">
               <MonitorPlay /> Explore online courses
             </Link>
           </Button>
