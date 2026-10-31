@@ -20,7 +20,7 @@ export const admissionSteps = [
   },
   {
     step: "Ask how you want to talk",
-    body: "Call back, home visit, a visit to our centre, or connect online.",
+    body: "Call back, a visit to our centre, or connect online.",
   },
   {
     step: "Counselling & diagnostic test",

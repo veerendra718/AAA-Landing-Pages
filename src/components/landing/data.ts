@@ -271,7 +271,7 @@ export const faqs: {
 }[] = [
   {
     q: "Where is the centre?",
-    a: "Our centre is in Vijayanagar, Bengaluru — 3rd Floor, CHBCS 1st Layout, 5th Main. Book a visit or call 76766 42258 so a mentor is free to meet you. We can also come to you — ask for a home visit.",
+    a: "Our centre is in Vijayanagar, Bengaluru — 3rd Floor, CHBCS 1st Layout, 5th Main. Book a visit or call 76766 42258 so a mentor is free to meet you.",
     topic: "visits",
     link: { href: branch.mapsUrl, label: "Get directions", external: true },
   },
