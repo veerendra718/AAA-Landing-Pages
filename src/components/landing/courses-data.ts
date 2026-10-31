@@ -229,8 +229,8 @@ export const onlinePackages: OnlinePackage[] = [
     },
   },
   {
-    slug: "shreshtra",
-    name: "Shreshtra",
+    slug: "shreshta",
+    name: "Shreshta",
     exams: ["JEE Advanced"],
     prices: {
       "11": { standard: { price: 19999, off: 2500 }, advanced: { price: 99999, off: 12500 } },
@@ -420,7 +420,7 @@ export const classroomDetails: Record<string, { summary: string; subjects: strin
     schedule: "Mon – Sat · 3.5 hours a day",
     tests: "Fortnightly JEE Main mocks",
   },
-  shreshtra: {
+  shreshta: {
     summary: "Deep problem-solving for students aiming at the IITs.",
     subjects: "Physics · Chemistry · Maths",
     schedule: "Mon – Sat · 4 hours a day",
