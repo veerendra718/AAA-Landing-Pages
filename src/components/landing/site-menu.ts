@@ -14,12 +14,14 @@
 //
 import {
   classroomClasses,
+  classroomExtras,
+  classroomPackagesFor,
   classroomPrice,
   onlineClasses,
   packagesFor,
   type PackageClass,
+  perAnnum,
 } from "./courses-data";
-import { academy } from "./data";
 
 export type NavLeaf = {
   href: string;
@@ -102,12 +104,11 @@ const achieversGroup: NavGroup = {
 // class. The course pages by exam are reached from the /landing/courses hub.
 function classroomClassItem(cls: PackageClass): NavLeaf {
   const info = classroomClasses.find((c) => c.id === cls)!;
-  const packages = packagesFor(cls);
-  const from = Math.min(...packages.map((p) => classroomPrice(p, cls).price));
+  const from = Math.min(...classroomPackagesFor(cls).map((p) => classroomPrice(p).price));
   return {
     href: info.href,
     label: `${info.label} courses`,
-    blurb: `${info.course} · from ₹${from.toLocaleString("en-IN")} · ${academy.appName} app Advanced plan access`,
+    blurb: `${info.course} · from ₹${from.toLocaleString("en-IN")} ${perAnnum} + ${classroomExtras}`,
   };
 }
 

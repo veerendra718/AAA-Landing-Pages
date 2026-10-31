@@ -26,7 +26,10 @@ import { cn } from "@/lib/utils";
 import {
   classroomClasses,
   classroomDetails,
+  classroomExtras,
+  classroomFees,
   classroomIncludes,
+  classroomPackagesFor,
   classroomPrice,
   onlineClasses,
   onlineExams,
@@ -39,6 +42,7 @@ import {
   type OnlinePackage,
   type PackageClass,
   type PackagePrice,
+  perAnnum,
 } from "./courses-data";
 import { WeekLoop } from "./AppShowcase";
 import { CourseEnquiryForm, type EnquiryIntent } from "./CourseEnquiryForm";
@@ -48,6 +52,9 @@ import { SectionHeading } from "./SectionHeading";
 export type PackageMode = "online" | "classroom";
 
 export const formatPrice = (rupees: number) => `₹${rupees.toLocaleString("en-IN")}`;
+
+/** A classroom fee, always marked per annum. */
+export const formatFee = (rupees: number) => `${formatPrice(rupees)} ${perAnnum}`;
 
 const highlights = {
   online: [
@@ -340,21 +347,23 @@ function PackagePlans({ pkg, cls, comparison }: { pkg: OnlinePackage; cls: Packa
         {p.advanced && <PlanCard tier="advanced" price={p.advanced} featured />}
       </div>
       {comparison && <ComparisonBlock id={`${pkg.slug}-${cls}-compare`} hasAdvanced={!!p.advanced} />}
-      <Link
-        href={`${classroomClasses.find((c) => c.id === cls)!.href}#${packageFilterSlug(pkg)}`}
-        className="group mt-6 flex flex-col gap-2 rounded-2xl border border-brand-border-light bg-brand-page-bg px-5 py-4 hover:bg-white sm:flex-row sm:items-center sm:justify-between card-hover"
-      >
-        <span className="flex items-center gap-3 text-sm text-brand-text-secondary">
-          <Building2 className="size-5 shrink-0 text-brand-primary" />
-          <span>
-            <span className="font-semibold text-brand-text-primary">Prefer the classroom?</span> {pkg.name} is also
-            taught at Vijayanagar — {formatPrice(classroomPrice(pkg, cls).price)}, with the {academy.appName} app Advanced plan access.
+      {classroomFees[pkg.slug] && (
+        <Link
+          href={`${classroomClasses.find((c) => c.id === cls)!.href}#${packageFilterSlug(pkg)}`}
+          className="group mt-6 flex flex-col gap-2 rounded-2xl border border-brand-border-light bg-brand-page-bg px-5 py-4 hover:bg-white sm:flex-row sm:items-center sm:justify-between card-hover"
+        >
+          <span className="flex items-center gap-3 text-sm text-brand-text-secondary">
+            <Building2 className="size-5 shrink-0 text-brand-primary" />
+            <span>
+              <span className="font-semibold text-brand-text-primary">Prefer the classroom?</span> {pkg.name} is also
+              taught at Vijayanagar — {formatFee(classroomPrice(pkg).price)} + {classroomExtras}.
+            </span>
           </span>
-        </span>
-        <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-brand-primary">
-          Classroom version <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-        </span>
-      </Link>
+          <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-brand-primary">
+            Classroom version <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </span>
+        </Link>
+      )}
     </article>
   );
 }
@@ -376,7 +385,7 @@ function ClassroomCard({
   cls: PackageClass;
   onEnquire: (intent: EnquiryIntent) => void;
 }) {
-  const price = classroomPrice(pkg, cls);
+  const price = classroomPrice(pkg);
   const info = classroomClasses.find((c) => c.id === cls)!;
   const online = onlineClasses.find((c) => c.id === cls)!;
   const details = classroomDetails[pkg.slug];
@@ -391,13 +400,9 @@ function ClassroomCard({
       </p>
       <h3 className="mt-1 font-(family-name:--font-display) text-2xl font-bold text-brand-primary-darker">{pkg.name}</h3>
 
-      <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Prepares for">
-        {pkg.exams.map((e) => (
-          <li key={e} className="rounded-full bg-brand-subtle-bg px-2.5 py-0.5 text-xs font-semibold text-brand-primary-darker">
-            {e}
-          </li>
-        ))}
-      </ul>
+      <p className="mt-3 inline-flex self-start rounded-full bg-brand-subtle-bg px-2.5 py-0.5 text-xs font-semibold text-brand-primary-darker">
+        {classroomFees[pkg.slug].label}
+      </p>
 
       {details && (
         <>
@@ -425,13 +430,17 @@ function ClassroomCard({
       <div className="mt-5 rounded-2xl bg-brand-page-bg p-4">
         <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">You pay</p>
         <p className="mt-0.5 text-3xl font-bold tracking-tight text-brand-primary-darker">
-          {formatPrice(price.price - price.off)}
+          {formatPrice(price.price - price.off)}{" "}
+          <span className="text-base font-semibold text-brand-text-muted">{perAnnum}</span>
         </p>
         <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-          <span className="text-brand-text-muted line-through">{formatPrice(price.price)}</span>
+          <span className="text-brand-text-muted line-through">{formatFee(price.price)}</span>
           <span className="inline-flex items-center gap-1 rounded-full bg-brand-success-bg px-2 py-0.5 text-xs font-bold text-brand-success">
             <Tag className="size-3" /> {price.offLabel ?? `${formatPrice(price.off)} off`}
           </span>
+        </p>
+        <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-brand-primary">
+          <Gift className="size-4 shrink-0" /> + {classroomExtras}
         </p>
       </div>
 
@@ -509,15 +518,15 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
   const { hash, key } = useLocation();
 
   useEffect(() => {
-    if (hash === "#combined") return setFilter("combined");
+    if (hash === "#combined" && mode === "online") return setFilter("combined");
     const match = onlineExams.find((e) => `#${e.slug}` === hash);
     if (match) setFilter(match.exam);
-  }, [hash, key]);
+  }, [hash, key, mode]);
 
   const exam = filter === "combined" ? null : filter;
   // An exam shows only that exam's own packages; the packages covering
   // several exams are listed once, under "Combined courses".
-  const shown = packagesFor(cls).filter((p) =>
+  const shown = (mode === "online" ? packagesFor(cls) : classroomPackagesFor(cls)).filter((p) =>
     filter === "combined" ? p.exams.length > 1 : p.exams.length === 1 && p.exams[0] === exam,
   );
 
@@ -536,7 +545,7 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
           subtitle={
             mode === "online"
               ? "Pick the exam you're writing. Every course has a free plan, and Standard and Advanced come with a 7-day free trial."
-              : "Pick the exam you're writing — each course has one price."
+              : "Pick the exam you're writing — each course has one fee, per annum."
           }
         />
 
@@ -559,15 +568,18 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
                 {e.exam}
               </button>
             ))}
-            <button
-              id="combined"
-              type="button"
-              aria-pressed={filter === "combined"}
-              onClick={() => setFilter("combined")}
-              className={pill(filter === "combined")}
-            >
-              Combined courses
-            </button>
+            {/* Classroom has no combined courses. */}
+            {mode === "online" && (
+              <button
+                id="combined"
+                type="button"
+                aria-pressed={filter === "combined"}
+                onClick={() => setFilter("combined")}
+                className={pill(filter === "combined")}
+              >
+                Combined courses
+              </button>
+            )}
           </div>
         </div>
 
@@ -628,14 +640,14 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
                       {enquiry.pkg.name}
                     </SheetTitle>
                     <SheetDescription>
-                      {enquiry.pkg.exams.join(" · ")} — you pay{" "}
-                      {formatPrice(classroomPrice(enquiry.pkg, cls).price - classroomPrice(enquiry.pkg, cls).off)}
+                      {classroomFees[enquiry.pkg.slug].label} — you pay{" "}
+                      {formatFee(classroomPrice(enquiry.pkg).price - classroomPrice(enquiry.pkg).off)} + {classroomExtras}
                     </SheetDescription>
                   </SheetHeader>
                   <CourseEnquiryForm
                     key={enquiry.pkg.slug}
                     id={`enquiry-${enquiry.pkg.slug}`}
-                    course={`${enquiry.pkg.name} — ${classroomClasses.find((c) => c.id === cls)!.label} classroom (${formatPrice(classroomPrice(enquiry.pkg, cls).price)})`}
+                    course={`${enquiry.pkg.name} — ${classroomClasses.find((c) => c.id === cls)!.label} classroom (${formatFee(classroomPrice(enquiry.pkg).price)})`}
                     intent={enquiry.intent}
                     onIntentChange={(intent) => setEnquiry({ ...enquiry, intent })}
                     onSent={() => setEnquiry(null)}
@@ -668,9 +680,9 @@ export function ClassPicker({ mode }: { mode: PackageMode }) {
   return (
     <div className="grid gap-5 md:grid-cols-2">
       {classes.map((c) => {
-        const packages = packagesFor(c.id);
+        const packages = mode === "online" ? packagesFor(c.id) : classroomPackagesFor(c.id);
         const from = Math.min(
-          ...packages.map((p) => (mode === "online" ? p.prices[c.id]!.standard.price : classroomPrice(p, c.id).price)),
+          ...packages.map((p) => (mode === "online" ? p.prices[c.id]!.standard.price : classroomPrice(p).price)),
         );
         return (
           <Link
@@ -694,7 +706,9 @@ export function ClassPicker({ mode }: { mode: PackageMode }) {
               </span>
               <span className="text-right">
                 <span className="block text-xs text-brand-text-muted">from</span>
-                <span className="block text-xl font-bold text-brand-text-primary">{formatPrice(from)}</span>
+                <span className="block text-xl font-bold text-brand-text-primary">
+                  {mode === "online" ? formatPrice(from) : formatFee(from)}
+                </span>
               </span>
             </span>
             <span className="mt-6 flex flex-wrap gap-1.5">
@@ -711,7 +725,7 @@ export function ClassPicker({ mode }: { mode: PackageMode }) {
               <span className="flex items-center gap-1.5 text-sm text-brand-text-secondary">
                 {mode === "classroom" ? (
                   <>
-                    <Smartphone className="size-4 text-brand-primary" /> {academy.appName} app Advanced plan access
+                    <Smartphone className="size-4 text-brand-primary" /> + {classroomExtras}
                   </>
                 ) : (
                   <>

@@ -9,11 +9,13 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   classroomClasses,
+  classroomFees,
   classroomPrice,
   examPackages,
   onlineClasses,
   onlineExams,
   type OnlineExamInfo,
+  perAnnum,
 } from "./courses-data";
 import { SectionHeading } from "./SectionHeading";
 
@@ -96,13 +98,17 @@ export function ProgramsGrid({
   );
 }
 
+/** An exam's own packages in one format — classroom teaches only some of them. */
+const packagesIn = (exam: OnlineExamInfo, format: Format) =>
+  examPackages(exam.exam).filter((p) => format === "online" || classroomFees[p.slug]);
+
 /** The lowest Standard (online) or classroom price among an exam's own packages. */
 function fromPrice(exam: OnlineExamInfo, format: Format) {
   return Math.min(
-    ...examPackages(exam.exam).flatMap((p) =>
-      classroomClasses.flatMap((c) =>
-        p.prices[c.id] ? [format === "online" ? p.prices[c.id]!.standard.price : classroomPrice(p, c.id).price] : [],
-      ),
+    ...packagesIn(exam, format).flatMap((p) =>
+      format === "online"
+        ? classroomClasses.flatMap((c) => (p.prices[c.id] ? [p.prices[c.id]!.standard.price] : []))
+        : [classroomPrice(p).price],
     ),
   );
 }
@@ -142,9 +148,10 @@ function ExamPrograms({ format }: { format: Format }) {
                 <span className="font-bold text-brand-text-primary">
                   ₹{fromPrice(c, format).toLocaleString("en-IN")}
                 </span>
+                {format === "classroom" && <> {perAnnum}</>}
               </p>
               <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Courses">
-                {examPackages(c.exam).map((p) => (
+                {packagesIn(c, format).map((p) => (
                   <li
                     key={p.slug}
                     className="rounded-full bg-brand-subtle-bg px-2.5 py-0.5 text-[11px] font-semibold text-brand-primary-darker"
@@ -186,21 +193,7 @@ function ExamPrograms({ format }: { format: Format }) {
           <ArrowRight className="size-5 shrink-0 text-brand-primary transition-transform group-hover:translate-x-1" />
         </Link>
       ) : (
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <Link
-            href={`${classroomClasses[0].href}#combined`}
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 hover:bg-white card-hover"
-          >
-            <span>
-              <span className="block text-[11px] font-bold uppercase tracking-wide text-brand-primary">
-                Several exams?
-              </span>
-              <span className="mt-0.5 block font-semibold text-brand-text-primary">
-                Sakala, Sarvam and Sarvotthama combine them in one course
-              </span>
-            </span>
-            <ArrowRight className="size-5 shrink-0 text-brand-primary transition-transform group-hover:translate-x-1" />
-          </Link>
+        <div className="mt-6 grid gap-4">
           <a
             href="#visit"
             className="group flex items-center justify-between gap-4 rounded-2xl bg-brand-primary p-5 text-white transition-colors hover:bg-brand-primary-dark"

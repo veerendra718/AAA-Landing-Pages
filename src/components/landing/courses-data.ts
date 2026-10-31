@@ -344,20 +344,36 @@ export function packageFilterSlug(pkg: OnlinePackage): string {
 // ---------------------------------------------------------------------------
 // Classroom packages
 //
-// The same packages are taught in the classroom at Vijayanagar, as one course
-// with no Free / Standard / Advanced tiers, and classroom students get the
+// Four of the packages are also taught in the classroom at Vijayanagar, as one
+// course with no Free / Standard / Advanced tiers, and classroom students get the
 // AAA app Advanced plan access.
 //
-// DUMMY: the academy hasn't sent classroom prices yet. Until it does, each
-// classroom price is the package's online price doubled — the Advanced price,
-// or Standard where there is no Advanced — discount included. Replace
-// `classroomPrice` with the real list when it arrives.
+// Fees are from the academy's classroom fee list (Oct 2026): a yearly fee and
+// the discounted fee, the same for Class 11 and Class 12. The academy wants
+// every classroom fee shown as per annum (`perAnnum`). `label` and
+// `classroomExtras` are the list's own wording.
 // ---------------------------------------------------------------------------
 
-export function classroomPrice(pkg: OnlinePackage, cls: PackageClass): PackagePrice {
-  const tiers = pkg.prices[cls]!;
-  const base = tiers.advanced ?? tiers.standard;
-  return { price: base.price * 2, off: base.off * 2, offLabel: base.offLabel };
+export const classroomFees: Record<string, { label: string; price: number; discounted: number }> = {
+  siddhartha: { label: "K-CET + JEE Mains or NEET", price: 125000, discounted: 110000 },
+  saadhaka: { label: "JEE Mains Rankers Batch", price: 160000, discounted: 140000 },
+  shushrutha: { label: "NEET Rankers Batch", price: 175000, discounted: 150000 },
+  shreshta: { label: "JEE Mains + Advanced Rankers Batch", price: 190000, discounted: 160000 },
+};
+
+/** Shown after every classroom fee. */
+export const perAnnum = "p.a.";
+
+/** What comes with every classroom course's fee, as the fee list words it. */
+export const classroomExtras = "Free app + Free crash course";
+
+/** The packages taught in the classroom, in the online catalogue's order. */
+export const classroomPackagesFor = (cls: PackageClass) => packagesFor(cls).filter((p) => classroomFees[p.slug]);
+
+/** A classroom package's yearly fee and its discount. */
+export function classroomPrice(pkg: OnlinePackage): PackagePrice {
+  const fee = classroomFees[pkg.slug];
+  return { price: fee.price, off: fee.price - fee.discounted };
 }
 
 /** What a classroom package includes, beyond the free app plan. */
@@ -397,16 +413,10 @@ export const classroomClasses: OnlineClassInfo[] = [
  */
 export const classroomDetails: Record<string, { summary: string; subjects: string; schedule: string; tests: string }> = {
   siddhartha: {
-    summary: "Complete KCET preparation, taught alongside the PU syllabus.",
-    subjects: "Physics · Chemistry · Maths",
+    summary: "KCET preparation with JEE Main or NEET alongside, taught with the PU syllabus.",
+    subjects: "Physics · Chemistry · Maths or Biology",
     schedule: "Mon – Sat · 3 hours a day",
     tests: "Weekly KCET-pattern tests",
-  },
-  "siddhartha-fasttrack": {
-    summary: "A fast-paced run through the whole KCET syllabus in the final year.",
-    subjects: "Physics · Chemistry · Maths",
-    schedule: "Mon – Sat · 4 hours a day",
-    tests: "A full KCET mock every week",
   },
   shushrutha: {
     summary: "NCERT-first NEET coaching, with concepts taught before memory.",
@@ -425,24 +435,6 @@ export const classroomDetails: Record<string, { summary: string; subjects: strin
     subjects: "Physics · Chemistry · Maths",
     schedule: "Mon – Sat · 4 hours a day",
     tests: "Fortnightly JEE Advanced papers",
-  },
-  sakala: {
-    summary: "KCET and NEET prepared together, for engineering and medical options.",
-    subjects: "Physics · Chemistry · Maths · Biology",
-    schedule: "Mon – Sat · 4 hours a day",
-    tests: "KCET and NEET tests on alternate weeks",
-  },
-  sarvam: {
-    summary: "KCET, NEET and JEE Main in one course — every door kept open.",
-    subjects: "Physics · Chemistry · Maths · Biology",
-    schedule: "Mon – Sat · 4.5 hours a day",
-    tests: "Weekly tests across all three exams",
-  },
-  sarvotthama: {
-    summary: "Every entrance exam, from KCET through to JEE Advanced.",
-    subjects: "Physics · Chemistry · Maths · Biology",
-    schedule: "Mon – Sat · 5 hours a day",
-    tests: "Weekly tests, plus JEE Advanced papers",
   },
 };
 
