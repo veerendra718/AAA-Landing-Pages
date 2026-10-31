@@ -21,7 +21,7 @@ import { ResultsTicker } from "@/components/landing/ResultsTicker";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { ToppersSection } from "@/components/landing/ToppersSection";
 import { alumniColleges, headlineStats, highlightResults } from "@/components/landing/v2-data";
-import { VrddhiSection } from "@/components/landing/VrddhiSection";
+import { AsstSection } from "@/components/landing/AsstSection";
 import { WhatsAppIcon } from "@/components/landing/WhatsAppIcon";
 import { WhyChoose } from "@/components/landing/WhyChoose";
 
@@ -39,7 +39,7 @@ const links = [
   { href: "#programs", label: "Programmes" },
   { href: "#app", label: "Classroom + App" },
   { href: "#faculty", label: "Faculty" },
-  { href: "#vrddhi", label: "Scholarship test" },
+  { href: "#asst", label: "Scholarship test" },
   { href: "#centre", label: "Centre" },
 ];
 
@@ -163,7 +163,7 @@ export default function LandingV2() {
 
       <WhyChoose id="why" />
 
-      <VrddhiSection />
+      <AsstSection />
 
       <Testimonials />
 

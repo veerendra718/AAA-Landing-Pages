@@ -200,21 +200,20 @@ export const whyChoose = [
   { title: "30% lower fees", body: "The most reasonable fee among Bengaluru's serious institutes." },
 ];
 
-export const vrddhi = {
-  name: "Vrddhi",
-  meaning: "Prosperity, development, improvement in the career of a child",
-  since: 2012,
-  format: [
-    { label: "Questions", value: "35" },
-    { label: "Duration", value: "1 hour" },
-    { label: "Mode", value: "Objective" },
+/** ASST, the academy's scholarship-cum-admission test, in the academy's wording (Oct 2026). */
+export const asst = {
+  name: "ASST",
+  details: [
+    { label: "Duration", value: "1.5 Hours (90 Minutes)" },
+    { label: "Format", value: "Objective Type (MCQs)" },
+    { label: "Venue", value: "At the Arjunaa Academy Centre" },
   ],
-  subjects: ["Mental Ability", "Mathematics", "Physics", "Chemistry", "Biology"],
-  rewards: [
-    "Scholarships on admission",
-    "Best-school trophies by stream and zone",
-    "Medals for school toppers, trophies for zonal toppers",
-    "Certificates for every participant",
+  streams: [
+    { name: "JEE Track", note: "For Engineering Aspirants", subjects: ["Mental Ability", "Mathematics", "Physics", "Chemistry"] },
+    { name: "NEET Track", note: "For Medical Aspirants", subjects: ["Mental Ability", "Biology", "Physics", "Chemistry"] },
+  ],
+  benefits: [
+    { title: "Admission Scholarships", text: "Earn substantial fee waivers on your admission based on performance scores." },
   ],
 };
 
