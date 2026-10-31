@@ -4,7 +4,7 @@
 // with consistent capitalisation (the source mixes "K-CET TOPPERS" with
 // "NEET Top Achievers"). Names match the header menu.
 
-import { type AchieverGroup, achieverGroups } from "./achievers-data";
+import { type Achiever, type AchieverGroup, achieverGroups } from "./achievers-data";
 
 const display: Record<string, { name: string; heading: string }> = {
   "jee-advanced": { name: "JEE Advanced", heading: "JEE Advanced Toppers" },
@@ -18,6 +18,25 @@ const display: Record<string, { name: string; heading: string }> = {
 const hidden = new Set(["nstse"]);
 
 const order = Object.keys(display);
+
+/**
+ * Where a published rank sorts, best first: ranks ascending ("Rank 57",
+ * "AIR - 3084", a bare "309"), then percentiles descending ("99.38%"), then
+ * anything without a number ("Qualified").
+ */
+function rankKey(rank: string): [number, number] {
+  const percentile = rank.match(/(\d+(?:\.\d+)?)\s*%/);
+  if (percentile) return [1, -Number(percentile[1])];
+  const n = rank.match(/\d+/);
+  if (n) return [0, Number(n[0])];
+  return [2, 0];
+}
+
+function byRank(a: Achiever, b: Achiever) {
+  const [ta, va] = rankKey(a.rank);
+  const [tb, vb] = rankKey(b.rank);
+  return ta - tb || va - vb;
+}
 
 /** The categories in display order, with display names. A category the
  *  generator adds later still shows, at the end, under its source name. */
@@ -33,6 +52,9 @@ export const achieverSections: AchieverGroup[] = achieverGroups
     ...(display[g.slug] ?? {}),
     // The source quotes carry stray quotation marks ("…satisfaction.” - …").
     quote: g.quote.replace(/[“”"]/g, "").trim(),
+    // The source lists students in no particular order; show the highest
+    // rank first. The sort is stable, so equal ranks keep the source order.
+    students: [...g.students].sort(byRank),
   }));
 
 export function sectionBySlug(slug: string) {
