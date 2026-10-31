@@ -387,9 +387,8 @@ export type OtherCourseFee = {
 
 /**
  * The other classroom courses on the academy's fee list (Oct 2026), outside the
- * Class 11 & 12 packages, in the list's own wording. The crash course is listed
- * without "per annum". Sarthaka's State board fee is blank on the list, so it
- * isn't shown until the academy sends it.
+ * Class 11 & 12 packages, in the list's own wording. Sarthaka's State board fee
+ * is blank on the list, so it isn't shown until the academy sends it.
  */
 export const otherClassroomCourses: {
   slug: string;
@@ -402,7 +401,7 @@ export const otherClassroomCourses: {
     slug: "kcet-crash-course",
     name: "KCET Crash course",
     label: "for PCM",
-    fees: [{ price: 18000, perAnnum: false }],
+    fees: [{ price: 18000, perAnnum: true }],
     extras: "Free app access",
   },
   {
