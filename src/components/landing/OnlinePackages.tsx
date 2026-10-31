@@ -486,7 +486,13 @@ function ClassroomCard({
  * each with its fee as the academy lists it.
  */
 /** A course sold on its own, as a card: its name, what it is, its fee(s) and an enquiry link. */
-function StandaloneCourseCard({ course: c }: { course: StandaloneCourse }) {
+function StandaloneCourseCard({
+  course: c,
+  onEnquire,
+}: {
+  course: StandaloneCourse;
+  onEnquire: (intent: EnquiryIntent) => void;
+}) {
   return (
     <article
       id={c.slug}
@@ -523,27 +529,114 @@ function StandaloneCourseCard({ course: c }: { course: StandaloneCourse }) {
         </p>
       )}
       {c.note && <p className="mt-2 text-sm text-brand-text-muted">{c.note}</p>}
-      <div className="mt-auto pt-5">
-        <Button asChild variant="outline" className="w-full rounded-xl">
-          <Link href="/landing/contact#enquire">
-            <PhoneCall /> Enquire
-          </Link>
+      <div className="mt-auto grid grid-cols-2 gap-2 pt-5">
+        <Button className="rounded-xl" onClick={() => onEnquire("enrol")}>
+          Enroll now
+        </Button>
+        <Button variant="outline" className="rounded-xl" onClick={() => onEnquire("callback")}>
+          <PhoneCall /> Callback
         </Button>
       </div>
     </article>
   );
 }
 
+/** What the enquiry panel says about the course it was opened for. */
+type EnquirySubject = {
+  slug: string;
+  name: string;
+  /** The small line above the name, e.g. "Class 11 · Classroom". */
+  eyebrow: string;
+  /** One line under the name: what it is and what you pay. */
+  summary: string;
+  /** The course as the WhatsApp message names it. */
+  course: string;
+};
+
+/** A classroom package, as the enquiry panel describes it. */
+function packageSubject(pkg: OnlinePackage, cls: PackageClass): EnquirySubject {
+  const label = classroomClasses.find((c) => c.id === cls)!.label;
+  const price = classroomPrice(pkg);
+  return {
+    slug: pkg.slug,
+    name: pkg.name,
+    eyebrow: `${label} · Classroom`,
+    summary: `${classroomFees[pkg.slug].label} — you pay ${formatFee(price.price - price.off)} + ${classroomExtras}`,
+    course: `${pkg.name} — ${label} classroom (${formatFee(price.price)})`,
+  };
+}
+
+/** A course sold on its own, as the enquiry panel describes it. */
+function standaloneSubject(c: StandaloneCourse, eyebrow: string): EnquirySubject {
+  const fees = c.fees
+    .map((f) => {
+      const amount = f.perAnnum ? formatFee(f.discounted ?? f.price) : formatPrice(f.discounted ?? f.price);
+      return f.option ? `${f.option} ${amount}` : amount;
+    })
+    .join(" · ");
+  return {
+    slug: c.slug,
+    name: c.name,
+    eyebrow,
+    summary: `${c.label} — you pay ${fees}${c.extras ? ` + ${c.extras}` : ""}`,
+    course: `${c.name} — classroom (${fees})`,
+  };
+}
+
+/** The side panel every classroom course's Enroll now / Callback opens. */
+function EnquirySheet({
+  enquiry,
+  onChange,
+}: {
+  enquiry: { subject: EnquirySubject; intent: EnquiryIntent } | null;
+  onChange: (next: { subject: EnquirySubject; intent: EnquiryIntent } | null) => void;
+}) {
+  return (
+    <Sheet open={!!enquiry} onOpenChange={(o) => !o && onChange(null)}>
+      <SheetContent side="right" className="w-full overflow-y-auto sm:max-w-md">
+        {enquiry && (
+          <>
+            <SheetHeader className="border-b border-brand-border-light">
+              <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-brand-primary">
+                {enquiry.subject.eyebrow}
+              </p>
+              <SheetTitle className="font-(family-name:--font-display) text-2xl text-brand-primary-darker">
+                {enquiry.subject.name}
+              </SheetTitle>
+              <SheetDescription>{enquiry.subject.summary}</SheetDescription>
+            </SheetHeader>
+            <CourseEnquiryForm
+              key={enquiry.subject.slug}
+              id={`enquiry-${enquiry.subject.slug}`}
+              course={enquiry.subject.course}
+              intent={enquiry.intent}
+              onIntentChange={(intent) => onChange({ ...enquiry, intent })}
+              onSent={() => onChange(null)}
+              className="p-6"
+            />
+          </>
+        )}
+      </SheetContent>
+    </Sheet>
+  );
+}
+
 export function Class910Courses() {
+  const [enquiry, setEnquiry] = useState<{ subject: EnquirySubject; intent: EnquiryIntent } | null>(null);
   return (
     <section id="courses" className="scroll-mt-24 px-4 py-14 md:px-6 md:py-16">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-5 md:grid-cols-2">
           {class910Courses.map((c) => (
-            <StandaloneCourseCard key={c.slug} course={c} />
+            <StandaloneCourseCard
+              key={c.slug}
+              course={c}
+              onEnquire={(intent) => setEnquiry({ subject: standaloneSubject(c, "Classroom"), intent })}
+            />
           ))}
         </div>
       </div>
+      <EnquirySheet enquiry={enquiry} onChange={setEnquiry} />
     </section>
   );
 }
@@ -599,7 +692,7 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
   const [filter, setFilter] = useState<OnlineExam>(onlineExams[0].exam);
   // The classroom package whose Enroll / Callback button was pressed, if any —
   // one side panel serves every card.
-  const [enquiry, setEnquiry] = useState<{ pkg: OnlinePackage; intent: EnquiryIntent } | null>(null);
+  const [enquiry, setEnquiry] = useState<{ subject: EnquirySubject; intent: EnquiryIntent } | null>(null);
   const { hash, key } = useLocation();
 
   useEffect(() => {
@@ -693,48 +786,30 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
           <div className="mx-auto mt-8 flex max-w-6xl flex-wrap items-stretch justify-center gap-5">
             {shown.map((pkg) => (
               <div key={pkg.slug} className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]">
-                <ClassroomCard pkg={pkg} cls={cls} onEnquire={(intent) => setEnquiry({ pkg, intent })} />
+                <ClassroomCard
+                  pkg={pkg}
+                  cls={cls}
+                  onEnquire={(intent) => setEnquiry({ subject: packageSubject(pkg, cls), intent })}
+                />
               </div>
             ))}
             {extra.map((c) => (
               <div key={c.slug} className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]">
-                <StandaloneCourseCard course={c} />
+                <StandaloneCourseCard
+                  course={c}
+                  onEnquire={(intent) =>
+                    setEnquiry({
+                      subject: standaloneSubject(c, `${classroomClasses.find((k) => k.id === cls)!.label} · Classroom`),
+                      intent,
+                    })
+                  }
+                />
               </div>
             ))}
           </div>
         )}
 
-        {mode === "classroom" && (
-          <Sheet open={!!enquiry} onOpenChange={(o) => !o && setEnquiry(null)}>
-            <SheetContent side="right" className="w-full overflow-y-auto sm:max-w-md">
-              {enquiry && (
-                <>
-                  <SheetHeader className="border-b border-brand-border-light">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-brand-primary">
-                      {classroomClasses.find((c) => c.id === cls)!.label} · Classroom
-                    </p>
-                    <SheetTitle className="font-(family-name:--font-display) text-2xl text-brand-primary-darker">
-                      {enquiry.pkg.name}
-                    </SheetTitle>
-                    <SheetDescription>
-                      {classroomFees[enquiry.pkg.slug].label} — you pay{" "}
-                      {formatFee(classroomPrice(enquiry.pkg).price - classroomPrice(enquiry.pkg).off)} + {classroomExtras}
-                    </SheetDescription>
-                  </SheetHeader>
-                  <CourseEnquiryForm
-                    key={enquiry.pkg.slug}
-                    id={`enquiry-${enquiry.pkg.slug}`}
-                    course={`${enquiry.pkg.name} — ${classroomClasses.find((c) => c.id === cls)!.label} classroom (${formatFee(classroomPrice(enquiry.pkg).price)})`}
-                    intent={enquiry.intent}
-                    onIntentChange={(intent) => setEnquiry({ ...enquiry, intent })}
-                    onSent={() => setEnquiry(null)}
-                    className="p-6"
-                  />
-                </>
-              )}
-            </SheetContent>
-          </Sheet>
-        )}
+        {mode === "classroom" && <EnquirySheet enquiry={enquiry} onChange={setEnquiry} />}
 
         <p className="mt-14 text-center text-sm text-brand-text-muted">
           Not sure which course fits?{" "}
