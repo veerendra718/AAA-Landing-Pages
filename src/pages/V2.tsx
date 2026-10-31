@@ -54,7 +54,22 @@ const onlinePoints = [
   `Courses from ₹${onlineFrom.toLocaleString("en-IN")}`,
 ];
 
-const heroPoints = ["Batches of 30, max", "Day scholar & residential", "Class 11 & 12", `${academy.appName} app included`];
+const heroPoints = ["Day scholar & residential", "Class 11 & 12"];
+
+const heroPillars = [
+  {
+    title: "Elite Faculty:",
+    text: "Learn directly from premier IIT, NIT, and IISc minds at our flagship Vijayanagar centre.",
+  },
+  {
+    title: "Hyper-Personalized Focus:",
+    text: "Strict small-batch limits mean your child is never just a number in a crowd.",
+  },
+  {
+    title: `The ${academy.appName} Digital Advantage:`,
+    text: "Deepen classroom concepts at home with 24/7 access to test analytics, recorded lectures, and smart revision tools.",
+  },
+];
 
 export default function LandingV2() {
   return (
@@ -146,10 +161,10 @@ function ClassroomHero() {
           </span>
           KCET · NEET · JEE Main · JEE Advanced — Class 11 & 12
         </p>
-        <h1 className="mt-5 font-(family-name:--font-display) text-[40px] font-bold leading-[1.04] tracking-tight text-brand-primary-darker text-balance sm:text-5xl lg:text-[64px]">
-          Taught in the classroom.{" "}
+        <h1 className="mt-5 font-(family-name:--font-display) text-[40px] font-bold leading-[1.04] tracking-tight text-brand-primary-darker text-balance sm:text-5xl lg:text-[56px]">
+          Premium Classroom Coaching.{" "}
           <span className="relative text-brand-primary">
-            Tracked in the app.
+            Seamless App Integration.
             <svg
               aria-hidden="true"
               viewBox="0 0 200 12"
@@ -160,11 +175,15 @@ function ClassroomHero() {
             </svg>
           </span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-text-muted">
-          Small-batch coaching by IIT, NIT &amp; IISc faculty at our Vijayanagar centre in
-          Bengaluru since {academy.founded}. Every student also gets the{" "}
-          <span className="font-semibold text-brand-primary">{academy.appName} app</span>, so tests,
-          recordings and revision carry on at home.
+        <ul className="mt-6 max-w-xl space-y-2.5 text-base leading-relaxed text-brand-text-muted sm:text-lg">
+          {heroPillars.map((p) => (
+            <li key={p.title}>
+              <span className="font-semibold text-brand-primary">{p.title}</span> {p.text}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 max-w-xl text-base font-medium text-brand-text-secondary">
+          Cultivating Bengaluru’s next generation of achievers since {academy.founded}.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
