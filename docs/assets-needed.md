@@ -25,6 +25,7 @@ Landscape, at least **1600 × 1000 px**, natural light, real students and facult
 | 9 | One photo per **other branch**: VSS International Public School (Ullal), Vedantha PU College (Vasanthapura) | Branch picker | — (new) |
 | 10 | **Residential / hostel** — rooms, study hall, dining (if residential is offered) | Programmes | — (new) |
 | 11 | **Group photo of faculty** | Faculty section | — (new) |
+| 12 | **Portrait of each of the 13 faculty** (head and shoulders, plain background, same framing) — add as `image` in `facultyMembers` (about-data.ts) | Faculty section, Leadership & Faculty page | initials tiles |
 
 Also useful: a **30–60 s video** walk-through of the centre or a class (can be a YouTube link).
 

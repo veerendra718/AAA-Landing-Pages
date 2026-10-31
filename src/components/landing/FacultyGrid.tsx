@@ -1,35 +1,22 @@
 "use client";
 
-import Image from "next/image";
 import { GraduationCap } from "lucide-react";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { facultyMembers } from "./about-data";
+import { FacultyPhoto } from "./FacultyPhoto";
 
-type Subject = "Physics" | "Chemistry" | "Mathematics" | "Biology" | "Engineering";
-
-/** The subject a faculty member teaches, read from their role as the academy
- *  words it ("Senior Faculty, Chemistry", "Faculty, IIT-JEE Mathematics"). */
-function subjectOf(role: string): Subject {
-  if (/physics/i.test(role)) return "Physics";
-  if (/chemistry/i.test(role)) return "Chemistry";
-  if (/math/i.test(role)) return "Mathematics";
-  if (/bio/i.test(role)) return "Biology";
-  return "Engineering";
-}
-
-const faculty = facultyMembers.map((f) => ({ ...f, subject: subjectOf(f.role) }));
-const subjects = (["Physics", "Chemistry", "Mathematics", "Biology", "Engineering"] as const).filter(
-  (s) => faculty.some((f) => f.subject === s),
-);
+const faculty = facultyMembers;
+// The subjects in the order the list first names them.
+const subjects = [...new Set(faculty.map((f) => f.subject))];
 
 /**
- * The faculty, filterable by subject. Each card is only the photo, name,
- * designation and qualification — no biography.
+ * The faculty, filterable by subject. Each card is the photo, subject, name
+ * and qualification.
  */
 export function FacultyGrid() {
-  const [subject, setSubject] = useState<Subject | "all">("all");
+  const [subject, setSubject] = useState<string>("all");
   const shown = subject === "all" ? faculty : faculty.filter((f) => f.subject === subject);
 
   const chip = (active: boolean) =>
@@ -65,20 +52,13 @@ export function FacultyGrid() {
               className="flex flex-col overflow-hidden rounded-2xl border border-brand-border-light bg-white card-hover"
             >
               <div className="relative aspect-[4/5] bg-brand-subtle-bg">
-                <Image
-                  src={f.image}
-                  alt={f.name}
-                  fill
-                  sizes="(min-width: 1280px) 300px, (min-width: 640px) 45vw, 100vw"
-                  className="object-cover object-top"
-                />
+                <FacultyPhoto member={f} sizes="(min-width: 1280px) 300px, (min-width: 640px) 45vw, 100vw" />
                 <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-0.5 text-[11px] font-bold text-brand-primary shadow">
                   {f.subject}
                 </span>
               </div>
               <div className="flex flex-1 flex-col p-5">
                 <p className="text-lg font-semibold text-brand-text-primary">{f.name}</p>
-                <p className="text-sm font-medium text-brand-primary">{f.role}</p>
                 <p className="mt-3 flex gap-2 text-xs leading-relaxed text-brand-text-muted">
                   <GraduationCap className="size-4 shrink-0 text-brand-primary" />
                   {f.qualification}

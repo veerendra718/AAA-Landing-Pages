@@ -41,77 +41,29 @@ export const leaders = [
   },
 ];
 
-export const facultyMembers = [
-  {
-    name: "Tati Usha Sailaja",
-    role: "Senior Faculty, Chemistry",
-    qualification: "M.Sc. Chemistry, Nizam College (Osmania University)",
-    image: "/images/landing/about/faculty-tati-usha-sailaja.jpg",
-    bio: "16 years of teaching experience for JEE, NEET and undergraduate courses. Completed M.Sc. Chemistry in 2003 at Nizam College, Hyderabad, with a project on ground-water quality analysis under the Central Ground Water Board. Passionate about helping young minds build the critical thinking and logical reasoning to solve any chemistry problem.",
-  },
-  {
-    name: "Uthpala M",
-    role: "Senior Faculty, Biology",
-    qualification: "M.Sc. Zoology, University of Mysore",
-    image: "/images/landing/about/faculty-uthpala-m.jpg",
-    bio: "Teaches NEET biology, with two years of post-graduate teaching in the Department of Applied Zoology, Kuvempu University. Alumna of the University of Mysore and the Regional Institute of Education, Mysuru (B.Sc.Ed, CBZ). Qualified CTET and KSET (Life Science).",
-  },
-  {
-    name: "Dr. Hemalatha S Korannavar",
-    role: "Biology Faculty, NEET",
-    qualification: "Ph.D. Botany, Bangalore University",
-    image: "/images/landing/about/faculty-hemalatha-s-korannavar.jpg",
-    bio: "Completed her Ph.D. in Botany at Bangalore University in 2015, after an M.Phil from Periyar University and an M.Sc. from Dharwad University. Worked as a Visiting Scientist at Durban University, South Africa, and was awarded Best Woman Scientist by Madurai University.",
-  },
-  {
-    name: "Subhashree V",
-    role: "Senior Faculty, Biology",
-    qualification: "B.Tech Biotechnology (Hons.), SASTRA University",
-    image: "/images/landing/about/faculty-subhashree-v.jpg",
-    bio: "B.Tech Biotechnology (Hons.) graduate from SASTRA Deemed to be University, Thanjavur, teaching biology at Arjunaa Academy for Achievers.",
-  },
-  {
-    name: "Shreel S Prasad",
-    role: "Faculty, Biotechnology",
-    qualification: "B.Tech & M.Tech Biotechnology, BITS Pilani",
-    image: "/images/landing/about/faculty-shreel-s-prasad.jpg",
-    bio: "Alumnus of BITS Pilani (B.Tech 2019, Masters 2021), with a thesis on the anticancer properties of the camel-milk protein lactoferrin. Interned at the Serum Institute of India, Pune, on monoclonal antibodies for dengue and polymeningitis. Silver medallist with a scholarship in the undergraduate programme.",
-  },
-  {
-    name: "Ranjith Rajeev",
-    role: "Senior Faculty, Physics",
-    qualification: "M.Tech, IIT Kharagpur",
-    image: "/images/landing/about/faculty-ranjith-rajeev.jpg",
-    bio: "Teaches physics for JEE Main, NEET and CET, and sets out to make physics interesting and engaging. Completed his M.Tech at IIT Kharagpur, and cleared the five-day SSB interview for Executive Officer in the Indian Navy on his first attempt.",
-  },
-  {
-    name: "Hariom Kumar",
-    role: "Faculty, Physics",
-    qualification: "B.Tech Computer Science, IIIT Kalyani",
-    image: "/images/landing/about/faculty-hariom-kumar.jpg",
-    bio: "Fascinated by nature and natural phenomena since childhood — hence a love for physics and travelling. Has guided JEE and NEET aspirants for three years, and personally taught students who went on to ranks under 1,000.",
-  },
-  {
-    name: "Dheeraj Gupta",
-    role: "Senior Faculty, Mathematics",
-    qualification: "M.Tech VLSI Design, MNIT Jaipur",
-    image: "/images/landing/about/faculty-dheeraj-gupta.jpg",
-    bio: "Alumnus of MNIT Jaipur (M.Tech, 2021). Qualified JEE Main in 2014 and 2015, and GATE (ECE) in 2019 with AIR 3,895. Favourite topics to teach: coordinate geometry and calculus.",
-  },
-  {
-    name: "Deeksha Sharma",
-    role: "Faculty, IIT-JEE Mathematics",
-    qualification: "M.Sc. Mathematics (Pure & Applied), University of Kota",
-    image: "/images/landing/about/faculty-deeksha-sharma.jpg",
-    bio: "Qualified GATE twice — AIR 1,180 in 2018 and AIR 672 in 2019. Taught IIT-JEE mathematics at Gurukendram Institute, Kota, from 2018 to 2021. Gold medallist from Government College, Kota, with a published paper on a new functional Taylor series method for fractional Riccati equations.",
-  },
-  {
-    name: "Pramod Pandey",
-    role: "Faculty, Engineering Sciences",
-    qualification: "M.Tech Manufacturing Technology, NIT Warangal",
-    image: "/images/landing/about/faculty-pramod-pandey.jpg",
-    bio: "Six years as an Assistant Professor of Mechanical Engineering at Presidency University, Bangalore and RGTU, Bhopal, plus two years as a doubt solver at Unacademy. AIR 1,889 in GATE 2016; qualified UPSC Engineering Services 2016, and IOCL, CIL and BEL in 2014.",
-  },
+export type FacultyMember = {
+  name: string;
+  subject: string;
+  qualification: string;
+  /** Not yet: the academy is sending photos. Cards show initials until then. */
+  image?: string;
+};
+
+/** The faculty, from the academy's latest list (Oct 2026), in its order and wording. */
+export const facultyMembers: FacultyMember[] = [
+  { name: "Anushree D H", subject: "Chemistry", qualification: "MSc" },
+  { name: "Pooja Rajeev Desai", subject: "Biology", qualification: "MSc" },
+  { name: "Hruthik Patil", subject: "Physics", qualification: "MSc" },
+  { name: "Aparoopa T", subject: "Chemistry", qualification: "MSc" },
+  { name: "Mahadevaswamy A S", subject: "Math", qualification: "MSc" },
+  { name: "Akash Raj", subject: "Biology", qualification: "MSc" },
+  { name: "V Gopinath Naidu", subject: "Physics", qualification: "MSc" },
+  { name: "Hithesh Arya S", subject: "Math", qualification: "MSc" },
+  { name: "Preethi Pereira", subject: "Biology", qualification: "MSc" },
+  { name: "Anil Subash S", subject: "Chemistry", qualification: "MSc PhD" },
+  { name: "K V Chandrashekaraiah", subject: "Physics", qualification: "MSc" },
+  { name: "M L Vijayasimha", subject: "Math", qualification: "BE" },
+  { name: "N R Srinath", subject: "Math", qualification: "MSc" },
 ];
 
 export const testimonialsFull = [

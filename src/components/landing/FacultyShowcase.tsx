@@ -4,13 +4,13 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { facultyMembers, leaders } from "./about-data";
+import { FacultyPhoto } from "./FacultyPhoto";
 import { SectionHeading } from "./SectionHeading";
 
 /**
  * The people who teach, for V2: the two founders, then the faculty as a row of
  * photo cards (a snap scroller on small screens, a grid from `lg`). Everything
- * comes from about-data.ts — names, roles, qualifications and photos as
- * aaaedu.in publishes them. Full bios live on /landing/about/leadership.
+ * comes from about-data.ts. The full faculty is on /landing/about/leadership.
  */
 export function FacultyShowcase({ id = "faculty" }: { id?: string }) {
   const shown = facultyMembers.slice(0, 8);
@@ -67,17 +67,15 @@ export function FacultyShowcase({ id = "faculty" }: { id?: string }) {
             className="group w-[62vw] shrink-0 snap-start overflow-hidden rounded-3xl border border-brand-border-light bg-white sm:w-[38vw] lg:w-auto card-hover"
           >
             <div className="relative aspect-[4/4.2] overflow-hidden bg-brand-subtle-bg">
-              <Image
-                src={f.image}
-                alt={f.name}
-                fill
+              <FacultyPhoto
+                member={f}
                 sizes="(min-width: 1024px) 300px, 62vw"
-                className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                className="transition-transform duration-500 group-hover:scale-[1.03]"
               />
             </div>
             <div className="p-4">
               <p className="font-semibold text-brand-text-primary">{f.name}</p>
-              <p className="text-sm font-medium text-brand-primary">{f.role}</p>
+              <p className="text-sm font-medium text-brand-primary">{f.subject}</p>
               <p className="mt-2 flex gap-1.5 text-xs leading-snug text-brand-text-muted">
                 <GraduationCap className="size-3.5 shrink-0" />
                 {f.qualification}
