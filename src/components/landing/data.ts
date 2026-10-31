@@ -147,6 +147,14 @@ export const values = [
   },
 ];
 
+/** The core values, in the brochure's words (AAA 26 Brochure) — the Mission &
+ *  Vision page. `values` above is aaaedu.in's wording, still used by V1. */
+export const coreValues = [
+  "Dedication to the success of our students which will cascade automatically on AAA and you as an individual.",
+  "Creative/Innovative teaching methods and modules which differentiates us from rest of the world.",
+  "Trust, Mutual Respect, Commitment and Personal Responsibility (Ownership) in everything we do.",
+];
+
 // `href` points at the /landing/courses page for the same programme, so the
 // footer and the programme cards can send visitors to the detail page instead
 // of dumping every one of them on the same on-page anchor.

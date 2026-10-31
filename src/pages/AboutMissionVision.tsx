@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Check, Eye, HeartHandshake, Sparkles, Target } from "lucide-react";
+import { Award, Check, Eye, HeartHandshake, Lightbulb, Target } from "lucide-react";
 
 import { leaders } from "@/components/landing/about-data";
 import { AboutShell } from "@/components/landing/AboutShell";
-import { about, mission, values, vision } from "@/components/landing/data";
+import { about, coreValues, mission, vision } from "@/components/landing/data";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Cost-effective, world-class education that creates professionally superior manpower and Principle-Centered Leaders.",
 };
 
-const valueIcons = [Target, HeartHandshake, Sparkles];
+const valueIcons = [Award, Lightbulb, HeartHandshake];
 
 export default function MissionVisionPage() {
   const founder = leaders[0];
@@ -48,19 +48,16 @@ export default function MissionVisionPage() {
 
       <section className="bg-brand-page-bg py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <SectionHeading eyebrow="Our core values" title="Commitment. Culture. Catalyze." />
+          <SectionHeading title="Our Core Values" />
           <div className="mt-12 grid gap-4 sm:grid-cols-3">
-            {values.map((v, i) => {
+            {coreValues.map((v, i) => {
               const Icon = valueIcons[i];
               return (
-                <div key={v.title} className="rounded-2xl bg-white p-6 md:p-8 card-hover">
+                <div key={v} className="rounded-2xl bg-white p-6 md:p-8 card-hover">
                   <span className="flex size-11 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
                     <Icon className="size-5" />
                   </span>
-                  <p className="mt-4 font-(family-name:--font-display) text-2xl font-bold text-brand-primary-darker">
-                    {v.title}
-                  </p>
-                  <p className="mt-1 leading-relaxed text-brand-text-muted">{v.body}</p>
+                  <p className="mt-4 text-lg leading-relaxed text-brand-text-secondary">{v}</p>
                 </div>
               );
             })}
