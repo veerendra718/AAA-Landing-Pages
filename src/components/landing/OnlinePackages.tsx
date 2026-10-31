@@ -490,9 +490,12 @@ function ClassroomCard({
 function StandaloneCourseCard({
   course: c,
   onEnquire,
+  other,
 }: {
   course: StandaloneCourse;
   onEnquire: (intent: EnquiryIntent) => void;
+  /** The same course in the other format, linked under the buttons. */
+  other?: { href: string; mode: PackageMode };
 }) {
   return (
     <article
@@ -543,6 +546,22 @@ function StandaloneCourseCard({
           <PhoneCall /> Callback
         </Button>
       </div>
+      {other && (
+        <Link
+          href={other.href}
+          className="mt-3 inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-brand-text-muted hover:text-brand-primary"
+        >
+          {other.mode === "online" ? (
+            <>
+              <MonitorPlay className="size-3.5" /> Or online
+            </>
+          ) : (
+            <>
+              <Building2 className="size-3.5" /> Or in the classroom
+            </>
+          )}
+        </Link>
+      )}
     </article>
   );
 }
@@ -712,6 +731,11 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
   // The KCET crash course sits beside the classroom KCET packages.
   const extra = filter !== "KCET" ? [] : mode === "classroom" ? [kcetCrashCourse] : [kcetCrashCourseOnline];
   const classInfo = (mode === "online" ? onlineClasses : classroomClasses).find((k) => k.id === cls)!;
+  // The crash course is taught both ways; each card links to the other's KCET tab.
+  const otherFormat = {
+    href: `${(mode === "online" ? classroomClasses : onlineClasses).find((k) => k.id === cls)!.href}#kcet`,
+    mode: (mode === "online" ? "classroom" : "online") as PackageMode,
+  };
   const enquireAbout = (c: StandaloneCourse) => (intent: EnquiryIntent) =>
     setEnquiry({
       subject: standaloneSubject(c, `${classInfo.label} · ${mode === "online" ? "Online" : "Classroom"}`, mode),
@@ -794,7 +818,7 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
             )}
             {extra.map((c) => (
               <div key={c.slug} className="max-w-md">
-                <StandaloneCourseCard course={c} onEnquire={enquireAbout(c)} />
+                <StandaloneCourseCard course={c} onEnquire={enquireAbout(c)} other={otherFormat} />
               </div>
             ))}
           </div>
@@ -812,7 +836,7 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
             ))}
             {extra.map((c) => (
               <div key={c.slug} className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]">
-                <StandaloneCourseCard course={c} onEnquire={enquireAbout(c)} />
+                <StandaloneCourseCard course={c} onEnquire={enquireAbout(c)} other={otherFormat} />
               </div>
             ))}
           </div>
