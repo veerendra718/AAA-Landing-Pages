@@ -100,6 +100,7 @@ export const onlinePlans = [
       "10,000+ Practice Questions",
       "Weekly Chapter-wise Tests",
       "Advanced Performance Analytics",
+      "Board Exam Preparation",
     ],
   },
   {
@@ -282,7 +283,6 @@ export const onlineFeesTbd = true;
 export const onlineCourseDetails = [
   { label: "Live classes", value: "Mon – Sat · 3 hours a day" },
   { label: "Tests", value: "Weekly" },
-  { label: "Not included", value: "Board exam preparation" },
 ];
 
 /**
@@ -477,4 +477,5 @@ export const planComparison: { feature: string; free: PlanCell; standard: PlanCe
   { feature: "1-on-1 doubt sessions", free: false, standard: false, advanced: "Weekly, per subject" },
   { feature: "Adaptive learning", free: false, standard: true, advanced: true },
   { feature: "Badges & tokens", free: false, standard: "1× earning", advanced: "1.6× earning" },
+  { feature: "Board exam preparation", free: false, standard: true, advanced: true },
 ];
