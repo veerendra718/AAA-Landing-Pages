@@ -59,7 +59,7 @@ export const formatFee = (rupees: number) => `${formatPrice(rupees)} ${perAnnum}
 
 const highlights = {
   online: [
-    { icon: UserCheck, text: "Same faculty as the classroom", note: "Taught live by the teachers of our Vijayanagar batches." },
+    { icon: UserCheck, text: "Same faculty as the classroom", note: "Taught by Arjunaa Academy's team of elite Faculty" },
     { icon: MonitorPlay, text: "Live classes + video lectures", note: "Join live, or watch any lecture again later." },
     { icon: Gift, text: "Free plan · 7-day trial of paid plans", note: "Start free; try Standard or Advanced free for 7 days." },
   ],
