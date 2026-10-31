@@ -51,8 +51,9 @@ function today() {
  * course and the request type), a date and time to be contacted, and the
  * reason for contacting. As there, the request type reshapes the form: "Visit
  * Our Center" names the centre beside the date and time — aaaedu.in asks for a
- * branch here, but this site has one centre, Vijayanagar — and "Home Visit" and
- * "Connect Online" turn the last box into an address or the details to connect.
+ * branch here, but this site has one centre, Vijayanagar — and "Connect Online"
+ * turns the last box into the details to connect. aaaedu.in's "Home Visit" is
+ * left out at the academy's request.
  */
 export function VisitForm({ className }: { className?: string }) {
   const form = useForm<Values>({
@@ -74,11 +75,9 @@ export function VisitForm({ className }: { className?: string }) {
   const request = useWatch({ control: form.control, name: "request" });
   const visit = request === "Visit Our Center";
   const last =
-    request === "Home Visit"
-      ? { title: "Please provide the address where you would like our executive to meet you", field: "Address" }
-      : request === "Connect Online"
-        ? { title: "Please provide us the details to connect online", field: "Detail" }
-        : { title: "Please provide us the reason for contacting us", field: "Detail" };
+    request === "Connect Online"
+      ? { title: "Please provide us the details to connect online", field: "Detail" }
+      : { title: "Please provide us the reason for contacting us", field: "Detail" };
 
   // No backend yet: the enquiry is handed to WhatsApp as a ready-typed message
   // to the academy's number, so it reaches a mentor instead of vanishing.
@@ -92,7 +91,7 @@ export function VisitForm({ className }: { className?: string }) {
       `Location: ${values.location}`,
       `Preferred date & time: ${values.date} ${values.time}`,
       ...(visit ? [`Centre: ${branch.name}`] : []),
-      `${request === "Home Visit" ? "Address" : request === "Connect Online" ? "Details to connect" : "Reason"}: ${values.detail}`,
+      `${request === "Connect Online" ? "Details to connect" : "Reason"}: ${values.detail}`,
     ].join("\n");
     // A blocked pop-up falls back to opening WhatsApp in this tab.
     const url = whatsappWith(message);

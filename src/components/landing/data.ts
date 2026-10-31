@@ -225,7 +225,7 @@ export const asst = {
 // The contact form's "Select Your Request*" options, word for word as
 // aaaedu.in/contact-us lists them. Its "Course*" options are the packages
 // (courses-data.ts), not aaaedu.in's older course list.
-export const enquiryRequests = ["Call Back", "Home Visit", "Visit Our Center", "Connect Online"] as const;
+export const enquiryRequests = ["Call Back", "Visit Our Center", "Connect Online"] as const;
 
 
 // A typical week for a classroom student — shows where the app fits.
