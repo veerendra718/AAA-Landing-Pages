@@ -466,25 +466,25 @@ export const classroomDetails: Record<string, { summary: string; subjects: strin
   siddhartha: {
     summary: "KCET preparation with JEE Main or NEET alongside, taught with the PU syllabus.",
     subjects: "Physics · Chemistry · Maths or Biology",
-    schedule: "Mon – Sat · 3 hours a day",
+    schedule: "Mon – Sat · 6 hours a day",
     tests: "Weekly KCET-pattern tests",
   },
   shushrutha: {
     summary: "NCERT-first NEET coaching, with concepts taught before memory.",
     subjects: "Physics · Chemistry · Biology",
-    schedule: "Mon – Sat · 3 hours a day",
+    schedule: "Mon – Sat · 6 hours a day",
     tests: "Weekly NEET-pattern tests",
   },
   saadhaka: {
     summary: "JEE Main preparation for the NITs and top engineering colleges.",
     subjects: "Physics · Chemistry · Maths",
-    schedule: "Mon – Sat · 3.5 hours a day",
+    schedule: "Mon – Sat · 6 hours a day",
     tests: "Fortnightly JEE Main mocks",
   },
   shreshta: {
     summary: "Deep problem-solving for students aiming at the IITs.",
     subjects: "Physics · Chemistry · Maths",
-    schedule: "Mon – Sat · 4 hours a day",
+    schedule: "Mon – Sat · 6 hours a day",
     tests: "Fortnightly JEE Advanced papers",
   },
 };
