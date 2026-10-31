@@ -233,7 +233,7 @@ export const academyWeek = [
   { where: "centre", title: "Concept classes", body: "Small-batch lectures at Vijayanagar, taught by IIT/NIT/IISc faculty." },
   { where: "app", title: "Practice & notes", body: "Class notes, recorded lectures and chapter practice in the AAA app." },
   { where: "centre", title: "Doubt desk", body: "Stay back after class and clear doubts face to face." },
-  { where: "app", title: "Fortnightly test", body: "Exam-pattern test in the app; results and solutions instantly." },
+  { where: "app", title: "Weekly test", body: "Exam-pattern test in the app; results and solutions instantly." },
   { where: "centre", title: "Mentor review", body: "Your mentor walks through the test report with you — and your parents." },
 ] as const;
 
@@ -241,7 +241,7 @@ export const journey = [
   { step: "Counselling visit", body: "Meet a mentor at the centre and pick the right programme." },
   { step: "Diagnostic test", body: "A short test tells us where you stand, topic by topic." },
   { step: "Classes + app", body: "Learn in a small batch; practise and revise in the AAA app." },
-  { step: "Test & review", body: "Fortnightly tests, each followed by a one-on-one review." },
+  { step: "Test & review", body: "Weekly tests, each followed by a one-on-one review." },
   { step: "Exam day", body: "Walk in having already sat the exam dozens of times." },
 ];
 
@@ -337,7 +337,7 @@ export const faqs: {
   },
   {
     q: "Do classroom students get the AAA app?",
-    a: "Yes — every enrolled student gets the AAA app, on the web and on mobile. It doesn't replace the classroom; it carries it home: class recordings and notes, fortnightly tests, topic-wise analysis and a mistake book to revise from.",
+    a: "Yes — every enrolled student gets the AAA app, on the web and on mobile. It doesn't replace the classroom; it carries it home: class recordings and notes, weekly tests, topic-wise analysis and a mistake book to revise from.",
     topic: "app",
     link: { href: loginUrl, label: "Student login" },
   },
