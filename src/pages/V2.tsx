@@ -58,6 +58,15 @@ const onlinePillars = [
   },
 ];
 
+const programmeFormats = [
+  { title: "In the Classroom:", text: "Premium, high-focus batches at our Vijayanagar Centre." },
+  { title: "Live Online:", text: "Study from the comfort of home with full interactive support." },
+  {
+    title: `${academy.appName} App Included:`,
+    text: "24/7 access to digital resources, assessments, and study materials with every enrolment.",
+  },
+];
+
 const heroPillars = [
   {
     title: "Elite Faculty:",
@@ -132,7 +141,20 @@ export default function LandingV2() {
       </div>
 
       <ProgramsGrid
-        subtitle={`Class 11 and Class 12 courses for KCET, NEET, JEE Main and JEE Advanced — in the classroom at Vijayanagar, with the ${academy.appName} app included, or online.`}
+        title="Find the Right Programme for You"
+        subtitle={
+          <>
+            <span className="block">
+              Excel in your Class 11 and 12 boards while mastering KCET, NEET, and IIT-JEE (Main &amp;
+              Advanced).
+            </span>
+            {programmeFormats.map((f, i) => (
+              <span key={f.title} className={i === 0 ? "mt-4 block" : "mt-2 block"}>
+                <span className="font-semibold text-brand-primary">{f.title}</span> {f.text}
+              </span>
+            ))}
+          </>
+        }
       />
 
       <AppShowcase />

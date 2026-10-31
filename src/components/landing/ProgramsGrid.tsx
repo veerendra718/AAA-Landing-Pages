@@ -33,10 +33,12 @@ type Format = (typeof formats)[number]["id"];
  * split by format; both show the same exams, priced for that format.
  */
 export function ProgramsGrid({
+  title = "Find the right programme",
   subtitle = "Classroom batches at the Vijayanagar centre, with the AAA app included for practice at home.",
   showOnline = true,
 }: {
-  subtitle?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
   /** False shows the classroom courses alone, with no format tabs — for pages
    *  that present the app as part of classroom coaching, not a course of its own. */
   showOnline?: boolean;
@@ -46,7 +48,7 @@ export function ProgramsGrid({
   return (
     <section id="programs" className="scroll-mt-20 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <SectionHeading eyebrow="Programmes" title="Find the right programme" subtitle={subtitle} />
+        <SectionHeading eyebrow="Programmes" title={title} subtitle={subtitle} />
 
         {!showOnline ? (
           <ExamPrograms format="classroom" />
