@@ -27,8 +27,8 @@ export const admissionSteps = [
     body: "A mentor explains the programme and a short test shows where the student stands, topic by topic.",
   },
   {
-    step: "Vrddhi scholarship",
-    body: "Sit the Vrddhi talent-search test if you want a scholarship on the fee — held every year since 2012.",
+    step: "ASST scholarship",
+    body: "Sit the Arjunaa Scholastic & Scholarship Test (ASST) to earn fee waivers on your admission based on performance scores.",
   },
   {
     step: "Enrol",

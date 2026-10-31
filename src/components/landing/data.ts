@@ -312,8 +312,8 @@ export const faqs: {
     topic: "fees",
   },
   {
-    q: "What is Vrddhi?",
-    a: "Vrddhi is our inter-school talent search and scholarship-cum-admission test, held every year since 2012. It's a 1-hour, 35-question objective paper covering Mental Ability, Maths, Physics, Chemistry and Biology.",
+    q: "What is ASST?",
+    a: "The Arjunaa Scholastic & Scholarship Test (ASST) is our premier talent search and scholarship-cum-admission test. It's a 1.5-hour (90-minute) objective test (MCQs) at the Arjunaa Academy Centre, in a JEE Track (Mental Ability, Mathematics, Physics, Chemistry) or a NEET Track (Mental Ability, Biology, Physics, Chemistry). Scores earn fee waivers on admission.",
     topic: "fees",
   },
   {
