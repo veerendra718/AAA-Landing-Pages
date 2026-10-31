@@ -1,5 +1,4 @@
-import { coursesHead } from "./courses-data";
-import { academy } from "./data";
+import { classroomExtras, coursesHead } from "./courses-data";
 import { ClassPicker, OnlineHighlights } from "./OnlinePackages";
 import { PageShell } from "./PageShell";
 import { SectionHeading } from "./SectionHeading";
@@ -19,7 +18,7 @@ export function CoursesOverview() {
           <SectionHeading
             eyebrow="Choose your class"
             title="Which class are you in?"
-            subtitle={`The same courses as online, taught in the classroom — one price per course, with the ${academy.appName} app Advanced plan access.`}
+            subtitle={`Siddhartha, Saadhaka, Shushrutha and Shreshta, taught in the classroom — one fee per course, per annum, + ${classroomExtras}.`}
           />
           <div className="mt-10">
             <ClassPicker mode="classroom" />

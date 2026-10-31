@@ -278,7 +278,7 @@ export const formatComparison = [
   { label: "Teachers", classroom: "Academy faculty at Vijayanagar", online: "The same faculty, live online" },
   { label: "Classes", classroom: "In person, batches of up to 30", online: "Live online, plus video lectures" },
   { label: "Getting started", classroom: "Counselling visit, then enrol", online: "Sign up free, 7-day trial of paid plans" },
-  { label: "Fees", classroom: "One price per course", online: "Free, Standard or Advanced plan" },
+  { label: "Fees", classroom: "One fee per course, per annum", online: "Free, Standard or Advanced plan" },
   { label: "App access", classroom: `${academy.appName} app Advanced plan access`, online: `${academy.appName} app, on the plan you choose` },
   { label: "Tests", classroom: `Exam-pattern tests in the ${academy.appName} app`, online: `Exam-pattern tests in the ${academy.appName} app` },
   { label: "Doubts", classroom: "Doubt desk after class, face to face", online: "Online, with weekly 1-on-1 sessions on Advanced" },
