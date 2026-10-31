@@ -111,7 +111,24 @@ export default function LandingV2() {
 
       {/* Backgrounds alternate white / tint from here down. */}
       <div className="bg-brand-page-bg">
-        <ToppersSection />
+        <ToppersSection
+          subtitle={
+            <>
+              <span className="block font-semibold text-brand-primary-darker">
+                The Benchmarks of Success: Our Newest Milestone Ranks.
+              </span>
+              <span className="mt-3 block">
+                At Arjunaa Academy, top ranks aren’t accidents; they are engineered. Explore the latest
+                wave of exceptional scores and premium college admissions earned by our students in
+                KCET, NEET, and IIT-JEE (Main &amp; Advanced).
+              </span>
+              <span className="mt-3 block">
+                Every milestone reflects the power of hyper-personalized elite mentorship, seamlessly
+                transforming ambitious students into top-rank holders.
+              </span>
+            </>
+          }
+        />
       </div>
 
       <ProgramsGrid

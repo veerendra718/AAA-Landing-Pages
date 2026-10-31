@@ -36,7 +36,11 @@ function previewFor(tab: Tab): ShownStudent[] {
   }));
 }
 
-export function ToppersSection() {
+export function ToppersSection({
+  subtitle = "Ranks and colleges our students earned in KCET, NEET, JEE Main and JEE Advanced — taught by the same faculty in the classroom and online.",
+}: {
+  subtitle?: React.ReactNode;
+} = {}) {
   // Opens on the first exam in display order (JEE Advanced).
   const [tab, setTab] = useState<Tab>(tabs[0].id);
   const group = achieverGroups.find((g) => g.slug === tab);
@@ -50,7 +54,7 @@ export function ToppersSection() {
         <SectionHeading
           eyebrow="Results"
           title="Our achievers"
-          subtitle="Ranks and colleges our students earned in KCET, NEET, JEE Main and JEE Advanced — taught by the same faculty in the classroom and online."
+          subtitle={subtitle}
         />
 
         <div className="mt-10 flex justify-center">
