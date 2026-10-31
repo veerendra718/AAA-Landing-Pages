@@ -32,6 +32,7 @@ import {
   classroomPackagesFor,
   classroomPrice,
   onlineClasses,
+  onlineCourseDetails,
   onlineExams,
   onlinePlans,
   otherClassroomCourses,
@@ -342,6 +343,14 @@ function PackagePlans({ pkg, cls, comparison }: { pkg: OnlinePackage; cls: Packa
           <span className="text-sm text-brand-text-muted">Offered in Free and Standard only</span>
         )}
       </div>
+      <dl className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        {onlineCourseDetails.map((d) => (
+          <div key={d.label} className="flex gap-1.5">
+            <dt className="font-semibold text-brand-text-primary">{d.label}:</dt>
+            <dd className="text-brand-text-secondary">{d.value}</dd>
+          </div>
+        ))}
+      </dl>
       <div className={cn("mt-8 grid gap-6", p.advanced ? "md:grid-cols-3" : "md:grid-cols-2 lg:max-w-4xl")}>
         <PlanCard tier="free" />
         <PlanCard tier="standard" price={p.standard} featured={!p.advanced} />

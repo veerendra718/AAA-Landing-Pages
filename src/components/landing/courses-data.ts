@@ -271,6 +271,9 @@ export const onlineClasses: OnlineClassInfo[] = [
   },
 ];
 
+/** What every online course runs to, shown under each course's name. */
+export const onlineCourseDetails = [{ label: "Live classes", value: "Mon – Sat · 3 hours a day" }];
+
 /** The packages sold for a class. */
 export const packagesFor = (cls: PackageClass) => onlinePackages.filter((p) => p.prices[cls]);
 
