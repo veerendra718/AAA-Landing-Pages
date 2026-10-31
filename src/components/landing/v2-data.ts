@@ -25,10 +25,10 @@ export const highlightResults: HighlightResult[] = [
 /** Colleges our alumni went on to, from the same list — for the hero's proof line. */
 export const alumniColleges = ["IIT Bombay", "IIT Kanpur", "IIT Kharagpur", "NITK", "BITS", "IISER"];
 
-/** The headline figures aaaedu.in publishes, worded as it words them. */
+/** The headline figures aaaedu.in publishes, worded as it words them. Figures
+ *  under 50% are left out at the client's request. */
 export const headlineStats = [
   { value: 3000, suffix: "+", label: "Students enrolled" },
   { value: 1000, suffix: "+", label: "Alumni at top-100 STEM universities" },
-  { value: 40, suffix: "%", label: "Qualify JEE Main & NEET", note: "~3× the national average" },
   { value: 100, suffix: "%", label: "Board exam pass", note: "60% with distinction" },
 ];

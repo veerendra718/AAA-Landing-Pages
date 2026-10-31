@@ -96,7 +96,7 @@ export default function LandingV2() {
 
       {/* Headline figures, as aaaedu.in publishes them */}
       <section className="bg-white py-10">
-        <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-y-8 px-4 md:px-6 lg:grid-cols-4 lg:divide-x lg:divide-brand-border-light">
+        <dl className="mx-auto grid max-w-7xl grid-cols-1 gap-y-8 px-4 sm:grid-cols-3 sm:divide-x sm:divide-brand-border-light md:px-6">
           {headlineStats.map((s) => (
             <div key={s.label} className="px-4 text-center">
               <dd className="font-(family-name:--font-display) text-4xl font-bold leading-none text-brand-primary-darker md:text-5xl">
