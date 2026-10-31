@@ -19,6 +19,7 @@ import {
   classroomPackagesFor,
   classroomPrice,
   onlineClasses,
+  otherCoursesPage,
   packagesFor,
   type PackageClass,
   perAnnum,
@@ -129,6 +130,11 @@ const classroomGroup: NavGroup = {
   items: [
     classroomClassItem("11"),
     classroomClassItem("12"),
+    {
+      href: "/landing/courses/other",
+      label: otherCoursesPage.title,
+      blurb: "KCET crash course · Class 9 & 10 foundation · Class X boards",
+    },
   ],
 };
 
