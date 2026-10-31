@@ -36,8 +36,11 @@ export type NavGroup = {
   /** A shorter label for the desktop header on smaller laptops (1024–1279px),
    *  where the full row is tight. The full label shows everywhere else. */
   shortLabel?: string;
-  /** Where the top-level item itself links. */
+  /** Where the top-level item itself links — and, for a `labelOnly` group,
+   *  just the path its pages sit under, so the item is marked current there. */
   href: string;
+  /** The top-level item only opens the dropdown; only its sub-pages link. */
+  labelOnly?: boolean;
   /** Sub-pages shown under the top-level link. Empty renders a plain link. */
   items: NavLeaf[];
 };
@@ -116,12 +119,13 @@ function classroomClassItem(cls: PackageClass): NavLeaf {
   };
 }
 
-// "/landing/courses" itself redirects to the Class 11 page (the hub page was
-// removed); it stays the group's href so the item is current on both classes.
+// There is no classroom hub page, so the item is a label over its two class
+// pages, not a link. Its href is only the path both pages sit under.
 const classroomGroup: NavGroup = {
   label: "Classroom Courses",
   shortLabel: "Classroom",
   href: "/landing/courses",
+  labelOnly: true,
   items: [
     classroomClassItem("11"),
     classroomClassItem("12"),

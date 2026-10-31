@@ -198,19 +198,30 @@ export function LandingNav({
               <nav className="flex flex-col gap-5 px-4 pb-6" aria-label="Main">
                 {siteMenu.map((group) => (
                   <div key={group.label}>
-                    <Link
-                      href={group.href}
-                      onClick={() => setOpen(false)}
-                      aria-current={activeGroup === group.href ? "page" : undefined}
-                      className={cn(
-                        "block text-sm font-bold tracking-wide uppercase",
-                        activeGroup === group.href
-                          ? "text-brand-primary"
-                          : "text-brand-primary-darker",
-                      )}
-                    >
-                      {group.label}
-                    </Link>
+                    {group.labelOnly ? (
+                      <span
+                        className={cn(
+                          "block text-sm font-bold tracking-wide uppercase",
+                          activeGroup === group.href ? "text-brand-primary" : "text-brand-primary-darker",
+                        )}
+                      >
+                        {group.label}
+                      </span>
+                    ) : (
+                      <Link
+                        href={group.href}
+                        onClick={() => setOpen(false)}
+                        aria-current={activeGroup === group.href ? "page" : undefined}
+                        className={cn(
+                          "block text-sm font-bold tracking-wide uppercase",
+                          activeGroup === group.href
+                            ? "text-brand-primary"
+                            : "text-brand-primary-darker",
+                        )}
+                      >
+                        {group.label}
+                      </Link>
+                    )}
                     {group.items.length > 0 && (
                       <div className="mt-1.5 flex flex-col border-l border-brand-border-light pl-3">
                         {group.items.map((item) => {
@@ -320,6 +331,20 @@ function DesktopGroup({
         : "text-brand-text-secondary hover:bg-brand-subtle-bg/50 hover:text-brand-primary",
     );
 
+  const label = (
+    <>
+      {group.shortLabel ? (
+        <>
+          <span className="xl:hidden">{group.shortLabel}</span>
+          <span className="hidden xl:inline">{group.label}</span>
+        </>
+      ) : (
+        group.label
+      )}
+      <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
+    </>
+  );
+
   if (!isDropdown) {
     return (
       <Link href={group.href} className={labelClass(active)} aria-current={active ? "page" : undefined}>
@@ -345,7 +370,7 @@ function DesktopGroup({
         // dismissible without moving the mouse at all.
         if (e.key === "Escape" && open) {
           onHide();
-          e.currentTarget.querySelector("a")?.focus();
+          e.currentTarget.querySelector<HTMLElement>("a, button")?.focus();
         }
       }}
       onBlur={(e) => {
@@ -354,25 +379,29 @@ function DesktopGroup({
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) onHide();
       }}
     >
-      <Link
-        href={group.href}
-        className={cn(labelClass(active), "flex items-center gap-1")}
-        aria-current={active ? "page" : undefined}
-        aria-expanded={open}
-        aria-haspopup="true"
-      >
-        {group.shortLabel ? (
-          <>
-            <span className="xl:hidden">{group.shortLabel}</span>
-            <span className="hidden xl:inline">{group.label}</span>
-          </>
-        ) : (
-          group.label
-        )}
-        <ChevronDown
-          className={cn("size-3.5 transition-transform", open && "rotate-180")}
-        />
-      </Link>
+      {group.labelOnly ? (
+        // Not a link: clicking only opens the dropdown. (Not a toggle — hover
+        // has already opened it, and a tap fires both.)
+        <button
+          type="button"
+          onClick={onShow}
+          className={cn(labelClass(active), "flex cursor-default items-center gap-1")}
+          aria-expanded={open}
+          aria-haspopup="true"
+        >
+          {label}
+        </button>
+      ) : (
+        <Link
+          href={group.href}
+          className={cn(labelClass(active), "flex items-center gap-1")}
+          aria-current={active ? "page" : undefined}
+          aria-expanded={open}
+          aria-haspopup="true"
+        >
+          {label}
+        </Link>
+      )}
       {open && (
         <div className="absolute top-full left-1/2 w-72 -translate-x-1/2 pt-2">
           <div className="overflow-hidden rounded-2xl border border-brand-border-light bg-white p-2 shadow-xl shadow-brand-primary/5">
