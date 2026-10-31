@@ -20,7 +20,7 @@ Landscape, at least **1600 × 1000 px**, natural light, real students and facult
 | 4 | **Doubt desk / one-to-one doubt clearing** | Classroom + app section | `b-hero.jpg` |
 | 5 | **Students using AAA Lakshya** on a phone/tablet at the centre | Classroom + app section | `a-walkthrough.jpg` |
 | 6 | **Mentor/parent meeting** (parent–teacher meeting) | "For parents" panel | — (new) |
-| 7 | **Vrddhi** — exam hall and prize distribution, recent year, high resolution | Vrddhi section | `vrddhi-prize-distribution.jpg` (550 px, too small) |
+| 7 | **ASST** — exam hall or prize distribution, high resolution | ASST section | `vrddhi-prize-distribution.jpg` (a Vrddhi photo, 550 px, too small) |
 | 8 | **Results celebration** — toppers with faculty | Results section | — (new) |
 | 9 | One photo per **other branch**: VSS International Public School (Ullal), Vedantha PU College (Vasanthapura) | Branch picker | — (new) |
 | 10 | **Residential / hostel** — rooms, study hall, dining (if residential is offered) | Programmes | — (new) |
@@ -45,7 +45,7 @@ demo account (no real student data) would help for the app-store badges and futu
 | Visiting hours | "Mon – Sat, 9:00 AM – 7:00 PM · Visits by appointment" (**placeholder**) | Real hours |
 | Branch addresses | Full address only for Vijayanagar | Full address + map link for VSS International Public School (Ullal) and Vedantha PU College (Vasanthapura) |
 | Other branches | "10+ branches in Bengaluru & Mysuru" | The full list, if they should be shown |
-| Vrddhi | Format, subjects, rewards (from aaaedu.in), no date | Next test date, registration link, scholarship amounts |
+| ASST | Exam details, streams and benefits (from the academy), no date | Next test date, registration link, scholarship amounts |
 | Headline numbers | 3000+ students, 1000+ alumni in top-100 STEM universities, 40% qualify JEE Main & NEET, 100% board pass, 60% distinction | Still current? Any newer results (2025, 2026) to add to the achievers list? |
 | Founded | 2012 | — |
 | AAA Lakshya on Play Store / App Store | Not linked (no public listing found) | Store links once published |
