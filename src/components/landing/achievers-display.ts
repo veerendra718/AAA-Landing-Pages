@@ -4,6 +4,7 @@
 // with consistent capitalisation (the source mixes "K-CET TOPPERS" with
 // "NEET Top Achievers"). Names match the header menu.
 
+import { brochureStudents } from "./achievers-brochure";
 import { type Achiever, type AchieverGroup, achieverGroups } from "./achievers-data";
 
 const display: Record<string, { name: string; heading: string }> = {
@@ -21,12 +22,14 @@ const order = Object.keys(display);
 
 /**
  * Where a published rank sorts, best first: ranks ascending ("Rank 57",
- * "AIR - 3084", a bare "309"), then percentiles descending ("99.38%"), then
- * anything without a number ("Qualified").
+ * "AIR - 3084", a bare "309"), then percentiles and NEET scores descending
+ * ("99.38%ile", "Score 697"), then anything without a number ("Qualified").
  */
 function rankKey(rank: string): [number, number] {
   const percentile = rank.match(/(\d+(?:\.\d+)?)\s*%/);
   if (percentile) return [1, -Number(percentile[1])];
+  const score = rank.match(/score\s*(\d+)/i);
+  if (score) return [1, -Number(score[1])];
   const n = rank.match(/\d+/);
   if (n) return [0, Number(n[0])];
   return [2, 0];
@@ -52,9 +55,10 @@ export const achieverSections: AchieverGroup[] = achieverGroups
     ...(display[g.slug] ?? {}),
     // The source quotes carry stray quotation marks ("…satisfaction.” - …").
     quote: g.quote.replace(/[“”"]/g, "").trim(),
-    // The source lists students in no particular order; show the highest
-    // rank first. The sort is stable, so equal ranks keep the source order.
-    students: [...g.students].sort(byRank),
+    // The brochure's lists replace the site's where it has one. Either way,
+    // show the highest rank first; the sort is stable, so equal ranks keep
+    // the source order.
+    students: [...(brochureStudents[g.slug] ?? g.students)].sort(byRank),
   }));
 
 export function sectionBySlug(slug: string) {
