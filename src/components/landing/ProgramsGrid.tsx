@@ -14,6 +14,7 @@ import {
   examPackages,
   onlineClasses,
   onlineExams,
+  otherClassroomCourses,
   type OnlineExamInfo,
   perAnnum,
 } from "./courses-data";
@@ -193,7 +194,21 @@ function ExamPrograms({ format }: { format: Format }) {
           <ArrowRight className="size-5 shrink-0 text-brand-primary transition-transform group-hover:translate-x-1" />
         </Link>
       ) : (
-        <div className="mt-6 grid gap-4">
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <Link
+            href="/landing/courses#other-courses"
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 hover:bg-white card-hover"
+          >
+            <span>
+              <span className="block text-[11px] font-bold uppercase tracking-wide text-brand-primary">
+                Other courses
+              </span>
+              <span className="mt-0.5 block font-semibold text-brand-text-primary">
+                {otherClassroomCourses.map((c) => c.name).join(", ")}
+              </span>
+            </span>
+            <ArrowRight className="size-5 shrink-0 text-brand-primary transition-transform group-hover:translate-x-1" />
+          </Link>
           <a
             href="#visit"
             className="group flex items-center justify-between gap-4 rounded-2xl bg-brand-primary p-5 text-white transition-colors hover:bg-brand-primary-dark"

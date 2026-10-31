@@ -1,5 +1,5 @@
 import { classroomExtras, coursesHead } from "./courses-data";
-import { ClassPicker, OnlineHighlights } from "./OnlinePackages";
+import { ClassPicker, OnlineHighlights, OtherClassroomCourses } from "./OnlinePackages";
 import { PageShell } from "./PageShell";
 import { SectionHeading } from "./SectionHeading";
 
@@ -26,6 +26,9 @@ export function CoursesOverview() {
         </div>
       </section>
 
+      <div className="bg-brand-page-bg">
+        <OtherClassroomCourses />
+      </div>
     </PageShell>
   );
 }

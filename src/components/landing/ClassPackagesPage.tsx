@@ -3,7 +3,7 @@ import { ArrowLeftRight, ArrowRight, Building2, MonitorPlay } from "lucide-react
 
 import { admissionSteps, classroomClasses, onlineClasses, type PackageClass } from "./courses-data";
 import { academy } from "./data";
-import { ClassroomIncludes, OnlineHighlights, PackageFinder, type PackageMode } from "./OnlinePackages";
+import { ClassroomIncludes, OnlineHighlights, OtherClassroomCourses, PackageFinder, type PackageMode } from "./OnlinePackages";
 import { PageShell } from "./PageShell";
 import { SectionHeading } from "./SectionHeading";
 
@@ -26,6 +26,8 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
       <PackageFinder cls={cls} mode={mode} />
 
       {mode === "classroom" && <ClassroomIncludes />}
+
+      {mode === "classroom" && <OtherClassroomCourses />}
 
       {mode === "classroom" && (
         <section className="px-4 py-14 md:px-6 md:py-16">

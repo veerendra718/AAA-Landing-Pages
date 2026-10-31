@@ -376,6 +376,52 @@ export function classroomPrice(pkg: OnlinePackage): PackagePrice {
   return { price: fee.price, off: fee.price - fee.discounted };
 }
 
+export type OtherCourseFee = {
+  /** Which option the fee is for, when a course has several (a board). */
+  option?: string;
+  price: number;
+  /** The fee after discount, when there is one. */
+  discounted?: number;
+  perAnnum: boolean;
+};
+
+/**
+ * The other classroom courses on the academy's fee list (Oct 2026), outside the
+ * Class 11 & 12 packages, in the list's own wording. The crash course is listed
+ * without "per annum". Sarthaka's State board fee is blank on the list, so it
+ * isn't shown until the academy sends it.
+ */
+export const otherClassroomCourses: {
+  slug: string;
+  name: string;
+  label: string;
+  fees: OtherCourseFee[];
+  extras?: string;
+}[] = [
+  {
+    slug: "kcet-crash-course",
+    name: "KCET Crash course",
+    label: "for PCM",
+    fees: [{ price: 18000, perAnnum: false }],
+    extras: "Free app access",
+  },
+  {
+    slug: "sumedha",
+    name: "Sumedha",
+    label: "JEE NEET Weekend Foundation Batch Class 9 & Class 10",
+    fees: [{ price: 57500, discounted: 50000, perAnnum: true }],
+  },
+  {
+    slug: "sarthaka",
+    name: "Sarthaka",
+    label: "Class X Board tuitions for ICSE, CBSE & State",
+    fees: [
+      { option: "ICSE", price: 42000, discounted: 37500, perAnnum: true },
+      { option: "CBSE", price: 33000, discounted: 30000, perAnnum: true },
+    ],
+  },
+];
+
 /** What a classroom package includes, beyond the free app plan. */
 export const classroomIncludes = [
   "Live classes with the academy's faculty at Vijayanagar",

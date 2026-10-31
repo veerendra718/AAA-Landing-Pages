@@ -34,6 +34,7 @@ import {
   onlineClasses,
   onlineExams,
   onlinePlans,
+  otherClassroomCourses,
   packageFilterSlug,
   packagesFor,
   planComparison,
@@ -459,6 +460,68 @@ function ClassroomCard({
         <MonitorPlay className="size-3.5" /> Or online, from {formatPrice(pkg.prices[cls]!.standard.price)}
       </Link>
     </article>
+  );
+}
+
+/**
+ * The classroom courses outside the Class 11 & 12 packages — the KCET crash
+ * course, the Class 9 & 10 foundation batch and the Class X board tuitions —
+ * each with its fee as the academy lists it.
+ */
+export function OtherClassroomCourses() {
+  return (
+    <section id="other-courses" className="scroll-mt-24 px-4 py-14 md:px-6 md:py-16">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading eyebrow="Also at Vijayanagar" title="Other courses" />
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {otherClassroomCourses.map((c) => (
+            <article
+              key={c.slug}
+              id={c.slug}
+              className="flex h-full scroll-mt-28 flex-col rounded-3xl border border-brand-border-light bg-white p-6 card-hover"
+            >
+              <h3 className="font-(family-name:--font-display) text-2xl font-bold text-brand-primary-darker">{c.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-brand-text-secondary">{c.label}</p>
+              <div className="mt-5 space-y-3">
+                {c.fees.map((f) => (
+                  <div key={f.option ?? c.slug} className="rounded-2xl bg-brand-page-bg p-4">
+                    {f.option && (
+                      <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">{f.option}</p>
+                    )}
+                    <p className="mt-0.5 text-2xl font-bold tracking-tight text-brand-primary-darker">
+                      {formatPrice(f.discounted ?? f.price)}
+                      {f.perAnnum && <span className="text-base font-semibold text-brand-text-muted"> {perAnnum}</span>}
+                    </p>
+                    {f.discounted && (
+                      <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+                        <span className="text-brand-text-muted line-through">
+                          {f.perAnnum ? formatFee(f.price) : formatPrice(f.price)}
+                        </span>
+                        <span className="inline-flex items-center gap-1 rounded-full bg-brand-success-bg px-2 py-0.5 text-xs font-bold text-brand-success">
+                          <Tag className="size-3" /> {formatPrice(f.price - f.discounted)} off
+                        </span>
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+              {c.extras && (
+                <p className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-brand-primary">
+                  <Gift className="size-4 shrink-0" /> + {c.extras}
+                </p>
+              )}
+              <div className="mt-auto pt-5">
+                <Button asChild variant="outline" className="w-full rounded-xl">
+                  <Link href="/landing/contact#enquire">
+                    <PhoneCall /> Enquire
+                  </Link>
+                </Button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
