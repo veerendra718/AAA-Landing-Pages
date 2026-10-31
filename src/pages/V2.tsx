@@ -54,6 +54,21 @@ const onlinePoints = [
   `Courses from ₹${onlineFrom.toLocaleString("en-IN")}`,
 ];
 
+const onlinePillars = [
+  {
+    title: "Zero Compromise:",
+    text: "Learn from the identical IIT, NIT, and IISc mentors teaching our physical batches.",
+  },
+  {
+    title: "Interactive & Live:",
+    text: "Real-time engagement built around the same rigorous small-batch curriculum.",
+  },
+  {
+    title: "Full App Support:",
+    text: `Total integration with the ${academy.appName} App for on-demand recorded revisions, mock tests, and performance analytics.`,
+  },
+];
+
 const heroPillars = [
   {
     title: "Elite Faculty:",
@@ -249,10 +264,10 @@ function OnlineHero() {
           </span>
           Live online · Class 11 &amp; 12 · KCET · NEET · JEE
         </p>
-        <h2 className="mt-5 font-(family-name:--font-display) text-[40px] font-bold leading-[1.04] tracking-tight text-brand-primary-darker text-balance sm:text-5xl lg:text-[64px]">
-          Same faculty.{" "}
+        <h2 className="mt-5 font-(family-name:--font-display) text-[40px] font-bold leading-[1.04] tracking-tight text-brand-primary-darker text-balance sm:text-5xl lg:text-[56px]">
+          Same Elite Faculty.{" "}
           <span className="relative text-brand-primary">
-            Live online.
+            Live Online Flexibility.
             <svg
               aria-hidden="true"
               viewBox="0 0 200 12"
@@ -264,10 +279,16 @@ function OnlineHero() {
           </span>
         </h2>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-text-muted">
-          Can&apos;t come to Vijayanagar? The faculty who teach our classroom batches teach the same
-          courses live online — with recorded lectures, every kind of test and analytics in the{" "}
-          <span className="font-semibold text-brand-primary">{academy.appName} app</span>.
+          Distance shouldn&apos;t limit destiny. If you are located outside the reach of our premier
+          Vijayanagar centre, our live online program brings the classroom to you.
         </p>
+        <ul className="mt-4 max-w-xl space-y-2.5 text-base leading-relaxed text-brand-text-muted sm:text-lg">
+          {onlinePillars.map((p) => (
+            <li key={p.title}>
+              <span className="font-semibold text-brand-primary">{p.title}</span> {p.text}
+            </li>
+          ))}
+        </ul>
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild size="lg" className="shadow-lg shadow-brand-primary/20">
