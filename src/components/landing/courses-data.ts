@@ -4,14 +4,6 @@
 
 import { academy } from "./data";
 
-export const coursesBase = "/landing/courses";
-
-export const coursesHead = {
-  href: coursesBase,
-  title: "Classroom courses",
-  note: `Class 11 and Class 12 courses for KCET, NEET, JEE Main and JEE Advanced, taught in the classroom at the academy's Vijayanagar centre — with the ${academy.appName} app Advanced plan access.`,
-};
-
 /** The admission steps, mirroring the academy's counselling-first process. */
 export const admissionSteps = [
   {

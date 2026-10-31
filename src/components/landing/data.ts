@@ -285,13 +285,13 @@ export const faqs: {
     q: "Which exams do you prepare for?",
     a: "KCET, NEET, JEE Main and JEE Advanced, for Class 11 and Class 12. In the classroom at Vijayanagar: Siddhartha, Saadhaka, Shushrutha and Shreshta. Online, the same courses, plus Sakala, Sarvam and Sarvotthama for several exams together.",
     topic: "courses",
-    link: { href: "/landing/courses", label: "See all courses" },
+    link: { href: "/landing/courses/class-11", label: "See classroom courses" },
   },
   {
     q: "What is the batch size?",
     a: "A maximum of 30 students per batch, so teachers can follow each student's progress.",
     topic: "courses",
-    link: { href: "/landing/courses", label: "See classroom courses" },
+    link: { href: "/landing/courses/class-11", label: "See classroom courses" },
   },
   {
     q: "Can my child study online instead of coming to Vijayanagar?",

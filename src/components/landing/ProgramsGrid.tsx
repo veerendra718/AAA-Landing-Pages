@@ -196,7 +196,7 @@ function ExamPrograms({ format }: { format: Format }) {
       ) : (
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <Link
-            href="/landing/courses#other-courses"
+            href="/landing/courses/class-11#other-courses"
             className="group flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 hover:bg-white card-hover"
           >
             <span>

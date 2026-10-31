@@ -14,7 +14,6 @@ import AchieversJeeMains from "@/pages/AchieversJeeMains";
 import AchieversKCet from "@/pages/AchieversKCet";
 import AchieversNeet from "@/pages/AchieversNeet";
 import Contact from "@/pages/Contact";
-import Courses from "@/pages/Courses";
 import CoursesClass11 from "@/pages/CoursesClass11";
 import CoursesClass12 from "@/pages/CoursesClass12";
 import CoursesOnline from "@/pages/CoursesOnline";
@@ -91,7 +90,8 @@ export function App() {
         <Route path="/landing/achievers/jee-advanced" element={<AchieversJeeAdvanced />} />
         <Route path="/landing/achievers/neet" element={<AchieversNeet />} />
         <Route path="/landing/achievers/k-cet" element={<AchieversKCet />} />
-        <Route path="/landing/courses" element={<Courses />} />
+        {/* The classroom courses hub was removed; its URL opens the Class 11 classroom page. */}
+        <Route path="/landing/courses" element={<Navigate to="/landing/courses/class-11" replace />} />
         <Route path="/landing/courses/class-11" element={<CoursesClass11 />} />
         <Route path="/landing/courses/class-12" element={<CoursesClass12 />} />
         <Route path="/landing/courses/online" element={<CoursesOnline />} />

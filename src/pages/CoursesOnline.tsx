@@ -156,7 +156,7 @@ export default function CoursesOnline() {
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/landing/courses">
+              <Link href="/landing/courses/class-11">
                 <Building2 /> See classroom courses
               </Link>
             </Button>

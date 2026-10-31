@@ -102,7 +102,7 @@ const achieversGroup: NavGroup = {
 // Courses are split by format into two menus, the way allen.in's header
 // separates "Classroom Courses" from "Online Courses". Classroom is a dropdown
 // of its two class pages, and so is Online.
-// Hrefs are written out rather than built from `coursesBase` / `onlineBase` so
+// Hrefs are written out rather than built from `onlineBase` and the like so
 // scripts/check-links.mjs can see every hub is linked.
 // The classroom packages by class — the same packages as online, priced per
 // class. The course pages by exam are reached from the /landing/courses hub.
@@ -116,6 +116,8 @@ function classroomClassItem(cls: PackageClass): NavLeaf {
   };
 }
 
+// "/landing/courses" itself redirects to the Class 11 page (the hub page was
+// removed); it stays the group's href so the item is current on both classes.
 const classroomGroup: NavGroup = {
   label: "Classroom Courses",
   shortLabel: "Classroom",
