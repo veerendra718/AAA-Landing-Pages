@@ -370,11 +370,11 @@ export const kcetCrashCourse: StandaloneCourse = {
 };
 
 /**
- * The other classroom courses on the academy's fee list (Oct 2026), outside the
- * Class 11 & 12 packages, in the list's own wording. Sarthaka's State board fee
+ * The Class 9 & 10 classroom courses on the academy's fee list (Oct 2026), in
+ * the list's own wording. Sarthaka's State board fee
  * is blank on the list, so it isn't shown until the academy sends it.
  */
-export const otherClassroomCourses: StandaloneCourse[] = [
+export const class910Courses: StandaloneCourse[] = [
   {
     slug: "sumedha",
     name: "Sumedha",
@@ -400,10 +400,10 @@ export const classroomIncludes = [
   "Counselling with a mentor at the centre",
 ];
 
-/** The page for the classroom courses outside Class 11 & 12 (`otherClassroomCourses`). */
-export const otherCoursesPage = {
-  href: "/landing/courses/other",
-  title: "Other courses",
+/** The page for the Class 9 & 10 classroom courses (`class910Courses`). */
+export const class910Page = {
+  href: "/landing/courses/class-9-10",
+  title: "Class 9 & 10 courses",
   note: "A weekend foundation batch for Class 9 & 10, and Class X board tuitions — taught at our Vijayanagar centre.",
 };
 

@@ -15,8 +15,8 @@ import {
   kcetCrashCourse,
   onlineClasses,
   onlineExams,
-  otherClassroomCourses,
-  otherCoursesPage,
+  class910Courses,
+  class910Page,
   onlineFeesTbd,
   type OnlineExamInfo,
   perAnnum,
@@ -213,21 +213,21 @@ function ExamPrograms({ format }: { format: Format }) {
               10 or crash-course family sees them without leaving the page. */}
           <div className="rounded-3xl border border-brand-border-light bg-brand-page-bg p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <p className="text-[11px] font-bold uppercase tracking-wide text-brand-primary">Other courses</p>
+              <p className="text-[11px] font-bold uppercase tracking-wide text-brand-primary">{class910Page.title}</p>
               <Link
-                href={otherCoursesPage.href}
+                href={class910Page.href}
                 className="inline-flex items-center gap-1 text-sm font-semibold text-brand-primary hover:text-brand-primary-darker"
               >
                 See all <ArrowRight className="size-4" />
               </Link>
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
-              {otherClassroomCourses.map((c) => {
+              {class910Courses.map((c) => {
                 const from = Math.min(...c.fees.map((f) => f.discounted ?? f.price));
                 return (
                   <Link
                     key={c.slug}
-                    href={`${otherCoursesPage.href}#${c.slug}`}
+                    href={`${class910Page.href}#${c.slug}`}
                     className="group flex flex-col rounded-2xl border border-brand-border-light bg-white p-4 card-hover"
                   >
                     <span className="flex items-center justify-between gap-2 font-semibold text-brand-text-primary group-hover:text-brand-primary">

@@ -19,6 +19,7 @@ export const ROUTE_PATHS = [
   "/landing/courses",
   "/landing/courses/class-11",
   "/landing/courses/class-12",
+  "/landing/courses/class-9-10",
   "/landing/courses/other",
   "/landing/courses/online",
   "/landing/courses/online/class-11",

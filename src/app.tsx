@@ -16,7 +16,7 @@ import AchieversNeet from "@/pages/AchieversNeet";
 import Contact from "@/pages/Contact";
 import CoursesClass11 from "@/pages/CoursesClass11";
 import CoursesClass12 from "@/pages/CoursesClass12";
-import CoursesOther from "@/pages/CoursesOther";
+import CoursesClass910 from "@/pages/CoursesClass910";
 import CoursesOnlineClass11 from "@/pages/CoursesOnlineClass11";
 import CoursesOnlineClass12 from "@/pages/CoursesOnlineClass12";
 import LandingIndex from "@/pages/LandingIndex";
@@ -94,7 +94,9 @@ export function App() {
         <Route path="/landing/courses" element={<Navigate to="/landing/courses/class-11" replace />} />
         <Route path="/landing/courses/class-11" element={<CoursesClass11 />} />
         <Route path="/landing/courses/class-12" element={<CoursesClass12 />} />
-        <Route path="/landing/courses/other" element={<CoursesOther />} />
+        <Route path="/landing/courses/class-9-10" element={<CoursesClass910 />} />
+        {/* The page was "Other courses" at this address before it was renamed. */}
+        <Route path="/landing/courses/other" element={<Navigate to="/landing/courses/class-9-10" replace />} />
         {/* The online courses hub was removed; its URL opens the Class 11 online page. */}
         <Route path="/landing/courses/online" element={<Navigate to="/landing/courses/online/class-11" replace />} />
         <Route path="/landing/courses/online/class-11" element={<CoursesOnlineClass11 />} />

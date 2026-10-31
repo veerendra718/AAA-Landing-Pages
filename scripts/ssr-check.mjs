@@ -5,7 +5,7 @@
 import { createServer } from "vite";
 
 const routes = [
-  ["/landing/courses/other", "/src/pages/CoursesOther.tsx"],
+  ["/landing/courses/class-9-10", "/src/pages/CoursesClass910.tsx"],
   ["/landing/achievers", "/src/pages/Achievers.tsx"],
   ["/landing/achievers/jee-mains", "/src/pages/AchieversJeeMains.tsx"],
   ["/landing/achievers/jee-advanced", "/src/pages/AchieversJeeAdvanced.tsx"],

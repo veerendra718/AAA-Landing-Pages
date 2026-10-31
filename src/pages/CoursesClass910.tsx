@@ -2,15 +2,15 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { AdmissionSteps } from "@/components/landing/ClassPackagesPage";
-import { classroomClasses, otherCoursesPage } from "@/components/landing/courses-data";
-import { OtherClassroomCourses } from "@/components/landing/OnlinePackages";
+import { classroomClasses, class910Page } from "@/components/landing/courses-data";
+import { Class910Courses } from "@/components/landing/OnlinePackages";
 import { PageShell } from "@/components/landing/PageShell";
 
-/** The classroom courses outside the Class 11 & 12 packages, with their fees. */
-export default function CoursesOther() {
+/** The Class 9 & 10 classroom courses, with their fees. */
+export default function CoursesClass910() {
   return (
-    <PageShell title={otherCoursesPage.title} subtitle={otherCoursesPage.note}>
-      <OtherClassroomCourses />
+    <PageShell title={class910Page.title} subtitle={class910Page.note}>
+      <Class910Courses />
 
       <div className="bg-brand-page-bg">
         <AdmissionSteps />

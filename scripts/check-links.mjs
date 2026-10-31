@@ -66,7 +66,12 @@ for (const file of walk(src)) {
 
 // The landing-page variants are reached from the index screen, not the menu.
 const variants = new Set(["/landing", "/landing/v1", "/landing/v3"]);
-const orphans = [...paths].filter((p) => !linked.has(p) && !variants.has(p));
+// Redirects (a route whose element is <Navigate>) keep an old address working
+// for bookmarks; nothing on the site needs to link to them.
+const redirects = new Set(
+  [...app.matchAll(/<Route path="([^"*]+)" element=\{<Navigate /g)].map((m) => m[1]),
+);
+const orphans = [...paths].filter((p) => !linked.has(p) && !variants.has(p) && !redirects.has(p));
 
 console.log(`${paths.size} routes, ${declared.size} declared in router`);
 if (missingFromRouter.length) {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeftRight, ArrowRight, Building2, MonitorPlay } from "lucide-react";
 
-import { admissionSteps, classroomClasses, onlineClasses, otherCoursesPage, type PackageClass } from "./courses-data";
+import { admissionSteps, classroomClasses, onlineClasses, class910Page, type PackageClass } from "./courses-data";
 import { academy } from "./data";
 import { ClassroomIncludes, OnlineHighlights, PackageFinder, type PackageMode } from "./OnlinePackages";
 import { PageShell } from "./PageShell";
@@ -51,9 +51,9 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
 
       {mode === "classroom" && (
         <p className="px-4 pt-12 text-center text-sm text-brand-text-muted md:px-6">
-          Looking for Class 9 &amp; 10 or Class X courses?{" "}
-          <Link href={otherCoursesPage.href} className="inline-flex items-center gap-1 font-semibold text-brand-primary hover:text-brand-primary-darker">
-            See other courses <ArrowRight className="size-3.5" />
+          Looking for Class 9 &amp; 10 courses?{" "}
+          <Link href={class910Page.href} className="inline-flex items-center gap-1 font-semibold text-brand-primary hover:text-brand-primary-darker">
+            See {class910Page.title} <ArrowRight className="size-3.5" />
           </Link>
         </p>
       )}

@@ -37,7 +37,7 @@ import {
   onlineFeesTbd,
   onlinePlans,
   kcetCrashCourse,
-  otherClassroomCourses,
+  class910Courses,
   type StandaloneCourse,
   packageFilterSlug,
   packagesFor,
@@ -534,12 +534,12 @@ function StandaloneCourseCard({ course: c }: { course: StandaloneCourse }) {
   );
 }
 
-export function OtherClassroomCourses() {
+export function Class910Courses() {
   return (
-    <section id="other-courses" className="scroll-mt-24 px-4 py-14 md:px-6 md:py-16">
+    <section id="courses" className="scroll-mt-24 px-4 py-14 md:px-6 md:py-16">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-5 md:grid-cols-2">
-          {otherClassroomCourses.map((c) => (
+          {class910Courses.map((c) => (
             <StandaloneCourseCard key={c.slug} course={c} />
           ))}
         </div>
