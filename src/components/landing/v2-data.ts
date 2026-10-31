@@ -1,6 +1,6 @@
-// Content used only by the V2 landing page (classroom + app). Every result
-// below is a real entry from achievers-data.ts (aaaedu.in's achiever list),
-// quoted with the exam it was published under.
+// Content used only by the V2 landing page (classroom + app).
+
+import { achieverSections } from "./achievers-display";
 
 export type HighlightResult = {
   name: string;
@@ -9,18 +9,41 @@ export type HighlightResult = {
   image: string;
 };
 
-export const highlightResults: HighlightResult[] = [
-  { name: "Lakshmi Pooshan", result: "JEE Main 99.38%ile", college: "IIT Bombay", image: "/images/landing/achievers/pMNsapGX4PVyPZOePJ84GvIHQdljYtNALXHte10D.jpg" },
-  { name: "Mithil G", result: "JEE Main 99.06%ile", college: "IIT Kanpur", image: "/images/landing/achievers/DHEsCkhXKLMPqT7RkPK7aGpI8Ry2GrktYMOjr7S9.jpg" },
-  { name: "Nila Subramani", result: "JEE Main AIR 81", college: "CEPT", image: "/images/landing/achievers/2AiKGLrTfpfXwou1VDCs019EP4PcVHftLMr22KhB.png" },
-  { name: "Prajwal Y. R.", result: "KCET Rank 57", college: "NITK", image: "/images/landing/achievers/szdnr8YYAJWl0hO9aqA0wP7qfAokBtwJVZJu137w.png" },
-  { name: "Navaneeth M", result: "JEE Main AIR 945", college: "NIT Calicut", image: "/images/landing/achievers/77fZ6dKD9fAAlAZDjtVvwso6jvZ4onVknqntD8tM.webp" },
-  { name: "Deepshika", result: "JEE Advanced AIR 3084", college: "IISER Mohali", image: "/images/landing/achievers/ZxhrPYuFGUZvd73VSRl8dAduL2YywOjBh2tSjYcA.webp" },
-  { name: "Abhinav", result: "JEE Advanced AIR 7124", college: "IIT Kharagpur", image: "/images/landing/achievers/tuyWSS6UazynEaJswWXwLYA8JmkCyDjPqnRL93m1.jpg" },
-  { name: "Praharaj Ipsita", result: "JEE Advanced AIR 7160", college: "IIT Kharagpur", image: "/images/landing/achievers/dcl2sK4aVXMEtqX6C8R397fptEESeZhtGLGzatAz.jpg" },
-  { name: "Sreesha Rao", result: "JEE Main 98.87%ile", college: "BITS Goa", image: "/images/landing/achievers/2JeXT04V3qM9fCEdk8P2il52OrJhtX7BMGwNlpru.jpg" },
-  { name: "Nandish Pai", result: "JEE Advanced AIR 8689", college: "IIT Bhubaneswar", image: "/images/landing/achievers/yPvmLvPm9wy3Z46yjuBSHgZMVMPnh5p4NeV0PiVQ.png" },
-];
+/** How each exam is named in front of a result ("KCET Rank 21"). */
+const examLabel: Record<string, string> = {
+  "jee-advanced": "JEE Advanced",
+  "jee-mains": "JEE Main",
+  neet: "NEET",
+  "k-cet": "KCET",
+};
+
+const perExam = 3;
+
+/**
+ * The results ticker (and the hero's faces): the top results from the
+ * brochure lists, taken round-robin — every exam's best, then every exam's
+ * next — so the strip runs from the toppers down. The lists are already
+ * sorted best first. A student shows once, under their first (best-placed)
+ * result; their other exams move on to the next student.
+ */
+function pickHighlights(): HighlightResult[] {
+  const seen = new Set<string>();
+  const next = achieverSections.map(() => 0);
+  const picked: HighlightResult[] = [];
+  for (let round = 0; round < perExam; round++) {
+    achieverSections.forEach((g, gi) => {
+      let s = g.students[next[gi]];
+      while (s && seen.has(s.name)) s = g.students[++next[gi]];
+      if (!s) return;
+      next[gi]++;
+      seen.add(s.name);
+      picked.push({ name: s.name, result: `${examLabel[g.slug] ?? g.name} ${s.rank}`, college: s.college, image: s.image });
+    });
+  }
+  return picked;
+}
+
+export const highlightResults = pickHighlights();
 
 /** Colleges our alumni went on to, from the same list — for the hero's proof line. */
 export const alumniColleges = ["IIT Bombay", "IIT Kanpur", "IIT Kharagpur", "NITK", "BITS", "IISER"];
