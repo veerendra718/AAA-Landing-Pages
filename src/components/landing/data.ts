@@ -274,7 +274,7 @@ export const faqs: {
   },
   {
     q: "Which exams do you prepare for?",
-    a: "KCET, NEET, JEE Main and JEE Advanced, for Class 11 and Class 12 — one exam at a time, or several together in the Sakala, Sarvam and Sarvotthama courses. Each runs in the classroom at Vijayanagar and online.",
+    a: "KCET, NEET, JEE Main and JEE Advanced, for Class 11 and Class 12. In the classroom at Vijayanagar: Siddhartha, Saadhaka, Shushrutha and Shreshta. Online, the same courses, plus Sakala, Sarvam and Sarvotthama for several exams together.",
     topic: "courses",
     link: { href: "/landing/courses", label: "See all courses" },
   },
