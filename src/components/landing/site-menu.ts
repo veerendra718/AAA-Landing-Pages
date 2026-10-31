@@ -3,8 +3,8 @@
 //
 // The top-level row carries the section hubs and nothing else — courses as two
 // of them, classroom and online. aaaedu.in
-// files Careers inside About Us rather than beside it, so it is a child of the
-// About Us group here too.
+// files Careers inside About Us; here, at the academy's request, it is a tab
+// of its own (its page stays at /landing/about/careers).
 //
 // A group's top-level item links to its landing page, so that page is not
 // repeated as the group's first dropdown entry. A group with no children of its
@@ -66,12 +66,15 @@ const aboutGroup: NavGroup = {
       label: "Testimonials",
       blurb: "What students and principals say",
     },
-    {
-      href: "/landing/about/careers",
-      label: "Careers",
-      blurb: "Teach with us — real ownership, room to grow",
-    },
   ],
+};
+
+// A tab of its own, though its page sits under /landing/about: the header marks
+// the longest matching href current, so this, not About Us, lights up there.
+const careersGroup: NavGroup = {
+  label: "Careers",
+  href: "/landing/about/careers",
+  items: [],
 };
 
 /** How many achievers a results page lists. */
@@ -176,5 +179,6 @@ export const siteMenu: NavGroup[] = [
   onlineGroup,
   achieversGroup,
   aboutGroup,
+  careersGroup,
   contactGroup,
 ];

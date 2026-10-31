@@ -51,9 +51,8 @@ export function LandingNav({
   useEffect(() => setMenu(null), [pathname]);
 
   // "In this section" — the group whose base path the page sits under. The
-  // longest match wins so two neighbouring items can never light up at once;
-  // no two groups overlap now that Careers sits under About Us, and the rule
-  // is what keeps it that way if the menu gains nested sections later.
+  // longest match wins so two neighbouring items can never light up at once:
+  // Careers' page sits under About Us's path, and only Careers lights up there.
   const activeGroup = useMemo(() => {
     const matches = (href: string) => {
       const base = href.split("#")[0].replace(/\/$/, "");
