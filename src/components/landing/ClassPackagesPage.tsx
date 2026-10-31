@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ArrowLeftRight, ArrowRight, Building2, MonitorPlay } from "lucide-react";
 
-import { admissionSteps, classroomClasses, onlineClasses, type PackageClass } from "./courses-data";
+import { admissionSteps, classroomClasses, onlineClasses, otherCoursesPage, type PackageClass } from "./courses-data";
 import { academy } from "./data";
-import { ClassroomIncludes, OnlineHighlights, OtherClassroomCourses, PackageFinder, type PackageMode } from "./OnlinePackages";
+import { ClassroomIncludes, OnlineHighlights, PackageFinder, type PackageMode } from "./OnlinePackages";
 import { PageShell } from "./PageShell";
 import { SectionHeading } from "./SectionHeading";
 
@@ -49,7 +49,14 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
 
       {mode === "classroom" && <ClassroomIncludes />}
 
-      {mode === "classroom" && <OtherClassroomCourses />}
+      {mode === "classroom" && (
+        <p className="px-4 pt-12 text-center text-sm text-brand-text-muted md:px-6">
+          Looking for a KCET crash course, or Class 9 &amp; 10 / Class X courses?{" "}
+          <Link href={otherCoursesPage.href} className="inline-flex items-center gap-1 font-semibold text-brand-primary hover:text-brand-primary-darker">
+            See other courses <ArrowRight className="size-3.5" />
+          </Link>
+        </p>
+      )}
 
       {mode === "classroom" && <AdmissionSteps />}
 

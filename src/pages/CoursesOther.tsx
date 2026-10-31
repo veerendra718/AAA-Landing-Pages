@@ -10,7 +10,7 @@ import { PageShell } from "@/components/landing/PageShell";
 export default function CoursesOther() {
   return (
     <PageShell title={otherCoursesPage.title} subtitle={otherCoursesPage.note}>
-      <OtherClassroomCourses heading={false} />
+      <OtherClassroomCourses />
 
       <div className="bg-brand-page-bg">
         <AdmissionSteps />
