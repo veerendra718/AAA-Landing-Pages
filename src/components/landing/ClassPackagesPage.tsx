@@ -42,7 +42,7 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
   const otherFormat = (mode === "online" ? classroomClasses : onlineClasses).find((c) => c.id === cls)!;
 
   return (
-    <PageShell title={info.title} subtitle={info.note}>
+    <PageShell title={info.title} lead={info.lead} subtitle={info.note}>
       <OnlineHighlights jumpHref="#prices" jumpLabel="See courses" mode={mode} />
 
       <PackageFinder cls={cls} mode={mode} />

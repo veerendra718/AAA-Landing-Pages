@@ -22,11 +22,15 @@ const visit = "/landing/contact#enquire";
  */
 export function PageShell({
   title,
+  lead,
   subtitle,
   closingCta = true,
   children,
 }: {
   title: string;
+  /** A bold line above the subtitle. */
+  lead?: string;
+  /** Paragraphs separated by a blank line. */
   subtitle?: string;
   /** The teal "Book a visit" banner above the footer. Off on the Contact page,
    *  which is itself the booking form. */
@@ -45,11 +49,17 @@ export function PageShell({
           <h1 className="max-w-3xl font-(family-name:--font-display) text-4xl font-bold leading-tight tracking-tight text-balance text-brand-primary-darker md:text-6xl">
             {title}
           </h1>
-          {subtitle && (
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-pretty text-brand-text-muted md:text-lg">
-              {subtitle}
-            </p>
+          {lead && (
+            <p className="mt-4 max-w-2xl text-lg font-semibold text-brand-text-primary md:text-xl">{lead}</p>
           )}
+          {subtitle?.split("\n\n").map((para, i) => (
+            <p
+              key={para}
+              className={`${i === 0 ? (lead ? "mt-2" : "mt-4") : "mt-3"} max-w-2xl text-base leading-relaxed text-pretty text-brand-text-muted md:text-lg`}
+            >
+              {para}
+            </p>
+          ))}
         </div>
       </section>
 
