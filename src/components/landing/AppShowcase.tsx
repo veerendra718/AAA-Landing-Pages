@@ -34,7 +34,7 @@ const features = [
     id: "tests",
     icon: ClipboardCheck,
     title: "Exam-pattern tests",
-    body: "Fortnightly JEE, NEET and KCET-pattern tests, timed like the real exam, with solutions the moment you submit.",
+    body: "Weekly JEE, NEET and KCET-pattern tests, timed like the real exam, with solutions the moment you submit.",
   },
   {
     id: "analysis",
@@ -249,7 +249,7 @@ function Screen({ id }: { id: FeatureId }) {
           <div className="space-y-2.5 p-3">
             <div className={cn(card, "border-l-4 border-brand-primary")}>
               <p className="text-[10px] font-bold uppercase text-brand-primary">Due Saturday</p>
-              <p className="mt-0.5 text-sm font-bold text-brand-text-primary">Fortnightly Test #15</p>
+              <p className="mt-0.5 text-sm font-bold text-brand-text-primary">Weekly Test #15</p>
               <p className="text-[11px] text-brand-text-muted">JEE Main pattern · 75 Qs · 3 hrs</p>
               <span className="mt-2 inline-block rounded-lg bg-brand-primary px-3 py-1 text-[11px] font-semibold text-white">
                 Start test
@@ -292,7 +292,7 @@ function Screen({ id }: { id: FeatureId }) {
     case "analysis":
       return (
         <>
-          <AppBar title="Detailed analysis" sub="Fortnightly Test #14" />
+          <AppBar title="Detailed analysis" sub="Weekly Test #14" />
           <div className="space-y-2.5 p-3">
             <div className={cn(card, "flex items-center gap-3")}>
               <div className="flex size-14 shrink-0 items-center justify-center rounded-full border-[5px] border-brand-primary border-r-brand-subtle-bg text-sm font-bold text-brand-primary-darker">
