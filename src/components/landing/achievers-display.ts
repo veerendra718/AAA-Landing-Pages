@@ -23,7 +23,7 @@ const order = Object.keys(display);
 /**
  * Where a published rank sorts, best first: ranks ascending ("Rank 57",
  * "AIR - 3084", a bare "309"), then percentiles and NEET scores descending
- * ("99.38%", "Score 697"), then anything without a number ("Qualified").
+ * ("99.38 %ile", "Score 697"), then anything without a number ("Qualified").
  */
 function rankKey(rank: string): [number, number] {
   const percentile = rank.match(/(\d+(?:\.\d+)?)\s*%/);
