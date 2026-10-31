@@ -51,7 +51,7 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
 
       {mode === "classroom" && (
         <p className="px-4 pt-12 text-center text-sm text-brand-text-muted md:px-6">
-          Looking for a KCET crash course, or Class 9 &amp; 10 / Class X courses?{" "}
+          Looking for Class 9 &amp; 10 or Class X courses?{" "}
           <Link href={otherCoursesPage.href} className="inline-flex items-center gap-1 font-semibold text-brand-primary hover:text-brand-primary-darker">
             See other courses <ArrowRight className="size-3.5" />
           </Link>

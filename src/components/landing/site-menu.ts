@@ -137,7 +137,7 @@ const classroomGroup: NavGroup = {
     {
       href: "/landing/courses/other",
       label: otherCoursesPage.title,
-      blurb: "KCET crash course · Class 9 & 10 foundation · Class X boards",
+      blurb: "Class 9 & 10 foundation · Class X boards",
     },
   ],
 };

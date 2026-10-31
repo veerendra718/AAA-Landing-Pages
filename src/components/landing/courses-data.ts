@@ -344,25 +344,37 @@ export type OtherCourseFee = {
   perAnnum: boolean;
 };
 
-/**
- * The other classroom courses on the academy's fee list (Oct 2026), outside the
- * Class 11 & 12 packages, in the list's own wording. Sarthaka's State board fee
- * is blank on the list, so it isn't shown until the academy sends it.
- */
-export const otherClassroomCourses: {
+/** A classroom course sold on its own, outside the Class 11 & 12 packages. */
+export type StandaloneCourse = {
   slug: string;
   name: string;
   label: string;
   fees: OtherCourseFee[];
   extras?: string;
-}[] = [
-  {
-    slug: "kcet-crash-course",
-    name: "KCET Crash course",
-    label: "for PCM",
-    fees: [{ price: 18000, perAnnum: true }],
-    extras: "Free app access",
-  },
+  /** One line of context under the fee. */
+  note?: string;
+};
+
+/**
+ * The KCET crash course, for Class 11 & 12 PCM students — shown in the KCET
+ * tab of both classroom class pages. The rankers batches include it free
+ * ("+ Free crash course" on the fee list).
+ */
+export const kcetCrashCourse: StandaloneCourse = {
+  slug: "kcet-crash-course",
+  name: "KCET Crash course",
+  label: "for PCM",
+  fees: [{ price: 18000, perAnnum: true }],
+  extras: "Free app access",
+  note: "Free with Siddhartha, Saadhaka, Shushrutha and Shreshta.",
+};
+
+/**
+ * The other classroom courses on the academy's fee list (Oct 2026), outside the
+ * Class 11 & 12 packages, in the list's own wording. Sarthaka's State board fee
+ * is blank on the list, so it isn't shown until the academy sends it.
+ */
+export const otherClassroomCourses: StandaloneCourse[] = [
   {
     slug: "sumedha",
     name: "Sumedha",
@@ -392,7 +404,7 @@ export const classroomIncludes = [
 export const otherCoursesPage = {
   href: "/landing/courses/other",
   title: "Other courses",
-  note: "A KCET crash course, a weekend foundation batch for Class 9 & 10, and Class X board tuitions — taught at our Vijayanagar centre.",
+  note: "A weekend foundation batch for Class 9 & 10, and Class X board tuitions — taught at our Vijayanagar centre.",
 };
 
 /** Each class's classroom packages page, mirroring `onlineClasses`. */

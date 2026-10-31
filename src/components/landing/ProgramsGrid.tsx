@@ -12,6 +12,7 @@ import {
   classroomFees,
   classroomPrice,
   examPackages,
+  kcetCrashCourse,
   onlineClasses,
   onlineExams,
   otherClassroomCourses,
@@ -161,12 +162,16 @@ function ExamPrograms({ format }: { format: Format }) {
                 )}
               </p>
               <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Courses">
-                {packagesIn(c, format).map((p) => (
+                {[
+                  ...packagesIn(c, format).map((p) => p.name),
+                  // The crash course sits beside the classroom KCET packages.
+                  ...(format === "classroom" && c.exam === "KCET" ? [kcetCrashCourse.name] : []),
+                ].map((name) => (
                   <li
-                    key={p.slug}
+                    key={name}
                     className="rounded-full bg-brand-subtle-bg px-2.5 py-0.5 text-[11px] font-semibold text-brand-primary-darker"
                   >
-                    {p.name}
+                    {name}
                   </li>
                 ))}
               </ul>
@@ -216,7 +221,7 @@ function ExamPrograms({ format }: { format: Format }) {
                 See all <ArrowRight className="size-4" />
               </Link>
             </div>
-            <div className="mt-3 grid gap-3 md:grid-cols-3">
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
               {otherClassroomCourses.map((c) => {
                 const from = Math.min(...c.fees.map((f) => f.discounted ?? f.price));
                 return (
