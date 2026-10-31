@@ -12,6 +12,7 @@
 // in that state. Contact matches aaaedu.in, whose Contact Us
 // is a single link with the address, phones, email and enquiry form on one page.
 //
+import { sectionBySlug } from "./achievers-display";
 import {
   classroomClasses,
   classroomExtras,
@@ -68,6 +69,9 @@ const aboutGroup: NavGroup = {
   ],
 };
 
+/** How many achievers a results page lists. */
+const achieverTotal = (slug: string) => sectionBySlug(slug)?.students.length ?? 0;
+
 const achieversGroup: NavGroup = {
   label: "Achievers",
   href: "/landing/achievers",
@@ -75,22 +79,22 @@ const achieversGroup: NavGroup = {
     {
       href: "/landing/achievers/jee-mains",
       label: "JEE Mains",
-      blurb: "45 ranked results",
+      blurb: `${achieverTotal("jee-mains")} percentile results`,
     },
     {
       href: "/landing/achievers/jee-advanced",
       label: "JEE Advanced",
-      blurb: "16 ranked results",
+      blurb: `${achieverTotal("jee-advanced")} ranked results`,
     },
     {
       href: "/landing/achievers/neet",
       label: "NEET",
-      blurb: "16 toppers — medical & dental colleges",
+      blurb: `${achieverTotal("neet")} toppers — medical colleges`,
     },
     {
       href: "/landing/achievers/k-cet",
       label: "K-CET",
-      blurb: "24 ranks, into NITK, IIT Bombay, BITS Goa",
+      blurb: `${achieverTotal("k-cet")} ranks, into NITK, IIT Bombay, BITS Goa`,
     },
   ],
 };
