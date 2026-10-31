@@ -285,12 +285,16 @@ export const onlineCourseDetails = [
   { label: "Not included", value: "Board exam preparation" },
 ];
 
-/** The packages sold for a class. */
-export const packagesFor = (cls: PackageClass) => onlinePackages.filter((p) => p.prices[cls]);
+/**
+ * The packages sold for a class. The combined packages (several exams in one —
+ * Sakala, Sarvam, Sarvotthama) aren't offered for now, so they are left out;
+ * their prices stay above in case they return.
+ */
+export const packagesFor = (cls: PackageClass) =>
+  onlinePackages.filter((p) => p.prices[cls] && p.exams.length === 1);
 
-/** The id of the filter a package sits under on a class page (its exam, or "combined"). */
+/** The id of the filter a package sits under on a class page: its exam's. */
 export function packageFilterSlug(pkg: OnlinePackage): string {
-  if (pkg.exams.length > 1) return "combined";
   return onlineExams.find((e) => e.exam === pkg.exams[0])!.slug;
 }
 

@@ -283,7 +283,7 @@ export const faqs: {
   },
   {
     q: "Which exams do you prepare for?",
-    a: "KCET, NEET, JEE Main and JEE Advanced, for Class 11 and Class 12. In the classroom at Vijayanagar: Siddhartha, Saadhaka, Shushrutha and Shreshta. Online, the same courses, plus Sakala, Sarvam and Sarvotthama for several exams together.",
+    a: "KCET, NEET, JEE Main and JEE Advanced, for Class 11 and Class 12. In the classroom at Vijayanagar and online: Siddhartha, Saadhaka, Shushrutha and Shreshta — plus Siddhartha Fasttrack online for Class 12.",
     topic: "courses",
     link: { href: "/landing/courses/class-11", label: "See classroom courses" },
   },
@@ -295,7 +295,7 @@ export const faqs: {
   },
   {
     q: "Can my child study online instead of coming to Vijayanagar?",
-    a: "Yes. The same courses are taught live online by the same faculty, for Class 11 and Class 12 — KCET, NEET, JEE Main and JEE Advanced, one exam or several together.",
+    a: "Yes. The same courses are taught live online by the same faculty, for Class 11 and Class 12 — KCET, NEET, JEE Main and JEE Advanced.",
     topic: "online",
     link: { href: "/landing/courses/online/class-11", label: "See online courses" },
   },

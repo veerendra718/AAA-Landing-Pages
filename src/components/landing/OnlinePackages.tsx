@@ -577,30 +577,25 @@ export function ClassroomIncludes() {
 }
 
 /**
- * One class's packages and prices, narrowed by exam or to the combined
- * packages. Each filter carries an id (the exam's slug, or "combined"), so a
- * link like …/online/class-11#neet scrolls to the filters and selects NEET.
+ * One class's packages and prices, narrowed by exam. Each filter carries the
+ * exam's slug as its id, so a link like …/online/class-11#neet scrolls to the
+ * filters and selects NEET.
  */
 export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mode?: PackageMode }) {
-  // An exam, or "combined" (packages covering several exams). There is no
-  // "all" view: the page opens on the first exam.
-  const [filter, setFilter] = useState<OnlineExam | "combined">(onlineExams[0].exam);
+  // There is no "all" view: the page opens on the first exam.
+  const [filter, setFilter] = useState<OnlineExam>(onlineExams[0].exam);
   // The classroom package whose Enroll / Callback button was pressed, if any —
   // one side panel serves every card.
   const [enquiry, setEnquiry] = useState<{ pkg: OnlinePackage; intent: EnquiryIntent } | null>(null);
   const { hash, key } = useLocation();
 
   useEffect(() => {
-    if (hash === "#combined" && mode === "online") return setFilter("combined");
     const match = onlineExams.find((e) => `#${e.slug}` === hash);
     if (match) setFilter(match.exam);
-  }, [hash, key, mode]);
+  }, [hash, key]);
 
-  const exam = filter === "combined" ? null : filter;
-  // An exam shows only that exam's own packages; the packages covering
-  // several exams are listed once, under "Combined courses".
-  const shown = (mode === "online" ? packagesFor(cls) : classroomPackagesFor(cls)).filter((p) =>
-    filter === "combined" ? p.exams.length > 1 : p.exams.length === 1 && p.exams[0] === exam,
+  const shown = (mode === "online" ? packagesFor(cls) : classroomPackagesFor(cls)).filter(
+    (p) => p.exams[0] === filter,
   );
 
   const pill = (on: boolean) =>
@@ -641,24 +636,12 @@ export function PackageFinder({ cls, mode = "online" }: { cls: PackageClass; mod
                 {e.exam}
               </button>
             ))}
-            {/* Classroom has no combined courses. */}
-            {mode === "online" && (
-              <button
-                id="combined"
-                type="button"
-                aria-pressed={filter === "combined"}
-                onClick={() => setFilter("combined")}
-                className={pill(filter === "combined")}
-              >
-                Combined courses
-              </button>
-            )}
           </div>
         </div>
 
         <p className="mt-6 text-center text-sm text-brand-text-muted" aria-live="polite">
           {shown.length} {shown.length === 1 ? "course" : "courses"} for{" "}
-          <span className="font-semibold text-brand-text-primary">{filter === "combined" ? "combined courses" : filter}</span>
+          <span className="font-semibold text-brand-text-primary">{filter}</span>
         </p>
 
         {mode === "online" ? (
