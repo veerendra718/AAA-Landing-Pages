@@ -111,9 +111,21 @@ export function FaqSection() {
                     <div key={l.title} className="mt-4">
                       <p className="font-semibold text-brand-text-primary">{l.title}</p>
                       <ul className="mt-1.5 list-disc space-y-1 pl-5">
-                        {l.items.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
+                        {l.items.map((item) =>
+                          typeof item === "string" ? (
+                            <li key={item}>{item}</li>
+                          ) : (
+                            // An item with its own detail, nested under it.
+                            <li key={item.text}>
+                              <span className="font-semibold text-brand-text-primary">{item.text}</span>
+                              <ul className="mt-1 list-[circle] space-y-1 pl-5">
+                                {item.sub.map((s) => (
+                                  <li key={s}>{s}</li>
+                                ))}
+                              </ul>
+                            </li>
+                          ),
+                        )}
                       </ul>
                     </div>
                   ))}

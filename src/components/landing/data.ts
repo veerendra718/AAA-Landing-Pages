@@ -265,7 +265,7 @@ export const faqs: {
   /** Paragraphs separated by a blank line. */
   a: string;
   /** Titled bullet lists after the answer. */
-  lists?: { title: string; items: string[] }[];
+  lists?: { title: string; items: (string | { text: string; sub: string[] })[] }[];
   topic: FaqTopic;
   link?: { href: string; label: string; external?: boolean };
 }[] = [
@@ -329,7 +329,10 @@ export const faqs: {
       { title: "Exam Details", items: asst.details.map((d) => `${d.label}: ${d.value}`) },
       {
         title: "Choose Your Stream",
-        items: asst.streams.flatMap((t) => [`${t.name} (${t.note})`, `Subjects: ${t.subjects.join(" · ")}`]),
+        items: asst.streams.map((t) => ({
+          text: `${t.name} (${t.note})`,
+          sub: [`Subjects: ${t.subjects.join(" · ")}`],
+        })),
       },
       { title: "Scholarship Benefits", items: asst.benefits.map((b) => `${b.title}: ${b.text}`) },
     ],
