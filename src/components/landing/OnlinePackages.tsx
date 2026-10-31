@@ -379,7 +379,11 @@ function PackagePlans({ pkg, cls, comparison }: { pkg: OnlinePackage; cls: Packa
   );
 }
 
-const advancedFeatures = planFeatures("advanced").filter((f) => !f.startsWith("Everything in"));
+// Board exam preparation is an online-course feature, not part of the app
+// access classroom students get, so the classroom list leaves it out.
+const advancedFeatures = planFeatures("advanced").filter(
+  (f) => !f.startsWith("Everything in") && f !== "Board Exam Preparation",
+);
 
 /**
  * A classroom package as a compact card, so packages sit side by side: the

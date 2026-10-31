@@ -111,6 +111,7 @@ export const onlinePlans = [
       "AI-Powered Mock Exams",
       "1-on-1 Doubt Sessions",
       "Advanced Performance Analytics",
+      "Board Exam Preparation",
     ],
   },
 ] as const;
