@@ -64,7 +64,7 @@ const highlights = {
     { icon: Gift, text: "Free plan · 7-day trial of paid plans", note: "Start free; try Standard or Advanced free for 7 days." },
   ],
   classroom: [
-    { icon: Building2, text: "Taught at the Vijayanagar centre", note: "Live, in-person classes with the academy's faculty." },
+    { icon: Building2, text: "Taught at the Vijayanagar centre", note: "Live, in-person classes, tests & paper discussion sessions with the academy's top faculty." },
     { icon: UserCheck, text: "Batches of up to 30", note: "Small enough that every teacher knows every student." },
     { icon: Smartphone, text: `${academy.appName} app Advanced plan access`, note: "Recordings, tests and analytics in the app at home." },
   ],
