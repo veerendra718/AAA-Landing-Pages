@@ -269,7 +269,8 @@ export const onlineClasses: OnlineClassInfo[] = [
     label: "Class 12",
     course: "1-year course",
     title: "Class 12 online courses",
-    note: `One-year courses for KCET, NEET, JEE Main and JEE Advanced, taught live online by our classroom faculty — focused on the final year before the exam.`,
+    lead: "One year Live Online Coaching | Class 12",
+    note: "Get premium online preparation for KCET, NEET, and JEE Main/Advanced. Taught live by our best faculty, this comprehensive program guides your ward all the way to their final competitive exams with full access to Class 11 recordings.",
   },
 ];
 
