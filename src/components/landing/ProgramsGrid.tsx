@@ -15,6 +15,7 @@ import {
   onlineClasses,
   onlineExams,
   otherClassroomCourses,
+  otherCoursesPage,
   type OnlineExamInfo,
   perAnnum,
 } from "./courses-data";
@@ -194,21 +195,43 @@ function ExamPrograms({ format }: { format: Format }) {
           <ArrowRight className="size-5 shrink-0 text-brand-primary transition-transform group-hover:translate-x-1" />
         </Link>
       ) : (
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <Link
-            href="/landing/courses/class-11#other-courses"
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-brand-border-light bg-brand-page-bg p-5 hover:bg-white card-hover"
-          >
-            <span>
-              <span className="block text-[11px] font-bold uppercase tracking-wide text-brand-primary">
-                Other courses
-              </span>
-              <span className="mt-0.5 block font-semibold text-brand-text-primary">
-                {otherClassroomCourses.map((c) => c.name).join(", ")}
-              </span>
-            </span>
-            <ArrowRight className="size-5 shrink-0 text-brand-primary transition-transform group-hover:translate-x-1" />
-          </Link>
+        <div className="mt-6 grid gap-4">
+          {/* The courses outside Class 11 & 12, as compact cards, so a Class 9,
+              10 or crash-course family sees them without leaving the page. */}
+          <div className="rounded-3xl border border-brand-border-light bg-brand-page-bg p-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <p className="text-[11px] font-bold uppercase tracking-wide text-brand-primary">Other courses</p>
+              <Link
+                href={otherCoursesPage.href}
+                className="inline-flex items-center gap-1 text-sm font-semibold text-brand-primary hover:text-brand-primary-darker"
+              >
+                See all <ArrowRight className="size-4" />
+              </Link>
+            </div>
+            <div className="mt-3 grid gap-3 md:grid-cols-3">
+              {otherClassroomCourses.map((c) => {
+                const from = Math.min(...c.fees.map((f) => f.discounted ?? f.price));
+                return (
+                  <Link
+                    key={c.slug}
+                    href={`${otherCoursesPage.href}#${c.slug}`}
+                    className="group flex flex-col rounded-2xl border border-brand-border-light bg-white p-4 card-hover"
+                  >
+                    <span className="flex items-center justify-between gap-2 font-semibold text-brand-text-primary group-hover:text-brand-primary">
+                      {c.name}
+                      <ArrowRight className="size-4 shrink-0 text-brand-primary transition-transform group-hover:translate-x-1" />
+                    </span>
+                    <span className="mt-1 line-clamp-2 text-sm leading-snug text-brand-text-muted">{c.label}</span>
+                    <span className="mt-auto pt-3 text-sm text-brand-text-muted">
+                      {c.fees.length > 1 ? "from " : ""}
+                      <span className="font-bold text-brand-text-primary">₹{from.toLocaleString("en-IN")}</span>{" "}
+                      {perAnnum}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
           <a
             href="#visit"
             className="group flex items-center justify-between gap-4 rounded-2xl bg-brand-primary p-5 text-white transition-colors hover:bg-brand-primary-dark"
