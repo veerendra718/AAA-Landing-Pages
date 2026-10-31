@@ -63,7 +63,7 @@ const programmeFormats = [
   { title: "Live Online:", text: "Study from the comfort of home with full interactive support." },
   {
     title: `${academy.appName} App Included:`,
-    text: "24/7 access to digital resources, assessments, and study materials with every enrolment.",
+    text: "24/7 access to digital resources, assessments, and study materials with every enrolment",
   },
 ];
 
@@ -141,7 +141,7 @@ export default function LandingV2() {
       </div>
 
       <ProgramsGrid
-        title="Find the Right Programme for You"
+        title="Find the Right Program for You"
         subtitle={
           <>
             <span className="block">
@@ -308,7 +308,7 @@ function OnlineHero() {
         </h2>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-text-muted">
           Distance shouldn&apos;t limit destiny. If you are located outside the reach of our premier
-          Vijayanagar centre, our live online program brings the classroom to you.
+          Vijayanagar center, our live online program brings the classroom to you.
         </p>
         <ul className="mt-4 max-w-xl space-y-2.5 text-base leading-relaxed text-brand-text-muted sm:text-lg">
           {onlinePillars.map((p) => (
