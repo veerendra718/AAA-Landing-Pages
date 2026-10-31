@@ -18,7 +18,7 @@ export function VrddhiSection({ id = "vrddhi" }: { id?: string }) {
           <div className="relative aspect-[11/10] overflow-hidden rounded-[24px] shadow-xl shadow-brand-primary/10">
             <Image
               src="/images/landing/vrddhi-prize-distribution.jpg"
-              alt="Vrddhi prize distribution: students with certificates and a trophy"
+              alt="Scholarship test prize distribution: students with certificates and a trophy"
               fill
               sizes="(min-width: 1024px) 540px, 100vw"
               className="object-cover"
@@ -40,11 +40,16 @@ export function VrddhiSection({ id = "vrddhi" }: { id?: string }) {
             Scholarship test
           </p>
           <h2 className="mt-3 font-(family-name:--font-display) text-3xl font-bold leading-tight tracking-tight text-brand-primary-darker md:text-[42px]">
-            Vrddhi: earn a scholarship on your admission
+            ASST: Secure Your Admission Scholarship
           </h2>
           <p className="mt-4 text-base leading-relaxed text-brand-text-muted md:text-lg">
-            Our inter-school talent search and scholarship-cum-admission test. <em>Vrddhi</em> means
-            &ldquo;{vrddhi.meaning.toLowerCase()}&rdquo;.
+            Give your child’s academic journey the ultimate launchpad. The Arjunaa Scholastic &amp;
+            Scholarship Test (ASST) is our premier talent search and scholarship-cum-admission test,
+            designed to bring prosperity, development, and accelerated career growth to every young
+            achiever.
+          </p>
+          <p className="mt-3 text-base leading-relaxed text-brand-text-muted md:text-lg">
+            Parents can register their child online and visit our centre for the assessment.
           </p>
 
           <dl className="mt-7 grid grid-cols-3 gap-3">
@@ -76,7 +81,7 @@ export function VrddhiSection({ id = "vrddhi" }: { id?: string }) {
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">
               <a
-                href={whatsappWith("Hi, please tell me the next Vrddhi scholarship test date and how to register.")}
+                href={whatsappWith("Hi, please tell me the next ASST scholarship test date and how to register.")}
                 target="_blank"
                 rel="noreferrer"
               >
