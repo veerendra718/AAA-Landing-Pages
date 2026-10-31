@@ -275,6 +275,7 @@ export const onlineClasses: OnlineClassInfo[] = [
 export const onlineCourseDetails = [
   { label: "Live classes", value: "Mon – Sat · 3 hours a day" },
   { label: "Tests", value: "Weekly" },
+  { label: "Not included", value: "Board exam preparation" },
 ];
 
 /** The packages sold for a class. */
