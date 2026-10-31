@@ -183,10 +183,10 @@ export const faculty = [
 // Openings of the aaaedu.in testimonials, for the carousel. The full text
 // lives in about-data.ts (testimonialsFull).
 export const mission =
-  "To provide cost-effective world class education in order to create professionally superior manpower and to instil within students deep foundational values of good character to bring out Principle-Centred Leaders in the society.";
+  "To provide cost-effective world class education in order to create professionally superior manpower and to instil within students deep foundational values of good character to bring out Principle-Centered Leaders in the society.";
 
 export const vision =
-  "To become leaders in the field of education and create a Brand of Principle centred Teachers, leaders and entrepreneurs for creating a sustainable, self-sufficient community.";
+  "To become leaders in the field of education and create a brand of Principle Centered Teachers, Leaders and Entrepreneurs for creating a sustainable, self-sufficient community.";
 
 // "Why choose us", as listed on aaaedu.in.
 export const whyChoose = [

@@ -10,7 +10,7 @@ import { SectionHeading } from "@/components/landing/SectionHeading";
 export const metadata: Metadata = {
   title: "Mission & Vision | Arjunaa Academy for Achievers",
   description:
-    "Cost-effective, world-class education that creates professionally superior manpower and Principle-Centred Leaders.",
+    "Cost-effective, world-class education that creates professionally superior manpower and Principle-Centered Leaders.",
 };
 
 const valueIcons = [Target, HeartHandshake, Sparkles];
