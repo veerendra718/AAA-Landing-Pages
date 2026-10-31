@@ -83,7 +83,7 @@ export function ClosingCta({
             ))}
           </ul>
           <p className="mt-6 border-t border-white/15 pt-4 text-xs text-white/70">
-            A visit takes about an hour. Can&apos;t come in? We&apos;ll visit you at home or meet online.
+            A visit takes about an hour. Can&apos;t come in? We&apos;ll meet you online.
           </p>
         </div>
       </div>
