@@ -40,7 +40,7 @@ export function WhyChoose({
             align="left"
             eyebrow={eyebrow}
             title={title}
-            subtitle="The attention of a small academy, with the depth of a big one."
+            subtitle="Get the massive resources, top-tier faculty, and depth of a mega-institute—without getting lost in the crowd."
           />
           <Link
             href="/landing/achievers"
