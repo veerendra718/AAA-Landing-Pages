@@ -203,6 +203,11 @@ export const whyChoose = [
 /** ASST, the academy's scholarship-cum-admission test, in the academy's wording (Oct 2026). */
 export const asst = {
   name: "ASST",
+  heading: "ASST: Secure Your Admission Scholarship",
+  intro: [
+    "Give your child’s academic journey the ultimate launchpad. The Arjunaa Scholastic & Scholarship Test (ASST) is our premier talent search and scholarship-cum-admission test, designed to bring prosperity, development, and accelerated career growth to every young achiever.",
+    "Parents can register their child online and visit our centre for the assessment.",
+  ],
   details: [
     { label: "Duration", value: "1.5 Hours (90 Minutes)" },
     { label: "Format", value: "Objective Type (MCQs)" },
@@ -255,7 +260,12 @@ export const faqTopics: { id: FaqTopic; label: string }[] = [
  *  V3 all render this list and don't share the same sections. */
 export const faqs: {
   q: string;
+  /** Shown in bold above the answer. */
+  lead?: string;
+  /** Paragraphs separated by a blank line. */
   a: string;
+  /** Titled bullet lists after the answer. */
+  lists?: { title: string; items: string[] }[];
   topic: FaqTopic;
   link?: { href: string; label: string; external?: boolean };
 }[] = [
@@ -313,7 +323,16 @@ export const faqs: {
   },
   {
     q: "What is ASST?",
-    a: "The Arjunaa Scholastic & Scholarship Test (ASST) is our premier talent search and scholarship-cum-admission test. It's a 1.5-hour (90-minute) objective test (MCQs) at the Arjunaa Academy Centre, in a JEE Track (Mental Ability, Mathematics, Physics, Chemistry) or a NEET Track (Mental Ability, Biology, Physics, Chemistry). Scores earn fee waivers on admission.",
+    lead: asst.heading,
+    a: asst.intro.join("\n\n"),
+    lists: [
+      { title: "Exam Details", items: asst.details.map((d) => `${d.label}: ${d.value}`) },
+      {
+        title: "Choose Your Stream",
+        items: asst.streams.flatMap((t) => [`${t.name} (${t.note})`, `Subjects: ${t.subjects.join(" · ")}`]),
+      },
+      { title: "Scholarship Benefits", items: asst.benefits.map((b) => `${b.title}: ${b.text}`) },
+    ],
     topic: "fees",
   },
   {

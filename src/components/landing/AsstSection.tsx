@@ -29,17 +29,13 @@ export function AsstSection({ id = "asst" }: { id?: string }) {
             Scholarship test
           </p>
           <h2 className="mt-3 font-(family-name:--font-display) text-3xl font-bold leading-tight tracking-tight text-brand-primary-darker md:text-[42px]">
-            ASST: Secure Your Admission Scholarship
+            {asst.heading}
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-brand-text-muted md:text-lg">
-            Give your child’s academic journey the ultimate launchpad. The Arjunaa Scholastic &amp;
-            Scholarship Test (ASST) is our premier talent search and scholarship-cum-admission test,
-            designed to bring prosperity, development, and accelerated career growth to every young
-            achiever.
-          </p>
-          <p className="mt-3 text-base leading-relaxed text-brand-text-muted md:text-lg">
-            Parents can register their child online and visit our centre for the assessment.
-          </p>
+          {asst.intro.map((para, i) => (
+            <p key={para} className={`${i === 0 ? "mt-4" : "mt-3"} text-base leading-relaxed text-brand-text-muted md:text-lg`}>
+              {para}
+            </p>
+          ))}
 
           <h3 className="mt-8 text-sm font-bold text-brand-text-primary">Exam Details</h3>
           <dl className="mt-3 grid gap-3 sm:grid-cols-3">

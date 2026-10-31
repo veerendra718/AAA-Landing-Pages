@@ -101,7 +101,22 @@ export function FaqSection() {
                   {f.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-[15px] leading-relaxed text-brand-text-secondary">
-                  {f.a}
+                  {f.lead && <p className="mb-2 font-semibold text-brand-text-primary">{f.lead}</p>}
+                  {f.a.split("\n\n").map((para) => (
+                    <p key={para} className="[&+p]:mt-2">
+                      {para}
+                    </p>
+                  ))}
+                  {f.lists?.map((l) => (
+                    <div key={l.title} className="mt-4">
+                      <p className="font-semibold text-brand-text-primary">{l.title}</p>
+                      <ul className="mt-1.5 list-disc space-y-1 pl-5">
+                        {l.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                   {f.link &&
                     (f.link.external ? (
                       <a
