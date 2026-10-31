@@ -6,7 +6,6 @@ import { ArrowRight, CalendarCheck, MonitorPlay, Play, Users, Video } from "luci
 import { Button } from "@/components/ui/button";
 import { AppShowcase, HeroPhone } from "@/components/landing/AppShowcase";
 import { CentreSection } from "@/components/landing/CentreSection";
-import { ClosingCta } from "@/components/landing/ClosingCta";
 import { CountUp } from "@/components/landing/CountUp";
 import { academy, registerUrl, whatsappUrl } from "@/components/landing/data";
 import { FacultyShowcase } from "@/components/landing/FacultyShowcase";
@@ -171,17 +170,9 @@ export default function LandingV2() {
 
       <CentreSection />
 
-      <ClosingCta
-        visitHref="#visit"
-        subtitle={`Admissions for 2026–27 are open at our Vijayanagar centre. Book a visit, or message us on WhatsApp and a mentor will call you back.`}
-        secondary={
-          <Button asChild size="lg" variant="inverse-outline">
-            <Link href={registerUrl}>
-              <MonitorPlay className="size-4" /> Start online
-            </Link>
-          </Button>
-        }
-      />
+      {/* No closing "Admissions open" banner here: the announcement bar opens the
+          page with it, and the centre section's visit form is the last call to
+          action. Other pages keep the banner (PageShell). */}
 
       <LandingFooter />
       <FloatingContact className="hidden md:flex" />
