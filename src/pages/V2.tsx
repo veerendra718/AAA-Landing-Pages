@@ -54,8 +54,6 @@ const onlinePoints = [
   `Courses from ₹${onlineFrom.toLocaleString("en-IN")}`,
 ];
 
-const heroPoints = ["Day scholar & residential", "Class 11 & 12"];
-
 const heroPillars = [
   {
     title: "Elite Faculty:",
@@ -198,17 +196,6 @@ function ClassroomHero() {
             </a>
           </Button>
         </div>
-
-        <ul className="mt-7 grid max-w-xl gap-x-6 gap-y-2.5 text-sm text-brand-text-secondary sm:grid-cols-2">
-          {heroPoints.map((t) => (
-            <li key={t} className="flex items-center gap-2">
-              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-success-bg text-brand-success">
-                <Check className="size-3" strokeWidth={3} />
-              </span>
-              {t}
-            </li>
-          ))}
-        </ul>
 
         <AlumniProof />
       </div>
