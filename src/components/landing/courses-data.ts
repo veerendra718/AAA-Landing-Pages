@@ -258,7 +258,8 @@ export const onlineClasses: OnlineClassInfo[] = [
     label: "Class 11",
     course: "2-year course",
     title: "Class 11 online courses",
-    note: `Two-year courses for KCET, NEET, JEE Main and JEE Advanced, taught live online by our classroom faculty — from Class 11 through Class 12 to the exam.`,
+    lead: "Two-Year Live Online Coaching | Class 11 & 12",
+    note: "Get premium online preparation for KCET, NEET, and JEE Main/Advanced. Taught live by our best faculty, this comprehensive program guides your ward from day one of Class 11 all the way to their final competitive exams.",
   },
   {
     id: "12",
