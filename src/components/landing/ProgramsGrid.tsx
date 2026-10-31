@@ -16,6 +16,7 @@ import {
   onlineExams,
   otherClassroomCourses,
   otherCoursesPage,
+  onlineFeesTbd,
   type OnlineExamInfo,
   perAnnum,
 } from "./courses-data";
@@ -146,11 +147,18 @@ function ExamPrograms({ format }: { format: Format }) {
             <div className="flex flex-1 flex-col p-5">
               <h3 className="text-lg font-bold leading-snug text-brand-text-primary">{c.exam}</h3>
               <p className="mt-1 text-sm text-brand-text-muted">
-                Class 11 &amp; 12 · from{" "}
-                <span className="font-bold text-brand-text-primary">
-                  ₹{fromPrice(c, format).toLocaleString("en-IN")}
-                </span>
-                {format === "classroom" && <> {perAnnum}</>}
+                Class 11 &amp; 12 ·{" "}
+                {format === "online" && onlineFeesTbd ? (
+                  <span className="font-bold text-brand-text-primary">Fee: TBD</span>
+                ) : (
+                  <>
+                    from{" "}
+                    <span className="font-bold text-brand-text-primary">
+                      ₹{fromPrice(c, format).toLocaleString("en-IN")}
+                    </span>
+                    {format === "classroom" && <> {perAnnum}</>}
+                  </>
+                )}
               </p>
               <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Courses">
                 {packagesIn(c, format).map((p) => (

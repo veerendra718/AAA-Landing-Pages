@@ -34,6 +34,7 @@ import {
   onlineClasses,
   onlineCourseDetails,
   onlineExams,
+  onlineFeesTbd,
   onlinePlans,
   otherClassroomCourses,
   packageFilterSlug,
@@ -192,11 +193,11 @@ function PlanCard({
           price before the discount is struck through beside the saving. */}
       <p className="mt-2 flex flex-wrap items-baseline gap-x-2">
         <span className="text-4xl font-bold tracking-tight text-brand-text-primary">
-          {price ? formatPrice(price.price - price.off) : "₹0"}
+          {!price ? "₹0" : onlineFeesTbd ? "Fee: TBD" : formatPrice(price.price - price.off)}
         </span>
         {price && <span className="text-sm text-brand-text-muted">7-day free trial</span>}
       </p>
-      {price ? (
+      {price && onlineFeesTbd ? null : price ? (
         <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
           <span className="text-brand-text-muted line-through">{formatPrice(price.price)}</span>
           <span className="inline-flex items-center gap-1 rounded-full bg-brand-success-bg px-2.5 py-0.5 text-xs font-bold text-brand-success">
@@ -466,7 +467,8 @@ function ClassroomCard({
         href={`${online.href}#${packageFilterSlug(pkg)}`}
         className="mt-3 inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-brand-text-muted hover:text-brand-primary"
       >
-        <MonitorPlay className="size-3.5" /> Or online, from {formatPrice(pkg.prices[cls]!.standard.price)}
+        <MonitorPlay className="size-3.5" /> Or online
+        {!onlineFeesTbd && <>, from {formatPrice(pkg.prices[cls]!.standard.price)}</>}
       </Link>
     </article>
   );

@@ -271,6 +271,13 @@ export const onlineClasses: OnlineClassInfo[] = [
   },
 ];
 
+/**
+ * The academy has marked online course fees "TBD". While this is on, every
+ * online price on the site reads "Fee: TBD" or is left out; the prices above
+ * stay as the app's list in case they return. Set it to false to show them.
+ */
+export const onlineFeesTbd = true;
+
 /** What every online course runs to, shown under each course's name. */
 export const onlineCourseDetails = [
   { label: "Live classes", value: "Mon – Sat · 3 hours a day" },

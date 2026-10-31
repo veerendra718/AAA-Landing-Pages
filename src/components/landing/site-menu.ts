@@ -19,6 +19,7 @@ import {
   classroomPackagesFor,
   classroomPrice,
   onlineClasses,
+  onlineFeesTbd,
   otherCoursesPage,
   packagesFor,
   type PackageClass,
@@ -147,7 +148,7 @@ function onlineClassItem(cls: PackageClass): NavLeaf {
   return {
     href: info.href,
     label: info.label,
-    blurb: `${info.course} · ${packages.length} courses · from ₹${from.toLocaleString("en-IN")}`,
+    blurb: `${info.course} · ${packages.length} courses${onlineFeesTbd ? "" : ` · from ₹${from.toLocaleString("en-IN")}`}`,
   };
 }
 
