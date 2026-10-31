@@ -421,6 +421,13 @@ export const classroomIncludes = [
   "Counselling with a mentor at the centre",
 ];
 
+/** The page for the classroom courses outside Class 11 & 12 (`otherClassroomCourses`). */
+export const otherCoursesPage = {
+  href: "/landing/courses/other",
+  title: "Other courses",
+  note: "A KCET crash course, a weekend foundation batch for Class 9 & 10, and Class X board tuitions — taught at our Vijayanagar centre.",
+};
+
 /** Each class's classroom packages page, mirroring `onlineClasses`. */
 export const classroomClasses: OnlineClassInfo[] = [
   {

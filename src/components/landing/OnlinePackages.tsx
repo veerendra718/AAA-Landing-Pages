@@ -468,12 +468,12 @@ function ClassroomCard({
  * course, the Class 9 & 10 foundation batch and the Class X board tuitions —
  * each with its fee as the academy lists it.
  */
-export function OtherClassroomCourses() {
+export function OtherClassroomCourses({ heading = true }: { heading?: boolean }) {
   return (
     <section id="other-courses" className="scroll-mt-24 px-4 py-14 md:px-6 md:py-16">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Also at Vijayanagar" title="Other courses" />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        {heading && <SectionHeading eyebrow="Also at Vijayanagar" title="Other courses" />}
+        <div className={cn("grid gap-5 md:grid-cols-3", heading && "mt-10")}>
           {otherClassroomCourses.map((c) => (
             <article
               key={c.slug}

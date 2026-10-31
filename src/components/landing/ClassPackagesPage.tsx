@@ -7,6 +7,28 @@ import { ClassroomIncludes, OnlineHighlights, OtherClassroomCourses, PackageFind
 import { PageShell } from "./PageShell";
 import { SectionHeading } from "./SectionHeading";
 
+/** How a classroom admission goes, step by step. */
+export function AdmissionSteps() {
+  return (
+    <section className="px-4 py-14 md:px-6 md:py-16">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading eyebrow="How to join" title="From first call to first class" />
+        <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {admissionSteps.map((st, i) => (
+            <li key={st.step} className="rounded-2xl border border-brand-border-light bg-white p-5 card-hover">
+              <span className="flex size-9 items-center justify-center rounded-full bg-brand-primary font-(family-name:--font-display) font-bold text-white">
+                {i + 1}
+              </span>
+              <p className="mt-3 font-semibold text-brand-text-primary">{st.step}</p>
+              <p className="mt-1 text-sm leading-relaxed text-brand-text-muted">{st.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 /**
  * One class's packages page, online or classroom:
  * /landing/courses/online/class-11 and class-12, and /landing/courses/class-11
@@ -29,24 +51,7 @@ export function ClassPackagesPage({ cls, mode }: { cls: PackageClass; mode: Pack
 
       {mode === "classroom" && <OtherClassroomCourses />}
 
-      {mode === "classroom" && (
-        <section className="px-4 py-14 md:px-6 md:py-16">
-          <div className="mx-auto max-w-6xl">
-            <SectionHeading eyebrow="How to join" title="From first call to first class" />
-            <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {admissionSteps.map((st, i) => (
-                <li key={st.step} className="rounded-2xl border border-brand-border-light bg-white p-5 card-hover">
-                  <span className="flex size-9 items-center justify-center rounded-full bg-brand-primary font-(family-name:--font-display) font-bold text-white">
-                    {i + 1}
-                  </span>
-                  <p className="mt-3 font-semibold text-brand-text-primary">{st.step}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-brand-text-muted">{st.body}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-      )}
+      {mode === "classroom" && <AdmissionSteps />}
 
       <div className="px-4 py-14 md:px-6">
         <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
