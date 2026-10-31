@@ -164,8 +164,8 @@ function ExamPrograms({ format }: { format: Format }) {
               <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Courses">
                 {[
                   ...packagesIn(c, format).map((p) => p.name),
-                  // The crash course sits beside the KCET packages, classroom and online.
-                  ...(c.exam === "KCET" ? [kcetCrashCourse.name] : []),
+                  // The crash course sits beside the classroom KCET packages.
+                  ...(format === "classroom" && c.exam === "KCET" ? [kcetCrashCourse.name] : []),
                 ].map((name) => (
                   <li
                     key={name}

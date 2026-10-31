@@ -370,18 +370,6 @@ export const kcetCrashCourse: StandaloneCourse = {
 };
 
 /**
- * The KCET crash course taught live online, in the KCET tab of both online
- * class pages. Online fees are TBD (`onlineFeesTbd`), and the app's price
- * list has no crash course yet, so it has no fee to show: `fees` is empty.
- */
-export const kcetCrashCourseOnline: StandaloneCourse = {
-  slug: "kcet-crash-course",
-  name: "KCET Crash course",
-  label: "for PCM · Live online",
-  fees: [],
-};
-
-/**
  * The Class 9 & 10 classroom courses on the academy's fee list (Oct 2026), in
  * the list's own wording. Sarthaka's State board fee
  * is blank on the list, so it isn't shown until the academy sends it.
