@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CalendarCheck, Check, MonitorPlay, Play, Users, Video } from "lucide-react";
+import { ArrowRight, CalendarCheck, MonitorPlay, Play, Users, Video } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { AppShowcase, HeroPhone } from "@/components/landing/AppShowcase";
 import { CentreSection } from "@/components/landing/CentreSection";
 import { ClosingCta } from "@/components/landing/ClosingCta";
 import { CountUp } from "@/components/landing/CountUp";
-import { onlinePackages } from "@/components/landing/courses-data";
 import { academy, registerUrl, whatsappUrl } from "@/components/landing/data";
 import { FacultyShowcase } from "@/components/landing/FacultyShowcase";
 import { FaqSection } from "@/components/landing/FaqSection";
@@ -42,16 +41,6 @@ const links = [
   { href: "#faculty", label: "Faculty" },
   { href: "#vrddhi", label: "Scholarship test" },
   { href: "#centre", label: "Centre" },
-];
-
-// The online slide's points. The price is the lowest online Standard course
-// after its discount, so it matches what the course cards show.
-const onlineFrom = Math.min(...onlinePackages.flatMap((p) => Object.values(p.prices).map((c) => c!.standard.price - c!.standard.off)));
-const onlinePoints = [
-  "Same faculty as the classroom",
-  "Live classes + every lecture recorded",
-  "Free plan · 7-day trial of paid plans",
-  `Courses from ₹${onlineFrom.toLocaleString("en-IN")}`,
 ];
 
 const onlinePillars = [
@@ -302,17 +291,6 @@ function OnlineHero() {
             </Link>
           </Button>
         </div>
-
-        <ul className="mt-7 grid max-w-xl gap-x-6 gap-y-2.5 text-sm text-brand-text-secondary sm:grid-cols-2">
-          {onlinePoints.map((t) => (
-            <li key={t} className="flex items-center gap-2">
-              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-success-bg text-brand-success">
-                <Check className="size-3" strokeWidth={3} />
-              </span>
-              {t}
-            </li>
-          ))}
-        </ul>
 
         <AlumniProof />
       </div>
