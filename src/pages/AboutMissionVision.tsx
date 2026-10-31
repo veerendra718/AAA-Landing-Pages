@@ -4,7 +4,7 @@ import { Award, Check, Eye, HeartHandshake, Lightbulb, Target } from "lucide-rea
 
 import { leaders } from "@/components/landing/about-data";
 import { AboutShell } from "@/components/landing/AboutShell";
-import { about, coreValues, mission, vision } from "@/components/landing/data";
+import { about, coreValues, mission, vision, whoWeAre } from "@/components/landing/data";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 
 export const metadata: Metadata = {
@@ -23,6 +23,13 @@ export default function MissionVisionPage() {
       title="Mission & Vision"
       subtitle="Education, for us, is a sacred service — competence for the head and values for the heart."
     >
+      <section className="pt-20 md:pt-28">
+        <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
+          <SectionHeading title="Who We Are?" />
+          <p className="mt-6 text-lg leading-relaxed text-brand-text-secondary">{whoWeAre}</p>
+        </div>
+      </section>
+
       <section className="py-20 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 md:px-6 lg:grid-cols-2">
           <article className="relative overflow-hidden rounded-[32px] bg-brand-primary-darker p-8 text-white md:p-12">

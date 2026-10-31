@@ -190,6 +190,10 @@ export const faculty = [
 
 // Openings of the aaaedu.in testimonials, for the carousel. The full text
 // lives in about-data.ts (testimonialsFull).
+/** "Who we are?", in the brochure's words (AAA 26 Brochure). */
+export const whoWeAre =
+  "Arjunaa Academy for Achievers (AAA), is a leading and Google's Highest Rated Institute for IIT, NEET, Olympiads, NTSE and Foundation. AAA was started by Mr. Hareesh P. K., B.Tech (E&C) & M.Tech (VLSI) alumnus of NITK Surathkal with the vision of transforming the nation by transforming education & the students who are the future torch bearers.";
+
 export const mission =
   "To provide cost-effective world class education in order to create professionally superior manpower and to instil within students deep foundational values of good character to bring out Principle-Centered Leaders in the society.";
 
