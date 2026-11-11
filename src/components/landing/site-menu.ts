@@ -164,6 +164,16 @@ const onlineGroup: NavGroup = {
   items: [onlineClassItem("11"), onlineClassItem("12")],
 };
 
+// The blog, under the name aaaedu.in gives it. aaaedu.in files Blogs inside a
+// Knowledge Desk menu next to tests and FAQs; only the blog came across, so
+// this is a plain link to it.
+const knowledgeDeskGroup: NavGroup = {
+  label: "Knowledge Desk",
+  shortLabel: "Blog",
+  href: "/landing/knowledge-desk",
+  items: [],
+};
+
 // No children: the site describes the Vijayanagar campus, and its contact page
 // carries every detail a family needs for it. The day scholar & residential
 // programme and the batches on offer are course material, so they sit under
@@ -180,5 +190,6 @@ export const siteMenu: NavGroup[] = [
   achieversGroup,
   aboutGroup,
   careersGroup,
+  knowledgeDeskGroup,
   contactGroup,
 ];
