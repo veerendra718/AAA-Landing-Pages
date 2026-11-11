@@ -63,7 +63,8 @@ export default function LeadershipPage() {
         </div>
       </nav>
 
-      <section className="py-16 md:py-24">
+      {/* Close under the row of names above, which belongs to it. */}
+      <section className="pb-16 pt-10 md:pb-24 md:pt-12">
         <div className="mx-auto max-w-7xl space-y-20 px-4 md:space-y-28 md:px-6">
           {leaders.map((l, i) => (
             <article

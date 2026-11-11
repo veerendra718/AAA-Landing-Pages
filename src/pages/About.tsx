@@ -51,8 +51,9 @@ export default function AboutPage() {
     >
       {/* Our story — the academy's own words in full. The home page carries a
           condensed version; the values, mission & vision and the founders'
-          notes each have their own page, linked below. */}
-      <section className="py-20 md:py-28">
+          notes each have their own page, linked below. Follows the page title
+          directly, without top padding of its own on top of the title block's. */}
+      <section className="pb-20 pt-4 md:pb-28 md:pt-6">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 md:px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div className="relative aspect-[25/24] overflow-hidden rounded-[28px]">
             <Image

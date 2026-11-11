@@ -23,7 +23,9 @@ export default function MissionVisionPage() {
       title="Mission & Vision"
       subtitle="Education, for us, is a sacred service — competence for the head and values for the heart."
     >
-      <section className="pt-20 md:pt-28">
+      {/* Follows the page title directly, without top padding of its own on
+          top of the title block's. */}
+      <section className="pt-4 md:pt-6">
         <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
           <SectionHeading title="Who We Are?" />
           <p className="mt-6 text-lg leading-relaxed text-brand-text-secondary">{whoWeAre}</p>
