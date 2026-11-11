@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowRight, CalendarCheck, Clock, MessageCircle, Phone } fro
 import { BlogCard } from "./BlogCard";
 import { BlogCover } from "./BlogCover";
 import { blogHref, blogPosts, formatBlogDate, morePosts, postHref, type BlogPost } from "./blog-data";
-import { ClosingCta } from "./ClosingCta";
 import { academy, whatsappUrl } from "./data";
 import { FloatingContact } from "./FloatingContact";
 import { LandingFooter } from "./LandingFooter";
@@ -23,7 +22,8 @@ const visit = "/landing/contact#enquire";
  * On large screens the article sits beside a sticky sidebar (a "talk to us"
  * card and the latest articles), so the page uses its width without stretching
  * the text into lines too long to read. Phones and tablets get the article
- * alone.
+ * alone. There is no closing "Book a visit" banner: the sidebar card already
+ * makes that offer.
  *
  * Takes the loaded post rather than a slug, so a Next.js page can await it on
  * the server and this SPA can fetch it in the browser.
@@ -171,11 +171,6 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           </div>
         </section>
       )}
-
-      <ClosingCta
-        visitHref={visit}
-        subtitle="Admissions for 2026–27 are open at the Vijayanagar centre. Come and see how we teach before you decide."
-      />
 
       <LandingFooter />
       <FloatingContact />
