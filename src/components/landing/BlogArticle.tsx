@@ -82,40 +82,11 @@ export function BlogArticle({ post }: { post: BlogPost }) {
             />
           </div>
 
+          {/* The article list scrolls away; the "Talk to us" card below it then
+              stays in view. Only the card is sticky: the whole column is
+              taller than a laptop screen, so a sticky column would hide its end. */}
           <aside className="hidden lg:block">
-            <div className="sticky top-24 space-y-6">
-              <div className="rounded-3xl bg-brand-primary-darker p-6 text-white">
-                <p className="text-xs font-bold uppercase tracking-[2px] text-brand-secondary">Talk to us</p>
-                <p className="mt-3 font-(family-name:--font-display) text-2xl font-bold leading-snug">
-                  Preparing for NEET, JEE or KCET?
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-white/75">
-                  Visit the Vijayanagar centre, meet the faculty and get a free counselling session.
-                </p>
-                <Link
-                  href={visit}
-                  className="mt-5 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-primary-darker transition-colors hover:bg-brand-subtle-bg"
-                >
-                  <CalendarCheck className="size-4" /> Book a free visit
-                </Link>
-                <div className="mt-3 grid grid-cols-2 gap-2">
-                  <a
-                    href={`tel:+91${academy.phones[0]}`}
-                    className="flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10"
-                  >
-                    <Phone className="size-4" /> Call
-                  </a>
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10"
-                  >
-                    <MessageCircle className="size-4" /> WhatsApp
-                  </a>
-                </div>
-              </div>
-
+            <div className="flex h-full flex-col gap-6">
               <div className="rounded-3xl border border-brand-border-light bg-white p-6">
                 <p className="text-xs font-bold uppercase tracking-[2px] text-brand-primary">Latest articles</p>
                 <ul className="mt-4 space-y-4">
@@ -141,6 +112,39 @@ export function BlogArticle({ post }: { post: BlogPost }) {
                 >
                   All articles <ArrowRight className="size-4" />
                 </Link>
+              </div>
+              <div className="sticky top-24">
+                <div className="rounded-3xl bg-brand-primary-darker p-6 text-white">
+                  <p className="text-xs font-bold uppercase tracking-[2px] text-brand-secondary">Talk to us</p>
+                  <p className="mt-3 font-(family-name:--font-display) text-2xl font-bold leading-snug">
+                    Preparing for NEET, JEE or KCET?
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/75">
+                    Visit the Vijayanagar centre, meet the faculty and get a free counselling session.
+                  </p>
+                  <Link
+                    href={visit}
+                    className="mt-5 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-primary-darker transition-colors hover:bg-brand-subtle-bg"
+                  >
+                    <CalendarCheck className="size-4" /> Book a free visit
+                  </Link>
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    <a
+                      href={`tel:+91${academy.phones[0]}`}
+                      className="flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10"
+                    >
+                      <Phone className="size-4" /> Call
+                    </a>
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10"
+                    >
+                      <MessageCircle className="size-4" /> WhatsApp
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </aside>
