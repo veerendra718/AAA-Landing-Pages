@@ -20,10 +20,8 @@ Identical to the Next.js app router structure:
 
 | Path | Page |
 | --- | --- |
-| `/landing` | Variation picker (V1 / V2 / V3) |
-| `/landing/v1` | Academy first — history, values, faculty, results |
-| `/landing/v2` | Classroom + app, blended learning |
-| `/landing/v3` | Smart learning, product first |
+| `/landing` | Redirects to `/landing/v2` (as do the retired `/landing/v1` and `/landing/v3`) |
+| `/landing/v2` | Home page — classroom + app, blended learning |
 | `/landing/about` | About index |
 | `/landing/about/mission-vision` | Mission & Vision |
 | `/landing/about/leadership` | Leadership |
@@ -53,21 +51,15 @@ is a plain fixed panel rather than Radix — same look, no Radix dependency.
 ## Before this goes live
 
 `src/components/landing/data.ts` carries the academy facts pulled from
-aaaedu.in plus three placeholder blocks marked `// DUMMY`:
+aaaedu.in plus two placeholder values:
 
 - `academy.whatsapp` — placeholder number, used by the floating chat button and centre section
 - `branch.hours` — aaaedu.in publishes no visiting hours; placeholder hours (Mon–Sat, 9 AM–7 PM) are shown **without** a badge, so confirm them before launch
-- `faculty` — four invented faculty profiles (V1 only)
 
-Only `faculty` still renders an amber dashed **SAMPLE DATA** badge
-(`SampleDataBadge.tsx`, on V1). The WhatsApp number and the hours show with no
-badge at all, so check both before launch. Once the faculty list is real, delete
-that `<SampleDataBadge />` call site and then the component itself.
+Neither shows a badge, so check both before launch.
 
-Note that `facultyMembers` in `about-data.ts` is **real** — actual names, photos
-and biographies from aaaedu.in, used by `/landing/about/leadership`. It is not
-placeholder data and carries no badge. Don't confuse it with the invented
-`faculty` list in `data.ts`.
+`facultyMembers` in `about-data.ts` is **real** — actual names, photos and
+biographies from aaaedu.in, used by `/landing/about/leadership` and the home page.
 
 The lead form (`VisitForm.tsx`) is demo-only by design, exactly as it was in the
 repo: it validates with zod, waits 500ms, shows a toast and resets. Nothing is

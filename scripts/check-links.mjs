@@ -77,9 +77,9 @@ for (const file of walk(src)) {
 }
 
 // The home page is reached through the `home` constant in PageShell and the
-// router's redirects, which this scan does not read as a link. The other three
-// only redirect to it.
-const variants = new Set(["/landing", "/landing/v1", "/landing/v2", "/landing/v3"]);
+// router's redirects, which this scan does not read as a link. /landing only
+// redirects to it.
+const variants = new Set(["/landing", "/landing/v2"]);
 // Redirects (a route whose element is <Navigate>) keep an old address working
 // for bookmarks; nothing on the site needs to link to them.
 const redirects = new Set(

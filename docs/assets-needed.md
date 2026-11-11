@@ -18,7 +18,7 @@ Landscape, at least **1600 × 1000 px**, natural light, real students and facult
 | 2 | **A live class** — teacher at the board, 15–30 students visible | Hero (main picture) | `a-hero.jpg` |
 | 3 | **Physics or chemistry lab session** | Programme cards, gallery | `a-track-1.jpg` |
 | 4 | **Doubt desk / one-to-one doubt clearing** | Classroom + app section | `b-hero.jpg` |
-| 5 | **Students using AAA Lakshya** on a phone/tablet at the centre | Classroom + app section | `a-walkthrough.jpg` |
+| 5 | **Students using AAA Lakshya** on a phone/tablet at the centre | Classroom + app section | — (new) |
 | 6 | **Mentor/parent meeting** (parent–teacher meeting) | "For parents" panel | — (new) |
 | 7 | **ASST** — exam hall or prize distribution, high resolution | ASST section | `vrddhi-prize-distribution.jpg` (a Vrddhi photo, 550 px, too small) |
 | 8 | **Results celebration** — toppers with faculty | Results section | — (new) |

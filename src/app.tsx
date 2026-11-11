@@ -76,8 +76,8 @@ export function App() {
     <>
       <ScrollToTop />
       <Routes>
-        {/* Only V2 is published. The picker and the V1/V3 variations are not
-            routed, and their old URLs land on V2 rather than a 404. */}
+        {/* Only V2 is published. The old picker and V1/V3 variations are gone,
+            and their old URLs land on V2 rather than a 404. */}
         <Route index element={<Navigate to={HOME} replace />} />
         <Route path="/landing" element={<Navigate to={HOME} replace />} />
         <Route path="/landing/v1" element={<Navigate to={HOME} replace />} />

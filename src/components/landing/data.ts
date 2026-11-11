@@ -34,7 +34,7 @@ export function whatsappWith(text: string) {
 export const loginUrl = "https://feature.samvitai.com/login?callbackUrl=%2Fdashboard";
 
 // Where every sign-up link goes ("Start free", "Try AAA app free",
-// "Create account", the V3 goal picker): the student app's registration.
+// "Create account"): the student app's registration.
 export const registerUrl = "https://feature.samvitai.com/register";
 
 export const branch = {
@@ -67,40 +67,6 @@ export const branch = {
   image: "/images/landing/b-band-3.jpg",
 };
 
-export const stats = [
-  { value: 3000, suffix: "+", label: "Students trained" },
-  { value: 40, suffix: "%", label: "Qualify JEE Main & NEET" },
-  { value: 1000, suffix: "+", label: "Alumni in top-100 STEM universities" },
-  { value: 100, suffix: "%", label: "Board exam pass rate" },
-];
-
-export const classroomHighlights = [
-  {
-    title: "Batches of 30, max",
-    body: "Small enough that every teacher knows every student by name and by weak topic.",
-  },
-  {
-    title: "1,700+ training hours",
-    body: "A full, structured programme — concept classes, problem sessions and revision cycles.",
-  },
-  {
-    title: "Faculty from IITs, NITs & IISc",
-    body: "Taught by alumni of India's top institutes and NEET toppers.",
-  },
-  {
-    title: "17+ tests a year",
-    body: "Exam-pattern tests with detailed solutions and a one-on-one review.",
-  },
-  {
-    title: "Doubts cleared 24/7",
-    body: "Ask in class, at the doubt desk, or in the app — whenever you're stuck.",
-  },
-  {
-    title: "~30% lower fees",
-    body: "More hours, more tests and personal mentoring for less than the big chains.",
-  },
-];
-
 export const about = {
   title: "Best coaching centre for KCET, NEET, JEE Main & JEE Advanced",
   paragraphs: [
@@ -132,23 +98,8 @@ export const about = {
   ],
 };
 
-export const values = [
-  {
-    title: "Commitment",
-    body: "Your child's dream becomes our commitment.",
-  },
-  {
-    title: "Culture",
-    body: "Treating students like professionals & caring for them like parents.",
-  },
-  {
-    title: "Catalyze",
-    body: "Tell them, they forget. Show them, they remember and understand.",
-  },
-];
-
 /** The core values, in the brochure's words (AAA 26 Brochure) — the Mission &
- *  Vision page. `values` above is aaaedu.in's wording, still used by V1. */
+ *  Vision page. */
 export const coreValues = [
   "Dedication to the success of our students which will cascade automatically on AAA and you as an individual.",
   "Creative/Innovative teaching methods and modules which differentiates us from rest of the world.",
@@ -160,33 +111,6 @@ export const coreValues = [
 // of dumping every one of them on the same on-page anchor.
 /** The exams the packages prepare for — the only ones the site lists. */
 export const exams = ["KCET", "NEET", "JEE Main", "JEE Advanced"];
-
-export const appFeatures = [
-  {
-    title: "Live & recorded classes",
-    body: "Missed a class at the centre? Watch it in the app — same teacher, same notes.",
-  },
-  {
-    title: "Tests that feel like the real exam",
-    body: "Full-screen, timed, exam-pattern tests with instant results and solutions.",
-  },
-  {
-    title: "Topic-wise mastery",
-    body: "See exactly which topics are strong and which need work — no guessing.",
-  },
-  {
-    title: "Mistake book & revision",
-    body: "Every wrong answer is saved so you can revise it before it costs marks.",
-  },
-];
-
-// DUMMY — replace with real faculty.
-export const faculty = [
-  { name: "Dr. S. Raghavendra", subject: "Physics", from: "IISc Bengaluru", years: 14 },
-  { name: "Prof. M. Kavitha", subject: "Chemistry", from: "NIT Karnataka", years: 11 },
-  { name: "Mr. Arvind Rao", subject: "Mathematics", from: "IIT Madras", years: 12 },
-  { name: "Dr. Priya Shenoy", subject: "Biology", from: "NEET Top-500, MBBS", years: 9 },
-];
 
 // Openings of the aaaedu.in testimonials, for the carousel. The full text
 // lives in about-data.ts (testimonialsFull).
@@ -249,14 +173,6 @@ export const academyWeek = [
   { where: "centre", title: "Mentor review", body: "Your mentor walks through the test report with you — and your parents." },
 ] as const;
 
-export const journey = [
-  { step: "Counselling visit", body: "Meet a mentor at the centre and pick the right programme." },
-  { step: "Diagnostic test", body: "A short test tells us where you stand, topic by topic." },
-  { step: "Classes + app", body: "Learn in a small batch; practise and revise in the AAA app." },
-  { step: "Test & review", body: "Weekly tests, each followed by a one-on-one review." },
-  { step: "Exam day", body: "Walk in having already sat the exam dozens of times." },
-];
-
 export type FaqTopic = "visits" | "courses" | "online" | "fees" | "app";
 
 export const faqTopics: { id: FaqTopic; label: string }[] = [
@@ -268,8 +184,8 @@ export const faqTopics: { id: FaqTopic; label: string }[] = [
 ];
 
 /** `link` is the natural next step after reading the answer, when there is one.
- *  Hrefs are routes or external URLs, never on-page anchors, because V1, V2 and
- *  V3 all render this list and don't share the same sections. */
+ *  Hrefs are routes or external URLs, never on-page anchors, so a link works
+ *  wherever the list is rendered. */
 export const faqs: {
   q: string;
   /** Shown in bold above the answer. */
