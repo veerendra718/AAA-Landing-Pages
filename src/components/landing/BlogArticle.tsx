@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, CalendarCheck, Clock, MessageCircle, Phone } from "lucide-react";
 
+import { cn } from "@/lib/utils";
+
 import { BlogCard } from "./BlogCard";
 import { BlogCover } from "./BlogCover";
 import { blogHref, blogPosts, formatBlogDate, morePosts, postHref, type BlogPost } from "./blog-data";
@@ -80,6 +82,8 @@ export function BlogArticle({ post }: { post: BlogPost }) {
               className="blog-body prose prose-lg mt-10 max-w-none md:mt-12"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
+            {/* Below large screens there is no sidebar, so the card follows the article. */}
+            <TalkToUsCard compact className="mt-12 lg:hidden" />
           </div>
 
           {/* The article list scrolls away; the "Talk to us" card below it then
@@ -114,37 +118,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
                 </Link>
               </div>
               <div className="sticky top-24">
-                <div className="rounded-3xl bg-brand-primary-darker p-6 text-white">
-                  <p className="text-xs font-bold uppercase tracking-[2px] text-brand-secondary">Talk to us</p>
-                  <p className="mt-3 font-(family-name:--font-display) text-2xl font-bold leading-snug">
-                    Preparing for NEET, JEE or KCET?
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/75">
-                    Visit the Vijayanagar centre, meet the faculty and get a free counselling session.
-                  </p>
-                  <Link
-                    href={visit}
-                    className="mt-5 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-primary-darker transition-colors hover:bg-brand-subtle-bg"
-                  >
-                    <CalendarCheck className="size-4" /> Book a free visit
-                  </Link>
-                  <div className="mt-3 grid grid-cols-2 gap-2">
-                    <a
-                      href={`tel:+91${academy.phones[0]}`}
-                      className="flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10"
-                    >
-                      <Phone className="size-4" /> Call
-                    </a>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10"
-                    >
-                      <MessageCircle className="size-4" /> WhatsApp
-                    </a>
-                  </div>
-                </div>
+                <TalkToUsCard />
               </div>
             </div>
           </aside>
@@ -174,6 +148,47 @@ export function BlogArticle({ post }: { post: BlogPost }) {
 
       <LandingFooter />
       <FloatingContact />
+    </div>
+  );
+}
+
+/** The offer to visit or get in touch: sticky in the sidebar on large
+ *  screens, and `compact` under the article on phones and tablets, where its
+ *  three buttons share one row once there is room. */
+function TalkToUsCard({ compact = false, className }: { compact?: boolean; className?: string }) {
+  const outline =
+    "flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10";
+  return (
+    <div className={cn("rounded-3xl bg-brand-primary-darker text-white", compact ? "p-5 sm:p-6" : "p-6", className)}>
+      <p className="text-xs font-bold uppercase tracking-[2px] text-brand-secondary">Talk to us</p>
+      <p
+        className={cn(
+          "mt-3 font-(family-name:--font-display) font-bold leading-snug",
+          compact ? "text-xl sm:text-2xl" : "text-2xl",
+        )}
+      >
+        Preparing for NEET, JEE or KCET?
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-white/75">
+        Visit the Vijayanagar centre, meet the faculty and get a free counselling session.
+      </p>
+      <div className={cn("mt-5 grid grid-cols-2 gap-2", compact && "sm:grid-cols-[1.4fr_1fr_1fr]")}>
+        <Link
+          href={visit}
+          className={cn(
+            "col-span-2 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-primary-darker transition-colors hover:bg-brand-subtle-bg",
+            compact ? "sm:col-span-1" : "mb-1",
+          )}
+        >
+          <CalendarCheck className="size-4" /> Book a free visit
+        </Link>
+        <a href={`tel:+91${academy.phones[0]}`} className={outline}>
+          <Phone className="size-4" /> Call
+        </a>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={outline}>
+          <MessageCircle className="size-4" /> WhatsApp
+        </a>
+      </div>
     </div>
   );
 }
