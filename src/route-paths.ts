@@ -25,5 +25,20 @@ export const ROUTE_PATHS = [
   "/landing/courses/online",
   "/landing/courses/online/class-11",
   "/landing/courses/online/class-12",
+  "/landing/knowledge-desk",
+  // One page per article. A `:name` segment stands for any single segment.
+  "/landing/knowledge-desk/:slug",
   "/landing/contact",
 ] as const;
+
+/** Whether `path` (no query or hash) is one of the routes above. */
+export function isRoutePath(path: string) {
+  const parts = path.split("/");
+  return ROUTE_PATHS.some((route) => {
+    const pattern = route.split("/");
+    return (
+      pattern.length === parts.length &&
+      pattern.every((seg, i) => (seg.startsWith(":") ? parts[i] !== "" : seg === parts[i]))
+    );
+  });
+}

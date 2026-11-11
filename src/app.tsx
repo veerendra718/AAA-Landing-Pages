@@ -19,6 +19,8 @@ import CoursesClass12 from "@/pages/CoursesClass12";
 import CoursesClass910 from "@/pages/CoursesClass910";
 import CoursesOnlineClass11 from "@/pages/CoursesOnlineClass11";
 import CoursesOnlineClass12 from "@/pages/CoursesOnlineClass12";
+import KnowledgeDesk from "@/pages/KnowledgeDesk";
+import KnowledgeDeskPost from "@/pages/KnowledgeDeskPost";
 import V2 from "@/pages/V2";
 
 const HOME = "/landing/v2";
@@ -102,6 +104,8 @@ export function App() {
         <Route path="/landing/courses/online" element={<Navigate to="/landing/courses/online/class-11" replace />} />
         <Route path="/landing/courses/online/class-11" element={<CoursesOnlineClass11 />} />
         <Route path="/landing/courses/online/class-12" element={<CoursesOnlineClass12 />} />
+        <Route path="/landing/knowledge-desk" element={<KnowledgeDesk />} />
+        <Route path="/landing/knowledge-desk/:slug" element={<KnowledgeDeskPost />} />
         <Route path="/landing/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

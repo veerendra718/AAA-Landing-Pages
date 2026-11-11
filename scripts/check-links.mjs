@@ -14,10 +14,22 @@ function walk(dir) {
 }
 
 const paths = new Set(
-  [...readFileSync(join(src, "route-paths.ts"), "utf8").matchAll(/"([^"]+)"/g)].map(
+  [...readFileSync(join(src, "route-paths.ts"), "utf8").matchAll(/^\s*"(\/[^"]*)",/gm)].map(
     (m) => m[1],
   ),
 );
+
+/** Mirrors isRoutePath in src/route-paths.ts: a :param stands for one segment. */
+function matchesRoute(href) {
+  const parts = href.split("/");
+  return [...paths].some((route) => {
+    const pattern = route.split("/");
+    return (
+      pattern.length === parts.length &&
+      pattern.every((seg, i) => (seg.startsWith(":") ? parts[i] !== "" : seg === parts[i]))
+    );
+  });
+}
 
 // Routes declared in the router must match the list, or a page 404s anyway.
 const app = readFileSync(join(src, "app.tsx"), "utf8");
@@ -57,7 +69,7 @@ for (const file of walk(src)) {
     const href = m[1].split("#")[0];
     if (href === "/" || external.has(href)) continue;
     linked.add(href);
-    if (!paths.has(href)) {
+    if (!matchesRoute(href)) {
       const line = text.slice(0, m.index).split("\n").length;
       bad.push(`${relative(root, file)}:${line} -> ${m[1]}`);
     }
@@ -73,7 +85,11 @@ const variants = new Set(["/landing", "/landing/v1", "/landing/v2", "/landing/v3
 const redirects = new Set(
   [...app.matchAll(/<Route path="([^"*]+)" element=\{<Navigate /g)].map((m) => m[1]),
 );
-const orphans = [...paths].filter((p) => !linked.has(p) && !variants.has(p) && !redirects.has(p));
+// A route with a :param (one page per blog article) is linked to from data,
+// not from a literal href, so it cannot be checked this way.
+const orphans = [...paths].filter(
+  (p) => !p.includes(":") && !linked.has(p) && !variants.has(p) && !redirects.has(p),
+);
 
 console.log(`${paths.size} routes, ${declared.size} declared in router`);
 if (missingFromRouter.length) {

@@ -12,6 +12,8 @@ const routes = [
   ["/landing/achievers/neet", "/src/pages/AchieversNeet.tsx"],
   ["/landing/achievers/k-cet", "/src/pages/AchieversKCet.tsx"],
   ["/landing/contact", "/src/pages/Contact.tsx"],
+  ["/landing/knowledge-desk", "/src/pages/KnowledgeDesk.tsx"],
+  ["/landing/knowledge-desk?page=8", "/src/pages/KnowledgeDesk.tsx"],
 ];
 
 const server = await createServer({

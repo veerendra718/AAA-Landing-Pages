@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Brand tokens copied verbatim from aaa_frontend src/app/globals.css so the
    standalone site cannot drift from the AAA app palette. */
@@ -259,5 +260,69 @@
 
   .card-hover:hover .card-icon svg {
     scale: none;
+  }
+}
+
+/* Knowledge Desk articles (BlogArticle). The body is HTML imported from
+   aaaedu.in, so it is styled here by element rather than with classes: the
+   typography plugin's `prose`, recoloured to the brand, plus the h5/h6 the old
+   editor used for many section titles, which `prose` leaves unstyled. */
+.blog-body {
+  --tw-prose-body: var(--color-brand-text-secondary);
+  --tw-prose-headings: var(--color-brand-primary-darker);
+  --tw-prose-links: var(--color-brand-primary);
+  --tw-prose-bold: var(--color-brand-text-primary);
+  --tw-prose-counters: var(--color-brand-primary);
+  --tw-prose-bullets: var(--color-brand-hero-teal);
+  --tw-prose-quotes: var(--color-brand-primary-darker);
+  --tw-prose-quote-borders: var(--color-brand-secondary);
+  --tw-prose-th-borders: var(--color-brand-border-teal);
+  --tw-prose-td-borders: var(--color-brand-border-light);
+  overflow-wrap: break-word;
+
+  & :is(h2, h3, h4) {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  & :is(h5, h6) {
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+    font-size: 1.1em;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-brand-primary-darker);
+  }
+  & a {
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-brand-secondary);
+  }
+  & a:hover {
+    text-decoration-color: currentColor;
+  }
+  & img {
+    border-radius: 1rem;
+  }
+  & .table-wrap {
+    margin: 1.5em 0;
+    overflow-x: auto;
+    border: 1px solid var(--color-brand-border-light);
+    border-radius: 1rem;
+  }
+  & .table-wrap table {
+    margin: 0;
+    min-width: 32rem;
+    font-size: 0.875em;
+  }
+  & .table-wrap :is(td, th) {
+    padding: 0.6em 0.9em;
+    vertical-align: top;
+  }
+  & .table-wrap tr:first-child td {
+    background: var(--color-brand-surface);
+    font-weight: 600;
+    color: var(--color-brand-text-primary);
+  }
+  & figure {
+    margin: 0;
   }
 }

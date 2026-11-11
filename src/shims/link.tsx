@@ -1,6 +1,6 @@
 import { Link as RouterLink } from "react-router-dom";
 
-import { ROUTE_PATHS } from "@/route-paths";
+import { isRoutePath } from "@/route-paths";
 
 type LinkProps = {
   href: string;
@@ -8,6 +8,7 @@ type LinkProps = {
   children: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   "aria-label"?: string;
+  "aria-current"?: React.AriaAttributes["aria-current"];
   style?: React.CSSProperties;
   target?: string;
   rel?: string;
@@ -16,7 +17,7 @@ type LinkProps = {
 function isInternalRoute(href: string) {
   if (!href.startsWith("/")) return false;
   const path = href.split("#")[0].split("?")[0];
-  return (ROUTE_PATHS as readonly string[]).includes(path);
+  return isRoutePath(path);
 }
 
 /** next/link stand-in. Only hrefs that exist as SPA routes go through the
