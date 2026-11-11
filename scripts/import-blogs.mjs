@@ -13,7 +13,7 @@
 //
 // Re-run whenever the old site gets new posts: node scripts/import-blogs.mjs
 // Images already downloaded are not fetched again.
-import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import sanitizeHtml from "sanitize-html";
 
@@ -69,6 +69,39 @@ function excerpt(text, max = 220) {
   const t = clean(text);
   if (t.length <= max) return t;
   return t.slice(0, t.lastIndexOf(" ", max)).replace(/[\s,;:–—-]+$/, "") + "…";
+}
+
+/** An image file's [width, height], read from its header (PNG, JPEG, WebP).
+ *  The covers come in many shapes, from 4:5 to 3:1, and the pages need each
+ *  one's shape to show it whole without cropping. */
+function imageSize(file) {
+  const b = readFileSync(file);
+  if (b.readUInt32BE(0) === 0x89504e47) return [b.readUInt32BE(16), b.readUInt32BE(20)];
+  if (b[0] === 0xff && b[1] === 0xd8) {
+    let i = 2;
+    while (i < b.length) {
+      if (b[i] !== 0xff) {
+        i++;
+        continue;
+      }
+      const marker = b[i + 1];
+      // Start-of-frame markers carry the size; C4, C8 and CC share the range but do not.
+      if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+        return [b.readUInt16BE(i + 7), b.readUInt16BE(i + 5)];
+      }
+      i += 2 + b.readUInt16BE(i + 2);
+    }
+  }
+  if (b.toString("ascii", 0, 4) === "RIFF") {
+    const chunk = b.toString("ascii", 12, 16);
+    if (chunk === "VP8 ") return [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
+    if (chunk === "VP8L") {
+      const n = b.readUInt32LE(21);
+      return [(n & 0x3fff) + 1, ((n >> 14) & 0x3fff) + 1];
+    }
+    if (chunk === "VP8X") return [1 + b.readUIntLE(24, 3), 1 + b.readUIntLE(27, 3)];
+  }
+  throw new Error(`Cannot read the size of ${file}`);
 }
 
 async function download(url, file) {
@@ -195,6 +228,7 @@ for (const p of posts) {
   const cover = `${p.slug}.${ext}`;
   await download(p.image, join(imageDir, cover));
   for (const img of images) await download(img.url, join(inlineDir, img.file));
+  const [imageWidth, imageHeight] = imageSize(join(imageDir, cover));
 
   const entry = {
     slug: p.slug,
@@ -203,6 +237,8 @@ for (const p of posts) {
     excerpt: excerpt(p.description_unfiltered),
     image: `${imageUrl}/${cover}`,
     imageAlt: clean(p.image_alt) || clean(p.heading || p.name),
+    imageWidth,
+    imageHeight,
     readMinutes: Math.max(1, Math.round(words / 200)),
   };
   index.push(entry);

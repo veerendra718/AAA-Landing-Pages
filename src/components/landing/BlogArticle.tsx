@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Clock } from "lucide-react";
 
 import { BlogCard } from "./BlogCard";
+import { BlogCover } from "./BlogCover";
 import { blogHref, formatBlogDate, morePosts, type BlogPost } from "./blog-data";
 import { ClosingCta } from "./ClosingCta";
 import { FloatingContact } from "./FloatingContact";
@@ -53,9 +53,15 @@ export function BlogArticle({ post }: { post: BlogPost }) {
             </p>
             {/* Inside the header so its tint fades out behind the cover rather
                 than stopping in a line beside it. */}
-            <div className="relative mt-8 aspect-[1.91/1] overflow-hidden rounded-3xl bg-brand-subtle-bg">
-              <Image src={post.image} alt={post.imageAlt} fill priority sizes="(min-width: 896px) 896px, 100vw" />
-            </div>
+            {/* At its own shape, so nothing is cut off — except that a tall
+                cover is held to 3:2 rather than filling the screen. */}
+            <BlogCover
+              post={post}
+              ratio={Math.max(post.imageWidth / post.imageHeight, 1.5)}
+              priority
+              sizes="(min-width: 896px) 896px, 100vw"
+              className="mt-8 rounded-3xl"
+            />
           </div>
         </header>
 

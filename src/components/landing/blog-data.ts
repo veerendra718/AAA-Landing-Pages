@@ -14,6 +14,9 @@ export type BlogSummary = {
   excerpt: string;
   image: string;
   imageAlt: string;
+  /** The cover's own size in pixels; covers come in many shapes. */
+  imageWidth: number;
+  imageHeight: number;
   readMinutes: number;
 };
 
