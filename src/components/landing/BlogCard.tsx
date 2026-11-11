@@ -12,10 +12,14 @@ export function BlogCard({ post, priority = false }: { post: BlogSummary; priori
       href={postHref(post.slug)}
       className="group flex flex-col overflow-hidden rounded-2xl border border-brand-border-light bg-white card-hover"
     >
-      {/* 1.91:1 is the shape most covers were made in. */}
+      {/* Each cover at its own shape, so it is never cropped or boxed in.
+          Covers from the same period share a shape, so a row mostly lines up;
+          where it does not, the pictures stay top-aligned and the cards stretch
+          to the tallest. The one portrait cover is held to 3:2 so its card is
+          not twice the height of its neighbours. */}
       <BlogCover
         post={post}
-        ratio={1.91}
+        ratio={Math.max(post.imageWidth / post.imageHeight, 1.5)}
         priority={priority}
         sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
       />
