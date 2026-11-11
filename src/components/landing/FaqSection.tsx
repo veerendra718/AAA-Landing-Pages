@@ -30,7 +30,10 @@ export function FaqSection() {
 
   return (
     <section id="faq" className="scroll-mt-20 bg-brand-page-bg py-20 md:py-28">
-      <div className="mx-auto grid max-w-7xl items-start gap-10 px-4 md:px-6 lg:grid-cols-[1fr_1.5fr] lg:gap-14">
+      {/* grid-cols-1 (minmax(0, 1fr)) rather than the implicit auto column on
+          phones: otherwise the sideways-scrolling topic chips below widen the
+          column to their full length and the section runs off the screen. */}
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-4 md:px-6 lg:grid-cols-[1fr_1.5fr] lg:gap-14">
         <div className="lg:sticky lg:top-24">
           <SectionHeading
             align="left"
