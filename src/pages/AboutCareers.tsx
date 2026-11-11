@@ -77,10 +77,13 @@ export default function CareersPage() {
       subtitle="Our success lies in our people. Help us train the next generation of achievers."
       closingCta={false}
     >
-      <section className="py-20 md:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 md:px-6 lg:grid-cols-2">
+      {/* Follows the page title directly: no top padding of its own on top of
+          the title block's, and no "Careers" label repeating the page title.
+          The photo lines up with the top of the text beside it. */}
+      <section className="pb-20 pt-4 md:pb-28 md:pt-6">
+        <div className="mx-auto grid max-w-7xl items-start gap-14 px-4 md:px-6 lg:grid-cols-2">
           <div>
-            <SectionHeading align="left" eyebrow="Careers" title={careers.title} />
+            <SectionHeading align="left" title={careers.title} />
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-brand-text-muted">
               {careers.intro.map((p) => (
                 <p key={p}>{p}</p>
