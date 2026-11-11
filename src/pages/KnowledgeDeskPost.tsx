@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { BlogArticle } from "@/components/landing/BlogArticle";
+import { LandingNav } from "@/components/landing/LandingNav";
 import { blogHref, getBlogPost, type BlogPost } from "@/components/landing/blog-data";
 
 /**
@@ -28,7 +29,15 @@ export default function KnowledgeDeskPostPage() {
     };
   }, [slug]);
 
-  if (post === undefined) return <div className="min-h-screen" />;
+  // The header stays up while the article's file arrives, so the page never
+  // flashes blank.
+  if (post === undefined) {
+    return (
+      <div className="min-h-screen">
+        <LandingNav homeHref="/landing/v2" />
+      </div>
+    );
+  }
 
   if (post === null) {
     return (

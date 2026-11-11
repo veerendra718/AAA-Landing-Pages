@@ -34,7 +34,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
       <article>
         <header className="relative overflow-hidden bg-linear-to-b from-brand-subtle-bg/70 via-white to-white">
           <div className="pointer-events-none absolute -right-40 -top-40 size-[480px] rounded-full bg-brand-secondary/40 blur-3xl" />
-          <div className="relative mx-auto max-w-4xl px-4 pb-8 pt-8 md:px-6 md:pt-12">
+          <div className="relative mx-auto max-w-4xl px-4 pt-8 md:px-6 md:pt-12">
             <Link
               href={blogHref}
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:text-brand-primary-darker"
@@ -51,14 +51,13 @@ export function BlogArticle({ post }: { post: BlogPost }) {
                 <Clock className="size-4" /> {post.readMinutes} min read
               </span>
             </p>
+            {/* Inside the header so its tint fades out behind the cover rather
+                than stopping in a line beside it. */}
+            <div className="relative mt-8 aspect-[1.91/1] overflow-hidden rounded-3xl bg-brand-subtle-bg">
+              <Image src={post.image} alt={post.imageAlt} fill priority sizes="(min-width: 896px) 896px, 100vw" />
+            </div>
           </div>
         </header>
-
-        <div className="mx-auto max-w-4xl px-4 md:px-6">
-          <div className="relative aspect-[1.91/1] overflow-hidden rounded-3xl bg-brand-subtle-bg">
-            <Image src={post.image} alt={post.imageAlt} fill priority sizes="(min-width: 896px) 896px, 100vw" />
-          </div>
-        </div>
 
         <div
           className="blog-body prose prose-lg mx-auto max-w-3xl px-4 pt-10 md:px-6 md:pt-14"
