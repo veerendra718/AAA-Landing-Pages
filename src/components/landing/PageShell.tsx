@@ -44,7 +44,11 @@ export function PageShell({
       />
 
       <section className="relative overflow-hidden bg-linear-to-b from-brand-subtle-bg/70 via-white to-white">
-        <div className="pointer-events-none absolute -right-40 -top-40 size-[480px] rounded-full bg-brand-secondary/40 blur-3xl" />
+        {/* The glow is taller than the title block, so it fades out towards
+            the block's bottom edge instead of being cut off in a line there. */}
+        <div className="pointer-events-none absolute inset-0 mask-b-from-40% mask-b-to-100%">
+          <div className="absolute -right-40 -top-40 size-[480px] rounded-full bg-brand-secondary/40 blur-3xl" />
+        </div>
         <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-10 md:px-6 md:pt-14">
           <h1 className="max-w-3xl font-(family-name:--font-display) text-4xl font-bold leading-tight tracking-tight text-balance text-brand-primary-darker md:text-6xl">
             {title}
