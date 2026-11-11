@@ -21,6 +21,9 @@ export function BlogList({ page }: { page: number }) {
       title="Knowledge Desk"
       lead="Latest from our blogs"
       subtitle="Explore The Latest Updates About NEET, JEE, IIT Exams And Foundation Courses."
+      // People here are choosing something to read; the "Book a visit" banner
+      // waits for them at the end of each article instead.
+      closingCta={false}
     >
       <section className="px-4 pb-16 md:px-6 md:pb-24">
         <div className="mx-auto max-w-7xl">
