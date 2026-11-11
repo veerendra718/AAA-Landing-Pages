@@ -1,10 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarCheck, Clock, MessageCircle, Phone } from "lucide-react";
 
 import { BlogCard } from "./BlogCard";
 import { BlogCover } from "./BlogCover";
-import { blogHref, formatBlogDate, morePosts, type BlogPost } from "./blog-data";
+import { blogHref, blogPosts, formatBlogDate, morePosts, postHref, type BlogPost } from "./blog-data";
 import { ClosingCta } from "./ClosingCta";
+import { academy, whatsappUrl } from "./data";
 import { FloatingContact } from "./FloatingContact";
 import { LandingFooter } from "./LandingFooter";
 import { LandingNav } from "./LandingNav";
@@ -18,6 +20,11 @@ const visit = "/landing/contact#enquire";
  * its own header — a long article title needs a smaller size than a section
  * name, and a date line.
  *
+ * On large screens the article sits beside a sticky sidebar (a "talk to us"
+ * card and the latest articles), so the page uses its width without stretching
+ * the text into lines too long to read. Phones and tablets get the article
+ * alone.
+ *
  * Takes the loaded post rather than a slug, so a Next.js page can await it on
  * the server and this SPA can fetch it in the browser.
  *
@@ -26,49 +33,118 @@ const visit = "/landing/contact#enquire";
  */
 export function BlogArticle({ post }: { post: BlogPost }) {
   const more = morePosts(post.slug);
+  const latest = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 4);
 
   return (
     <div id="top">
       <LandingNav homeHref={home} />
 
-      <article>
-        <header className="relative overflow-hidden bg-linear-to-b from-brand-subtle-bg/70 via-white to-white">
-          <div className="pointer-events-none absolute -right-40 -top-40 size-[480px] rounded-full bg-brand-secondary/40 blur-3xl" />
-          <div className="relative mx-auto max-w-4xl px-4 pt-8 md:px-6 md:pt-12">
-            <Link
-              href={blogHref}
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:text-brand-primary-darker"
-            >
-              <ArrowLeft className="size-4" /> Knowledge Desk
-            </Link>
-            <h1 className="mt-5 font-(family-name:--font-display) text-3xl font-bold leading-tight tracking-tight text-balance text-brand-primary-darker md:text-5xl">
-              {post.title}
-            </h1>
-            <p className="mt-4 flex flex-wrap items-center gap-2 text-sm font-medium text-brand-text-muted">
-              <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
-              <span aria-hidden>·</span>
-              <span className="inline-flex items-center gap-1">
-                <Clock className="size-4" /> {post.readMinutes} min read
-              </span>
-            </p>
-            {/* Inside the header so its tint fades out behind the cover rather
-                than stopping in a line beside it. */}
+      <article className="relative">
+        {/* The tint behind the header. A fixed height that fades to white, so
+            it never ends in a visible line. */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] overflow-hidden bg-linear-to-b from-brand-subtle-bg/70 to-white">
+          <div className="absolute -right-40 -top-40 size-[480px] rounded-full bg-brand-secondary/40 blur-3xl" />
+        </div>
+
+        <header className="relative mx-auto max-w-6xl px-4 pt-8 md:px-6 md:pt-12">
+          <Link
+            href={blogHref}
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:text-brand-primary-darker"
+          >
+            <ArrowLeft className="size-4" /> Knowledge Desk
+          </Link>
+          <h1 className="mt-5 max-w-4xl font-(family-name:--font-display) text-3xl font-bold leading-tight tracking-tight text-balance text-brand-primary-darker md:text-5xl">
+            {post.title}
+          </h1>
+          <p className="mt-4 flex flex-wrap items-center gap-2 text-sm font-medium text-brand-text-muted">
+            <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
+            <span aria-hidden>·</span>
+            <span className="inline-flex items-center gap-1">
+              <Clock className="size-4" /> {post.readMinutes} min read
+            </span>
+          </p>
+        </header>
+
+        <div className="relative mx-auto mt-8 grid max-w-6xl gap-12 px-4 md:px-6 lg:grid-cols-[minmax(0,1fr)_300px] xl:gap-16">
+          <div className="min-w-0">
             {/* At its own shape, so nothing is cut off — except that a tall
                 cover is held to 3:2 rather than filling the screen. */}
             <BlogCover
               post={post}
               ratio={Math.max(post.imageWidth / post.imageHeight, 1.5)}
               priority
-              sizes="(min-width: 896px) 896px, 100vw"
-              className="mt-8 rounded-3xl"
+              sizes="(min-width: 1152px) 790px, (min-width: 1024px) 66vw, 100vw"
+              className="rounded-3xl"
+            />
+            <div
+              className="blog-body prose prose-lg mt-10 max-w-none md:mt-12"
+              dangerouslySetInnerHTML={{ __html: post.html }}
             />
           </div>
-        </header>
 
-        <div
-          className="blog-body prose prose-lg mx-auto max-w-3xl px-4 pt-10 md:px-6 md:pt-14"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+          <aside className="hidden lg:block">
+            <div className="sticky top-24 space-y-6">
+              <div className="rounded-3xl bg-brand-primary-darker p-6 text-white">
+                <p className="text-xs font-bold uppercase tracking-[2px] text-brand-secondary">Talk to us</p>
+                <p className="mt-3 font-(family-name:--font-display) text-2xl font-bold leading-snug">
+                  Preparing for NEET, JEE or KCET?
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-white/75">
+                  Visit the Vijayanagar centre, meet the faculty and get a free counselling session.
+                </p>
+                <Link
+                  href={visit}
+                  className="mt-5 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-primary-darker transition-colors hover:bg-brand-subtle-bg"
+                >
+                  <CalendarCheck className="size-4" /> Book a free visit
+                </Link>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <a
+                    href={`tel:+91${academy.phones[0]}`}
+                    className="flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10"
+                  >
+                    <Phone className="size-4" /> Call
+                  </a>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 rounded-full border border-white/25 px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10"
+                  >
+                    <MessageCircle className="size-4" /> WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-brand-border-light bg-white p-6">
+                <p className="text-xs font-bold uppercase tracking-[2px] text-brand-primary">Latest articles</p>
+                <ul className="mt-4 space-y-4">
+                  {latest.map((p) => (
+                    <li key={p.slug}>
+                      <Link href={postHref(p.slug)} className="group flex gap-3">
+                        <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg bg-brand-subtle-bg">
+                          <Image src={p.image} alt="" fill sizes="80px" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="line-clamp-2 text-sm font-semibold leading-snug text-brand-text-primary transition-colors group-hover:text-brand-primary">
+                            {p.title}
+                          </p>
+                          <p className="mt-1 text-xs text-brand-text-muted">{formatBlogDate(p.date)}</p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={blogHref}
+                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:text-brand-primary-darker"
+                >
+                  All articles <ArrowRight className="size-4" />
+                </Link>
+              </div>
+            </div>
+          </aside>
+        </div>
       </article>
 
       {more.length > 0 && (
